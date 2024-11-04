@@ -63,3 +63,9 @@ Vec3 Vec3::normalize()const
 {
     return Vec3(x/length(),y/length(),z/length());
 }
+
+std::ostream& operator<<(std::ostream& os,const Vec3& v)
+{
+    os<<"("<<v.x<<","<<v.y<<","<<v.z<<")";
+    return os;
+}

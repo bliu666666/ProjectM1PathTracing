@@ -1,3 +1,6 @@
+#pragma once
+
+#include <iostream>
 #include <cmath>
 #include <limits>
 
@@ -17,4 +20,5 @@ class Vec3
         Vec3 cross(const Vec3& v)const;//Vector cross product
         double length()const;
         Vec3 normalize()const;
+        friend std::ostream& operator<<(std::ostream& os,const Vec3& v);
 };

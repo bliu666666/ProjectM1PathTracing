@@ -17,7 +17,7 @@ int main(int argc,char** argv)
     HitInfo hitInfo=findFirstCollision(ray, scene);
     if (hitInfo.hitObject)
     {
-        std::cout<<"First collision at "<<hitInfo.intersection<<std::endl;
+        std::cout<<"First collision at "<<hitInfo.intersection<<" and the distance is "<<hitInfo.distance<<std::endl;
     }
     else
         std::cout<<"No collision"<<std::endl;

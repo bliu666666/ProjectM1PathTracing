@@ -1,4 +1,4 @@
-#include "camara.h"
+#include "camera.h"
 
 Camera::Camera(const Vec3& origin,const Vec3& lookat, const Vec3& v_up, const double v_fov, const double aspect)
 {

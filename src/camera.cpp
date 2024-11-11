@@ -1,6 +1,6 @@
 #include "camara.h"
 
-Camara::Camara(const Vec3& origin,const Vec3& lookat, const Vec3& v_up, const double v_fov, const double aspect)
+Camera::Camera(const Vec3& origin,const Vec3& lookat, const Vec3& v_up, const double v_fov, const double aspect)
 {
     /*
         lookat: The target point that the camera is looking at.
@@ -23,7 +23,7 @@ Camara::Camara(const Vec3& origin,const Vec3& lookat, const Vec3& v_up, const do
     vertical = v * 2.0f * halfHeight;
 }
 
-Ray Camara::getRay(const double s,const double t)const
+Ray Camera::getRay(const double s,const double t)const
 {
     return Ray(origin, lower_left_corner + horizontal * s + vertical * t - origin);
 }

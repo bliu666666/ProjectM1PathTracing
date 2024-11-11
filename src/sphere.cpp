@@ -34,3 +34,8 @@ bool Sphere::intersect(const Ray& ray,double tMin,double tMax,Vec3& intersection
     }
     return false;
 }
+
+Vec3 Sphere::getCenter()const
+{
+    return center;
+}

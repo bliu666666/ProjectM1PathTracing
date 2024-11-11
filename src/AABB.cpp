@@ -23,3 +23,8 @@ bool AABB::intersect(const Ray& ray,double tmin,double tmax,Vec3& intersection,d
     intersection=ray.at(t);
     return true;
 }
+
+Vec3 AABB::getCenter()const
+{
+    return (min+max)/2;
+}

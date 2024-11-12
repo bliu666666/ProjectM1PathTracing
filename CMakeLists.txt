@@ -6,10 +6,12 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
-file(GLOB_RECURSE SOURCES "${SRC_DIR}/*.cpp")
+set(PPM_WRITER_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ppm_writer")
 
-add_executable(ProjectM1PathTracing ${SOURCES})
+file(GLOB_RECURSE SOURCES "${SRC_DIR}/*.cpp" "${PPM_WRITER_DIR}/ppm_writer.c")
 
-target_link_libraries(ProjectM1PathTracing m)
+add_executable(render ${SOURCES})
 
-target_include_directories(ProjectM1PathTracing PUBLIC "${SRC_DIR}")
+target_link_libraries(render m)
+
+target_include_directories(render PUBLIC "${SRC_DIR}" "${PPM_WRITER_DIR}")

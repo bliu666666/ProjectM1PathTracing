@@ -29,6 +29,11 @@ Vec3 operator*(const double t,const Vec3& v)
     return Vec3(t*v.x,t*v.y,t*v.z);
 }
 
+Vec3 Vec3::operator*(const Vec3& v)const
+{
+    return Vec3(x*v.x,y*v.y,z*v.z);
+} 
+
 Vec3 Vec3::operator/(const double t)const
 {
     return Vec3(x/t,y/t,z/t);
@@ -68,4 +73,10 @@ std::ostream& operator<<(std::ostream& os,const Vec3& v)
 {
     os<<"("<<v.x<<","<<v.y<<","<<v.z<<")";
     return os;
+}
+
+bool Vec3::nearZero()const
+{
+    const double epsilon = 1e-8;
+    return (std::fabs(x) < epsilon) && (std::fabs(y) < epsilon) && (std::fabs(z) < epsilon);
 }

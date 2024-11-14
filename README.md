@@ -9,11 +9,11 @@ method to solve the redering equation.
 
 ## Steps for implementations
 
-[x] Implement a camera system that can compute rays
-[] Implement ray-spheres and ray-boxes intersection detection, as well as first collision detection
-[] Validate a first ray casting renderer on simple scenes
-[] Implement BRDF with Lambertian reflectance
-[] Generalize the ray casting renderer to path tracing
+- [x] Implement a camera system that can compute rays
+- [] Implement ray-spheres and ray-boxes intersection detection, as well as first collision detection
+- [] Validate a first ray casting renderer on simple scenes
+- [] Implement BRDF with Lambertian reflectance
+- [] Generalize the ray casting renderer to path tracing
 
 ## Explanation
 
@@ -36,10 +36,10 @@ values and you can go anywhere on the 3D line
 
 ### viewport 
 
-![image info](image/readme/viewport.png)
+![image info](/image/readme/viewport.jpeg)
 
 ### First rendering
 
 rendering a blue-to-white background.
 
-![image info](image/rendering/first.png)
+![image info](/image/rendering/first.png)

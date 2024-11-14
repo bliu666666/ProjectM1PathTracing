@@ -1,6 +1,6 @@
 #include "AABB.h"
 
-bool AABB::intersect(const Ray& ray,double tmin,double tmax,Vec3& intersection,double& t)const
+bool AABB::intersect(const Ray& ray,double tmin,double tmax,Vec3& intersection,double& t,Vec3& normal)const
 {
     for (int i=0;i<3;i++)//traverse the three coordinate axes x, y, and z
     {
@@ -13,7 +13,17 @@ bool AABB::intersect(const Ray& ray,double tmin,double tmax,Vec3& intersection,d
         T(close) = max{T(close,0),T_(close,1),T_(close,2)}
         T(far) = min{T(far,0),T(far,1),T(far,2)}
         */
-        tmin=t0>tmin?t0:tmin;
+        if (t0>tmin)
+        {
+            tmin=t0;
+            //set the normal vector to point to the face aligned with this axis
+            if (i==0)
+                normal=(invD<0.0)?Vec3(1,0,0):Vec3(-1,0,0);
+            else if (i==1)
+                normal=(invD<0.0)?Vec3(0,1,0):Vec3(0,-1,0);
+            else
+                normal=(invD<0.0)?Vec3(0,0,1):Vec3(0,0,-1);
+        }
         tmax=t1<tmax?t1:tmax;
         //check the intersection condition:T(close)<T(far)
         if (tmax<=tmin)

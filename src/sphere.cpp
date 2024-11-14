@@ -1,6 +1,6 @@
 #include "sphere.h"
 
-bool Sphere::intersect(const Ray& ray,double tMin,double tMax,Vec3& intersection,double& t)const
+bool Sphere::intersect(const Ray& ray,double tMin,double tMax,Vec3& intersection,double& t,Vec3& normal)const
 {
     /*
         According to the mathematical definition, the intersection of the ray and the sphere 
@@ -22,6 +22,7 @@ bool Sphere::intersect(const Ray& ray,double tMin,double tMax,Vec3& intersection
         {
             t=temp;//distance
             intersection=ray.at(t);
+            normal=(intersection-center).normalize();
             return true;
         }
         temp=(-b+sqrtDiscriminant)/a;
@@ -29,6 +30,7 @@ bool Sphere::intersect(const Ray& ray,double tMin,double tMax,Vec3& intersection
         {
             t=temp;
             intersection=ray.at(t);
+            normal=(intersection-center).normalize();
             return true;
         }
     }

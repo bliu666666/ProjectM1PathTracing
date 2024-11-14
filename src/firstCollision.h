@@ -2,19 +2,9 @@
 
 #include <vector>
 #include <limits>
-#include <cfloat>
-#include "obj.h"
 #include "sphere.h"
 #include "AABB.h"
-
-struct HitInfo
-{
-    Object* hitObject;//object that collided
-    Vec3 intersection;
-    double distance;
-
-    HitInfo():hitObject(nullptr),distance(DBL_MAX){}
-};
+#include "hitInfo.h"
 
 HitInfo findFirstCollision(const Ray& ray,const std::vector<Object*>& scene)
 {
@@ -24,11 +14,13 @@ HitInfo findFirstCollision(const Ray& ray,const std::vector<Object*>& scene)
     {
         Vec3 intersection;
         double t;
-        if (obj->intersect(ray,0.001f,tmin,intersection,t))
+        Vec3 normal;
+        if (obj->intersect(ray,0.001f,tmin,intersection,t,normal))
         {
             closestHit.hitObject=obj;
             closestHit.intersection=intersection;
             closestHit.distance=t;
+            closestHit.normal=normal;
         }
     }
     return closestHit;

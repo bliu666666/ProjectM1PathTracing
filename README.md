@@ -10,10 +10,10 @@ method to solve the redering equation.
 ## Steps for implementations
 
 - [x] Implement a camera system that can compute rays
-- [] Implement ray-spheres and ray-boxes intersection detection, as well as first collision detection
-- [] Validate a first ray casting renderer on simple scenes
-- [] Implement BRDF with Lambertian reflectance
-- [] Generalize the ray casting renderer to path tracing
+- [x] Implement ray-spheres and ray-boxes intersection detection, as well as first collision detection
+- [ ] Validate a first ray casting renderer on simple scenes
+- [ ] Implement BRDF with Lambertian reflectance
+- [ ] Generalize the ray casting renderer to path tracing
 
 ## Explanation
 

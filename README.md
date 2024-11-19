@@ -43,3 +43,7 @@ values and you can go anywhere on the 3D line
 rendering a blue-to-white background.
 
 ![image info](/image/rendering/first.png)
+
+### First Object
+
+![image info](/image/rendering/image_sphere.png)

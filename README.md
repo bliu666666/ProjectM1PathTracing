@@ -47,3 +47,9 @@ rendering a blue-to-white background.
 ### First Object
 
 ![image info](/image/rendering/image_sphere.png)
+
+### Shading effect
+
+
+![image info](/image/rendering/sphere_shading.png)
+

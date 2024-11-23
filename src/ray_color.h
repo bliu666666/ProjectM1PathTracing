@@ -2,6 +2,8 @@
 #define RAY_COLOR_H
 
 #include "ray.h"
+#include "color.h"
+
 #include <strstream>    
 
 color ray_color(const ray& r) {

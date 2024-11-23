@@ -23,6 +23,11 @@ public:
         }
         return false;
     }
+    // Shading with surface normal
+    vec3 normal(const vec3& p) const {
+        return (p - center).normalize();
+        }
 };
+
 
 #endif 

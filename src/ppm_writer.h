@@ -18,7 +18,7 @@ public:
     std::vector<Sphere> spheres;
 
     PathTracer(int w, int h) : width(w), height(h) {
-        spheres.emplace_back(vec3(0, 0, -5), 1, vec3(1, 0, 0)); // Red sphere
+        spheres.emplace_back(vec3(0, 0, -5), 2, vec3(0.7, 0.3, 0.3)); // Red sphere
     }
     void render(viewport &vp,float aspect_ratio,const char *path) {
         std::ofstream file(path);

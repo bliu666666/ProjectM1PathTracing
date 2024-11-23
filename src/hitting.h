@@ -20,7 +20,9 @@ public:
         }
 
         if (closest_sphere) {
-            return closest_sphere->color;
+            vec3 hit_post = ray.get_origin() + closest_t * ray.get_direction();
+            vec3 N = closest_sphere->normal(hit_post);
+            return 0.5 * vec3(N.x + 1,N.y +1,N.z +1);
         }
         return sky(ray); // Background color
     }

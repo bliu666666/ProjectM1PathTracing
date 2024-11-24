@@ -12,16 +12,20 @@
 */
 Vec3 calculateColor(const Ray& ray, const std::vector<Object*>& scene,int depth)
 {
+    if (depth <= 0) {
+        return Vec3(0,0,0); //Exceed recursion depth, return black
+    }
     HitInfo hitInfo=findFirstCollision(ray,scene);
     if (hitInfo.hitObject)
     {
         Ray scattered;
         Vec3 attenuation;
-        if (depth<50&&hitInfo.hitObject->material->scatter(ray,hitInfo,attenuation,scattered))
+        //If the material's scatter function returns true, continue tracing the path
+        if (hitInfo.hitObject->material->scatter(ray,hitInfo,attenuation,scattered))
         {
-            return attenuation*calculateColor(scattered, scene, depth + 1);
+            return attenuation*calculateColor(scattered, scene, depth - 1);
         }
-        return Vec3(0,0,0);//reach maximum recursion depth,return black
+        return Vec3(0,0,0);//If the material does not scatter, returns black.
     }
     //Background color gradient
     Vec3 unitDirection=ray.direction.normalize();
@@ -31,7 +35,7 @@ Vec3 calculateColor(const Ray& ray, const std::vector<Object*>& scene,int depth)
 
 //rendering function
 void render(double width,double height,const std::vector<Object*>& scene,char* outputPath,const Vec3& origin,const Vec3& lookat,
-            const Vec3& v_up, double v_fov,int samples_per_pixel)
+            const Vec3& v_up, double v_fov,int samples_per_pixel,int max_depth)
 {
     double aspect=width/height;
     //use user-specified parameters so that the user can customize the camera viewing angle
@@ -47,7 +51,7 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
                 double u=(j+randomFloat())/width;
                 double v=(i+randomFloat())/height;
                 Ray ray=camera.getRay(u, v);
-                color=color+calculateColor(ray,scene,0);
+                color=color+calculateColor(ray,scene,max_depth);
             }
             color=color/static_cast<double>(samples_per_pixel);//take the average of the samples
 

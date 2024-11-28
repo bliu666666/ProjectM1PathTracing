@@ -53,3 +53,6 @@ rendering a blue-to-white background.
 
 ![image info](/image/rendering/sphere_shading.png)
 
+### Anti-aliasing
+
+![image info](/image/rendering/anti_aliasing.png)

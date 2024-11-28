@@ -55,4 +55,4 @@ rendering a blue-to-white background.
 
 ### Anti-aliasing
 
-![image info](/image/rendering/anti_aliasing.png)
+![image info](/image/rendering/antialiasing.png)

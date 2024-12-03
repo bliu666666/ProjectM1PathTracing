@@ -10,9 +10,9 @@ Camera::Camera(const Vec3& origin,const Vec3& lookat, const Vec3& v_up, const do
     */
 
     this->origin = origin;
-    float theta = v_fov * M_PI / 180.0f; //convert viewing angle to radians
-    float halfHeight = tan(theta / 2);
-    float halfWidth = aspect * halfHeight;
+    double theta = v_fov * M_PI / 180.0f; //convert viewing angle to radians
+    double halfHeight = tan(theta / 2);
+    double halfWidth = aspect * halfHeight;
 
     Vec3 w = (origin-lookat).normalize();//calculate the direction vector w from the camera position origin to the target point lookat
     Vec3 u = v_up.cross(w).normalize();//calculate the "right" direction vector u of the camera

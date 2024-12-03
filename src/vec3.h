@@ -17,6 +17,7 @@ class Vec3
         Vec3 operator*(const Vec3& v)const;
         Vec3 operator/(const double t)const;
         double operator[](const int i)const;
+        Vec3 operator-();//Take the opposite number
         double dot(const Vec3& v)const;//Vector dot product
         Vec3 cross(const Vec3& v)const;//Vector cross product
         double length()const;

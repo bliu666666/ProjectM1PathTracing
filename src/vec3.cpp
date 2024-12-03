@@ -49,6 +49,11 @@ double Vec3::operator[](const int i)const
         return z;
 }
 
+Vec3 Vec3::operator-()
+{
+    return Vec3(-x,-y,-z);
+}
+
 double Vec3::dot(const Vec3& v)const
 {
     return x*v.x+y*v.y+z*v.z;

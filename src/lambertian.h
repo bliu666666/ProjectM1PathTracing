@@ -17,6 +17,7 @@ class Lambertian:public Material
         Vec3 albedo;//diffuse reflectance
         Lambertian(const Vec3& a):albedo(a){}
         virtual bool scatter(const Ray& ray_in,const HitInfo& hit,Vec3& attenuation,Ray& scattered)const;
+        Vec3 randomInHemisphere(const Vec3& normal)const;//ensure that the scatter direction is within the hemisphere of the normal vector, otherwise reject the sample
     private:
         //generate a random unit vector to simulate the random scattering effect of Lambertian reflection
         Vec3 randomUnitVector()const;

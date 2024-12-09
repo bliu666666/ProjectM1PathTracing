@@ -16,11 +16,16 @@
 class PathTracer {
 public:
     int width, height;
-    int samples_per_pixel = 100;
+    int samples_per_pixel = 1000;
+    int max_depth = 50;  // Add max depth for ray bounces
     std::vector<Sphere> spheres;
 
     PathTracer(int w, int h) : width(w), height(h) {
-        spheres.emplace_back(vec3(0, 0, -5), 2, vec3(1, 1, 0));
+        // Add a large sphere as the ground (green-tinted)
+        spheres.emplace_back(vec3(0, -1002, -5), 1000, vec3(0.5, 0.9, 0.5));  // Ground
+        // Add our main sphere
+        spheres.emplace_back(vec3(-4, 0, -10), 2, vec3(0.3, 0.3, 0.3));
+        spheres.emplace_back(vec3(4, 0, -10), 2, vec3(0.3, 0.3, 0.3));  // Black sphere
     }
 
     double random_double() {
@@ -42,7 +47,8 @@ public:
                     float v = 2.0f * (float(j) + random_double()) / float(height) - 1.0f;
                     
                     ray r(vp.get_origin(), vec3(u, v, -1).normalize());
-                    pixel_color = pixel_color + Hitting::trace(r, spheres);
+                    pixel_color = pixel_color + Hitting::trace(r, spheres, max_depth);
+                    
                 }
 
                 pixel_color = pixel_color * (1.0 / samples_per_pixel);

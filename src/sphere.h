@@ -2,14 +2,17 @@
 #define SPHERE_H
 
 #include "ray.h"
+#include <random>
+#include "hit_record.h"
 
 class Sphere {
 public:
     vec3 center;
     float radius;
     vec3 color;
+    Material* material;
 
-    Sphere(const vec3& c, float r, const vec3& col) : center(c), radius(r), color(col) {}
+    Sphere(const vec3& c, float r, const vec3& col, Material* mat = nullptr) : center(c), radius(r), color(col), material(mat) {}
 
     bool hit(const ray& ray, float& t) const {
         vec3 oc = ray.get_origin() - center;

@@ -1,5 +1,7 @@
-#include "vec3.h"
+#ifndef VIEWPORT_H
+#define VIEWPORT_H
 
+#include "vec3.h"
 
 class viewport{
 public:
@@ -32,3 +34,5 @@ public:
 
 
 }; 
+
+#endif // VIEWPORT_H 

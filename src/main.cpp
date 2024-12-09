@@ -6,7 +6,7 @@
 
 int main(void){
   float aspect_ratio = 16.0 / 9.0;
-  int image_width = 400;
+  int image_width = 1200;
   int image_height = static_cast<int>(image_width/aspect_ratio);
   vec3 origin(0.0,0.0,0.0);
   // create viewport 

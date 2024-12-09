@@ -19,14 +19,17 @@ class vec3{
     vec3 operator*(double t) const {
       return vec3(x * t, y * t, z * t);
     }
+    vec3 operator*(const vec3& v) const {
+        return vec3(x * v.x, y * v.y, z * v.z);
+    }
     vec3 operator/(double t) const {
       return vec3(x*1/t,y*1/t,z*1/t);
     };
     double length() const {
-      return sqrt(x*x+y*y+z*z);
+      return x*x+y*y+z*z;
     }
     double length_squared() const {
-      return sqrt(length_squared());
+      return sqrt(length());
     }
     vec3 normalize() const {
       double len = length();
@@ -48,4 +51,3 @@ inline vec3 operator*(double t,const vec3& v){
   return vec3(t*v.x, t*v.y, t*v.z);
 }
 #endif // !VEC3_H
-

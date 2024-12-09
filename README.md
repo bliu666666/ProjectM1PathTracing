@@ -11,8 +11,8 @@ method to solve the redering equation.
 
 - [x] Implement a camera system that can compute rays
 - [x] Implement ray-spheres and ray-boxes intersection detection, as well as first collision detection
-- [ ] Validate a first ray casting renderer on simple scenes
-- [ ] Implement BRDF with Lambertian reflectance
+- [x] Validate a first ray casting renderer on simple scenes
+- [X] Implement BRDF with Lambertian reflectance
 - [ ] Generalize the ray casting renderer to path tracing
 
 ## Explanation
@@ -56,3 +56,7 @@ rendering a blue-to-white background.
 ### Anti-aliasing
 
 ![image info](/image/rendering/Antialiasing.png)
+
+## Lambertian
+
+![image info](/image/readme/image_sphere_lambertian.png)

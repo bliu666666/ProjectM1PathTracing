@@ -23,9 +23,44 @@ vec3 vec3::operator-(const vec3& other) const {
     return vec3(x - other.x, y - other.y, z - other.z);
 }
 
+vec3 vec3::operator+(float scalar) const {
+    return vec3(x + scalar, y + scalar, z + scalar);
+}
+
+vec3 vec3::operator-(float scalar) const {
+    return vec3(x - scalar, y - scalar, z - scalar);
+}
+
+vec3 vec3::operator+(double scalar) const {
+    return vec3(x + scalar, y + scalar, z + scalar);
+}
+
+vec3 vec3::operator-(double scalar) const {
+    return vec3(x - scalar, y - scalar, z - scalar);
+}
+
+vec3 vec3::operator+(int scalar) const {
+    return vec3(x + scalar, y + scalar, z + scalar);
+}
+
+vec3 vec3::operator-(int scalar) const {
+    return vec3(x - scalar, y - scalar, z - scalar);
+}
+
+
+vec3 vec3::operator*(double scalar) const {
+    return vec3(x * scalar, y * scalar, z * scalar);
+}
+
+vec3 vec3::operator*(int scalar) const {
+    return vec3(x * scalar, y * scalar, z * scalar);
+}
+
+
 vec3 vec3::operator*(float scalar) const {
     return vec3(x * scalar, y * scalar, z * scalar);
 }
+
 
 float vec3::dot(const vec3& other) const {
     return x * other.x + y * other.y + z * other.z;

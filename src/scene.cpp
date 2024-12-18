@@ -4,7 +4,9 @@
 HitInfo Scene::intersectBox(const Ray& ray, const Box& box) const {
     HitInfo result = {false, INFINITY, vec3(), vec3()};
     
-    // Calcul des intersections pour chaque paire de plans (slabs)
+
+    
+    // Calcul des intersections pour chaque paire de plans
     float tmin = -INFINITY;
     float tmax = INFINITY;
     
@@ -42,7 +44,7 @@ HitInfo Scene::intersectBox(const Ray& ray, const Box& box) const {
         t0 = (min_i - origin) * invD;
         t1 = (max_i - origin) * invD;
         
-        // Échanger si nécessaire pour avoir t0 <= t1
+        
         if (invD < 0.0f) {
             std::swap(t0, t1);
         }
@@ -50,6 +52,7 @@ HitInfo Scene::intersectBox(const Ray& ray, const Box& box) const {
         tmin = std::max(tmin, t0);
         tmax = std::min(tmax, t1);
         
+
         if (tmax <= tmin) {
             return result;  // Pas d'intersection
         }
@@ -58,16 +61,19 @@ HitInfo Scene::intersectBox(const Ray& ray, const Box& box) const {
     // Si on arrive ici, il y a intersection
     result.hit = true;
     result.distance = tmin > 0 ? tmin : tmax;
+    
+
+
+    
     result.point = ray.pointAtDistance(result.distance);
     
-    // Calcul de la normale (en fonction de la face touchée)
+    // Calcul de la normale
     vec3 center = (box.max + box.min) * 0.5f;
     vec3 p = result.point - center;
     vec3 d = (box.max - box.min) * 0.5f;
     
-    float bias = 1.000001f;  // Pour éviter les problèmes de précision
+    float bias = 1.000001f;
     
-    // Déterminer quelle face a été touchée
     if (std::abs(p.getX() / d.getX()) > bias) result.normal = vec3(p.getX() > 0 ? 1 : -1, 0, 0);
     else if (std::abs(p.getY() / d.getY()) > bias) result.normal = vec3(0, p.getY() > 0 ? 1 : -1, 0);
     else result.normal = vec3(0, 0, p.getZ() > 0 ? 1 : -1);
@@ -78,7 +84,8 @@ HitInfo Scene::intersectBox(const Ray& ray, const Box& box) const {
 HitInfo Scene::intersect(const Ray& ray) const {
     HitInfo result = {false, INFINITY, vec3(), vec3()};
     
-    // Intersection avec les sphères (code existant)
+
+    // Test des intersections avec les sphères
     for (const auto& sphere : spheres) {
         vec3 oc = ray.origin - sphere.center;
         float a = ray.direction.dot(ray.direction);
@@ -87,29 +94,23 @@ HitInfo Scene::intersect(const Ray& ray) const {
         float discriminant = b*b - 4*a*c;
         
         if (discriminant > 0) {
-            float t1 = (-b - sqrt(discriminant)) / (2.0f*a);
-            float t2 = (-b + sqrt(discriminant)) / (2.0f*a);
-            
-            float t = (t1 < t2 && t1 > 0.001f) ? t1 : t2;
-            
+            float t = (-b - sqrt(discriminant)) / (2.0f*a);
             if (t > 0.001f && t < result.distance) {
                 result.hit = true;
                 result.distance = t;
                 result.point = ray.pointAtDistance(t);
                 result.normal = (result.point - sphere.center).normalize();
-                
-                if (ray.direction.dot(result.normal) > 0) {
-                    result.normal = result.normal * -1;
-                }
             }
         }
     }
-    
-    // Intersection avec les boîtes
+
+    // Test des intersections avec les boîtes
     for (const auto& box : boxes) {
         HitInfo boxHit = intersectBox(ray, box);
-        if (boxHit.hit && boxHit.distance < result.distance) {
-            result = boxHit;
+        if (boxHit.hit) {
+            if (boxHit.distance < result.distance) {
+                result = boxHit;
+            }
         }
     }
     

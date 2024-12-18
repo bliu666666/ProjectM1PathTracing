@@ -20,9 +20,9 @@ class viewport {
         vec3 qy=cam.v*(hy/(m-1));
 
         
-        vec3 pixelPosition(int i, int j, vec3 qx, vec3 qy);
+        vec3 pixelPosition(int i, int j, vec3 qx, vec3 qy) const;
 
-        vec3 computeRayVector(int i, int j);
+        vec3 computeRayVector(int i, int j) const;
 
 }; 
 

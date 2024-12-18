@@ -70,12 +70,27 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
 //create scene
 std::vector<Object*> createScene()
 {
-    //assign Lambertian Materials
-    Lambertian* red_material=new Lambertian(Vec3(0.8,0.3,0.3));
-    Lambertian* ground_material=new Lambertian(Vec3(0.8,0.8,0.0));
+    //assign Materials for Cornell Box
+    Lambertian* red_wall = new Lambertian(Vec3(0.65, 0.05, 0.05));    // Rouge
+    Lambertian* green_wall = new Lambertian(Vec3(0.12, 0.45, 0.15));  // Vert
+    Lambertian* white_wall = new Lambertian(Vec3(0.73, 0.73, 0.73));  // Blanc
+    Lambertian* red_material = new Lambertian(Vec3(0.8,0.3,0.3));
+
     std::vector<Object*> scene;
-    scene.push_back(new Sphere(red_material,0.5,Vec3(0.0,0.0,-1.0)));
-    scene.push_back(new Sphere(ground_material,100.0,Vec3(0.0,-100.5,-1.0)));//as ground
-    scene.push_back(new AABB(ground_material,Vec3(-1.0,-0.5,-2.0),Vec3(1.0,0.5,-1.5)));
+    
+    // Back wall
+    scene.push_back(new AABB(white_wall, Vec3(-2.0, -2.0, -4.0), Vec3(2.0, 2.0, -3.99)));
+    // Left wall (green)
+    scene.push_back(new AABB(green_wall, Vec3(-2.01, -2.0, -4.0), Vec3(-2.0, 2.0, 0.0)));
+    // Right wall (red)
+    scene.push_back(new AABB(red_wall, Vec3(2.0, -2.0, -4.0), Vec3(2.01, 2.0, 0.0)));
+    // Floor
+    scene.push_back(new AABB(white_wall, Vec3(-2.0, -2.01, -4.0), Vec3(2.0, -2.0, 0.0)));
+    // Ceiling
+    scene.push_back(new AABB(white_wall, Vec3(-2.0, 2.0, -4.0), Vec3(2.0, 2.01, 0.0)));
+
+    // Add a sphere inside for interest
+    scene.push_back(new Sphere(red_material, 0.5, Vec3(0.0, -1.5, -2.0)));
+
     return scene;
 }

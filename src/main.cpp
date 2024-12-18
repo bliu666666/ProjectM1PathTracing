@@ -16,6 +16,9 @@ int main() {
     // Plafond
     scene.addBox(vec3(-4, -2.5, -10), vec3(4, -2, -3));  
 
+    // Sol
+    scene.addBox(vec3(-4, 2, -10), vec3(4, 2.5, -3));  // Ajout du sol
+
     // Mur gauche
     scene.addBox(vec3(-4, -2.5, -10), vec3(-3.5, 2, -3));  
 

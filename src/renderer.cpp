@@ -51,12 +51,15 @@ vec3 Renderer::computeColor(const Ray& ray, const Scene& scene, int depth) {
     if (hit.hit) {
         // Calculer la position relative de l'objet pour déterminer sa couleur
         vec3 hitPoint = ray.pointAtDistance(hit.distance);
-        
-        // C'est oite
+
+        if (hitPoint.getZ() < -10) {
+            return vec3(0.0, 0.0, 0.0);  // Noir
+        }
+        // C'est une boite
         if (std::abs(hit.normal.getX()) == 1 || 
             std::abs(hit.normal.getY()) == 1 || 
             std::abs(hit.normal.getZ()) == 1) {
-            return vec3(0.8, 0.8, 0.0);  // Jaune pour la boîte
+            return vec3((10-abs(hitPoint.getZ()))/10, (10-abs(hitPoint.getZ()))/10, 0.0);  // Jaune
         }
         
         // Pour les sphères, couleur basée sur leur position
@@ -70,13 +73,14 @@ vec3 Renderer::computeColor(const Ray& ray, const Scene& scene, int depth) {
     }
     
     // Couleur du fond
-    return vec3(0.2, 0.3, 1.0);  // Bleu
+    return vec3(0.0, 0.0, 0.0);  // Noir
 }
 
 void Renderer::saveImage(const char* filename) {
     std::cout << "Sauvegarde de l'image dans " << filename << std::endl;
     
     
+
     unsigned char* rgbImage = img2rgb(width, height, image);
     
     writePPM((char*)filename, width, height, rgbImage);

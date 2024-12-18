@@ -1,4 +1,5 @@
 #include "scene.h"
+#include <cmath>
 
 HitInfo Scene::intersect(const Ray& ray) const {
     HitInfo result = {false, INFINITY, vec3(), vec3()};
@@ -11,12 +12,20 @@ HitInfo Scene::intersect(const Ray& ray) const {
         float discriminant = b*b - 4*a*c;
         
         if (discriminant > 0) {
-            float temp = (-b - sqrt(discriminant)) / (2.0f*a);
-            if (temp < result.distance && temp > 0.001f) {
+            float t1 = (-b - sqrt(discriminant)) / (2.0f*a);
+            float t2 = (-b + sqrt(discriminant)) / (2.0f*a);
+            
+            float t = (t1 < t2 && t1 > 0.001f) ? t1 : t2;
+            
+            if (t > 0.001f && t < result.distance) {
                 result.hit = true;
-                result.distance = temp;
-                result.point = ray.pointAtDistance(temp);
+                result.distance = t;
+                result.point = ray.pointAtDistance(t);
                 result.normal = (result.point - sphere.center).normalize();
+                
+                if (ray.direction.dot(result.normal) > 0) {
+                    result.normal = result.normal * -1;
+                }
             }
         }
     }

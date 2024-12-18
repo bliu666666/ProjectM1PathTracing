@@ -22,6 +22,7 @@ class viewport {
         
         vec3 pixelPosition(int i, int j, vec3 qx, vec3 qy);
 
+        vec3 computeRayVector(int i, int j);
 
 }; 
 

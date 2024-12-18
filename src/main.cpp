@@ -1,5 +1,7 @@
 #include <iostream>
 #include "camera.h"
+#include "viewport.h"
+
 
 int main() {
 
@@ -27,6 +29,22 @@ int main() {
 
     std::cout << "Résultat après rotation (pitch + yaw): ";
     result.print();
+
+
+
+    vec3 test = result + 1;
+    test = test + result;
+    test.print();
+
+    viewport vp;
+    vp.theta = M_PI / 2;  // 90 degrés de champ de vision
+    vp.k = 800;           // largeur
+    vp.m = 600;           // hauteur
+
+    // Test pour un pixel spécifique
+    vec3 rayDir = vp.computeRayVector(400, 300);  // pixel au centre approximativement
+    std::cout << "Vecteur rayon pour le pixel (400,300): ";
+    rayDir.print();
 
     return 0;
 }

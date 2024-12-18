@@ -48,8 +48,8 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
         {
             Vec3 color(0,0,0);
             for (int s=0;s<samples_per_pixel;++s) {
-                double u=(j+randomFloat())/width;
-                double v=(i+randomFloat())/height;
+                double u=(j+randomDouble())/width;
+                double v=(i+randomDouble())/height;
                 Ray ray=camera.getRay(u, v);
                 color=color+calculateColor(ray,scene,max_depth);
             }

@@ -13,8 +13,8 @@ bool Lambertian::scatter(const Ray& ray_in,const HitInfo& hit,Vec3& attenuation,
 
 Vec3 Lambertian::randomUnitVector()const
 {
-    double a=randomFloat()*2.0*M_PI;
-    double z=randomFloat()*2.0-1.0;
+    double a=randomDouble()*2.0*M_PI;
+    double z=randomDouble()*2.0-1.0;
     double r=std::sqrt(1.0-z * z);
     return Vec3(r*std::cos(a),r*std::sin(a),z);
 }

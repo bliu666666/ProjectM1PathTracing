@@ -4,9 +4,9 @@
 #include <random>
 
 //generate a random floating point number to generate a slightly different direction for each ray
-inline double randomFloat()
+inline double randomDouble()
 {
-    static std::uniform_real_distribution<float> dist(0.0,1.0);
+    static std::uniform_real_distribution<double> dist(0.0,1.0);
     static std::default_random_engine generator;
     return dist(generator);
 }

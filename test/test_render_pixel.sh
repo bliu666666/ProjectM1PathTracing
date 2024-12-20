@@ -18,6 +18,7 @@ for res in "${resolutions[@]}"; do
             end_time=$(date +%s.%N)
             execution_time=$(echo "$end_time - $start_time" | bc)
             echo "$width x $height,$execution_time" >> render_pixel_results.csv
+            rm $output
         done
     done
 done

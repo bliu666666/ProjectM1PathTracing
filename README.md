@@ -92,3 +92,4 @@ The project uses an object-oriented architecture with:
 - No explicit light sources (only uses ambient lighting)
 - No support for reflective or refractive materials
 - No optimization by accelerating structures (BVH, etc.)
+- No parallelization (such as OpenMP or std::thread) is used for per-row or per-pixel calculations (main goal for next semester)

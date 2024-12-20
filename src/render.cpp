@@ -25,8 +25,16 @@ int main(int argc,char **argv)
     std::cin>>v_fov;
     //create a scene
     std::vector<Object*> scene=createScene();
+    // record rendering start time
+    auto start_time=std::chrono::high_resolution_clock::now();
     //render the image and output it to a file
     render(width,height,scene,output_path,origin,lookat,v_up,v_fov,samples_per_pixel,max_depth);
+     // Record rendering end time
+    auto end_time=std::chrono::high_resolution_clock::now();
+    // Calculate rendering time
+    std::chrono::duration<double> elapsed=end_time-start_time;
+    // Output rendering time
+    std::cout<<"Render complete. Time taken: "<<elapsed.count()<<" seconds."<< std::endl;
     std::cout<<"Render complete.Please check the outputfile: "<<output_path<<std::endl;
     return 0;
 }

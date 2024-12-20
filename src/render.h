@@ -4,6 +4,7 @@
 #include "camera.h"
 #include "../ppm_writer/ppm_writer.c"
 #include "lambertian.h"
+#include <chrono>
 
 /*
     Calculates the color based on the intersection of the ray and the object. 

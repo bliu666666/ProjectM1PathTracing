@@ -3,7 +3,7 @@
 #include "obj.h"
 #include <random>
 
-//generate a random floating point number to generate a slightly different direction for each ray
+// Génère un nombre aléatoire pour créer une direction légèrement différente pour chaque rayon
 inline double randomDouble()
 {
     static std::uniform_real_distribution<double> dist(0.0,1.0);
@@ -14,11 +14,12 @@ inline double randomDouble()
 class Lambertian:public Material
 {
     public:
-        Vec3 albedo;//diffuse reflectance
+        Vec3 albedo;     // Réflectance diffuse
         Lambertian(const Vec3& a):albedo(a){}
         virtual bool scatter(const Ray& ray_in,const HitInfo& hit,Vec3& attenuation,Ray& scattered)const;
-        Vec3 randomInHemisphere(const Vec3& normal)const;//ensure that the scatter direction is within the hemisphere of the normal vector, otherwise reject the sample
+        // Assure que la direction de diffusion est dans l'hémisphère de la normale
+        Vec3 randomInHemisphere(const Vec3& normal)const;// Assure que la direction de diffusion est dans l'hémisphère de la normale
     private:
-        //generate a random unit vector to simulate the random scattering effect of Lambertian reflection
+        // Génère un vecteur unitaire aléatoire pour simuler l'effet de diffusion aléatoire de la réflexion lambertienne
         Vec3 randomUnitVector()const;
 };

@@ -25,3 +25,4 @@ class Vec3
         friend std::ostream& operator<<(std::ostream& os,const Vec3& v);
         bool nearZero()const;//check whether a vector is close to zero
 };
+

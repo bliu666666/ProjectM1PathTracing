@@ -6,43 +6,42 @@
 #include "lambertian.h"
 #include <chrono>
 
-/*
-    Calculates the color based on the intersection of the ray and the object. 
-    If the ray intersects the object, the color is generated based on the normal vector of the intersection point; 
-    otherwise, the background color is displayed.
-*/
+// Calcule la couleur d'un point en fonction des intersections du rayon
+// Si le rayon touche un objet, calcule la couleur basée sur le matériau
+// Sinon, retourne la couleur du fond (ciel)
 Vec3 calculateColor(const Ray& ray, const std::vector<Object*>& scene,int depth)
 {
     if (depth <= 0) {
-        return Vec3(0,0,0); //Exceed recursion depth, return black
+        return Vec3(0,0,0); // Dépassement de la profondeur maximale, retourne noir
     }
     HitInfo hitInfo=findFirstCollision(ray,scene);
     if (hitInfo.hitObject)
     {
         Ray scattered;
         Vec3 attenuation;
-        //If the material's scatter function returns true, continue tracing the path
+        // Si le matériau diffuse la lumière, continue le traçage
         if (hitInfo.hitObject->material->scatter(ray,hitInfo,attenuation,scattered))
         {
             return attenuation*calculateColor(scattered, scene, depth - 1);
         }
-        return Vec3(0,0,0);//If the material does not scatter, returns black.
+        return Vec3(0,0,0);// Si le matériau ne diffuse pas, retourne noir
     }
-    //Background color gradient
+    // Couleur de fond en dégradé
     Vec3 unitDirection=ray.direction.normalize();
     double t=(unitDirection.y+1.0)/2;
     return (1.0-t)*Vec3(1.0,1.0,1.0)+t*Vec3(0.5,0.7,1.0);
 }
 
-//rendering function
+// Fonction principale de rendu
+// Parcourt chaque pixel et calcule sa couleur par échantillonnage multiple
 void render(double width,double height,const std::vector<Object*>& scene,char* outputPath,const Vec3& origin,const Vec3& lookat,
             const Vec3& v_up, double v_fov,int samples_per_pixel,int max_depth)
 {
     double aspect=width/height;
-    //use user-specified parameters so that the user can customize the camera viewing angle
+    // Utilise les paramètres spécifiés par l'utilisateur pour la caméra
     Camera camera(origin,lookat,v_up,v_fov,aspect);
     double *img=new double[static_cast<int>(width)*static_cast<int>(height)*3];
-    //traverse each pixel, calculate the color and store it
+    // Parcourt chaque pixel et calcule sa couleur
     for (int i=height-1;i>=0;--i)
     {
         for (int j=0;j<width;++j)
@@ -54,10 +53,10 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
                 Ray ray=camera.getRay(u, v);
                 color=color+calculateColor(ray,scene,max_depth);
             }
-            color=color/static_cast<double>(samples_per_pixel);//take the average of the samples
+            color=color/static_cast<double>(samples_per_pixel);// Moyenne des échantillons
 
-            //map color values ​​to the range [0,255]
-            img[3*(i*static_cast<int>(width)+j)+0]=sqrt(color.x);//Gamma Correction
+            // Conversion des couleurs dans l'intervalle [0,255]
+            img[3*(i*static_cast<int>(width)+j)+0]=sqrt(color.x);// Correction gamma
             img[3*(i*static_cast<int>(width)+j)+1]=sqrt(color.y);
             img[3*(i*static_cast<int>(width)+j)+2]=sqrt(color.z);
         }
@@ -68,10 +67,11 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
     free(rgbImg);
 }
 
-//create scene
+// Crée la scène : une Cornell Box avec une sphère
+// Définit les murs avec différentes couleurs et ajoute une sphère rouge au centre
 std::vector<Object*> createScene()
 {
-    //assign Materials for Cornell Box
+    // Définition des matériaux pour la Cornell Box
     Lambertian* red_wall = new Lambertian(Vec3(0.65, 0.05, 0.05));    // Rouge
     Lambertian* green_wall = new Lambertian(Vec3(0.12, 0.45, 0.15));  // Vert
     Lambertian* white_wall = new Lambertian(Vec3(0.73, 0.73, 0.73));  // Blanc
@@ -79,18 +79,18 @@ std::vector<Object*> createScene()
 
     std::vector<Object*> scene;
     
-    // Back wall
+    // Mur du fond
     scene.push_back(new AABB(white_wall, Vec3(-2.0, -2.0, -4.0), Vec3(2.0, 2.0, -3.99)));
-    // Left wall (green)
+    // Mur gauche (vert)
     scene.push_back(new AABB(green_wall, Vec3(-2.01, -2.0, -4.0), Vec3(-2.0, 2.0, 0.0)));
-    // Right wall (red)
+    // Mur droit (rouge)
     scene.push_back(new AABB(red_wall, Vec3(2.0, -2.0, -4.0), Vec3(2.01, 2.0, 0.0)));
-    // Floor
+    // Sol
     scene.push_back(new AABB(white_wall, Vec3(-2.0, -2.01, -4.0), Vec3(2.0, -2.0, 0.0)));
-    // Ceiling
+    // Plafond
     scene.push_back(new AABB(white_wall, Vec3(-2.0, 2.0, -4.0), Vec3(2.0, 2.01, 0.0)));
 
-    // Add a sphere inside for interest
+    // Ajout d'une sphère rouge au centre
     scene.push_back(new Sphere(red_material, 0.5, Vec3(0.0, -1.5, -2.0)));
 
     return scene;

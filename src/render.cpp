@@ -15,6 +15,22 @@ int main(int argc,char **argv)
     //user-defined camera parameters
     Vec3 origin,lookat,v_up;
     double v_fov;
+    
+#ifdef AUTO_CAMERA_PARAMS
+    // Utiliser des valeurs prédéfinies pour le mode automatique
+    origin = Vec3(0, 0, 0);
+    lookat = Vec3(0, 0, -1);
+    v_up = Vec3(0, -1, 0);
+    v_fov = 90;
+    
+    // Afficher les valeurs utilisées
+    std::cout<<"Using predefined camera parameters:"<<std::endl;
+    std::cout<<"Camera origin: "<<origin.x<<" "<<origin.y<<" "<<origin.z<<std::endl;
+    std::cout<<"Camera lookat: "<<lookat.x<<" "<<lookat.y<<" "<<lookat.z<<std::endl;
+    std::cout<<"Camera v_up: "<<v_up.x<<" "<<v_up.y<<" "<<v_up.z<<std::endl;
+    std::cout<<"Camera v_fov: "<<v_fov<<std::endl;
+#else
+    // Demander à l'utilisateur de saisir les paramètres
     std::cout<<"Enter camera origin: (x,y,z)"<<std::endl;
     std::cin>>origin.x>>origin.y>>origin.z;
     std::cout<<"Enter camera lookat: (x,y,z)"<<std::endl;
@@ -23,6 +39,7 @@ int main(int argc,char **argv)
     std::cin>>v_up.x>>v_up.y>>v_up.z;
     std::cout<<"Enter camera v_fov: "<<std::endl;
     std::cin>>v_fov;
+#endif
     //create a scene
     std::vector<Object*> scene=createScene();
     // record rendering start time

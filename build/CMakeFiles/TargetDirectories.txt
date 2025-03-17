@@ -1,0 +1,4 @@
+/app/build/CMakeFiles/render.dir
+/app/build/CMakeFiles/profile.dir
+/app/build/CMakeFiles/edit_cache.dir
+/app/build/CMakeFiles/rebuild_cache.dir

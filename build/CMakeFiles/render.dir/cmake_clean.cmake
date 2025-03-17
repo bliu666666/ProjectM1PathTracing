@@ -1,0 +1,27 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/render.dir/ppm_writer/ppm_writer.c.o"
+  "CMakeFiles/render.dir/ppm_writer/ppm_writer.c.o.d"
+  "CMakeFiles/render.dir/src/AABB.cpp.o"
+  "CMakeFiles/render.dir/src/AABB.cpp.o.d"
+  "CMakeFiles/render.dir/src/camera.cpp.o"
+  "CMakeFiles/render.dir/src/camera.cpp.o.d"
+  "CMakeFiles/render.dir/src/lambertian.cpp.o"
+  "CMakeFiles/render.dir/src/lambertian.cpp.o.d"
+  "CMakeFiles/render.dir/src/ray.cpp.o"
+  "CMakeFiles/render.dir/src/ray.cpp.o.d"
+  "CMakeFiles/render.dir/src/raytracer.cpp.o"
+  "CMakeFiles/render.dir/src/raytracer.cpp.o.d"
+  "CMakeFiles/render.dir/src/render.cpp.o"
+  "CMakeFiles/render.dir/src/render.cpp.o.d"
+  "CMakeFiles/render.dir/src/sphere.cpp.o"
+  "CMakeFiles/render.dir/src/sphere.cpp.o.d"
+  "CMakeFiles/render.dir/src/vec3.cpp.o"
+  "CMakeFiles/render.dir/src/vec3.cpp.o.d"
+  "render"
+  "render.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C CXX)
+  include(CMakeFiles/render.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

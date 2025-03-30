@@ -7,11 +7,15 @@ int main(int argc,char **argv)
         fprintf(stderr,"Usage:need 6 arguments\n");
         exit(0);
     }
+    int num_procs = omp_get_num_procs(); // Get the number of available CPU cores
+    omp_set_num_threads(num_procs);      // Set the number of threads to the number of cores
+
     double width=atof(argv[1]);
     double height=atof(argv[2]);
     int samples_per_pixel=atoi(argv[3]); //Each pixel is sampled argv[3] times
     char *output_path=argv[4];
     int max_depth=atoi(argv[5]);
+
     //user-defined camera parameters
     Vec3 origin,lookat,v_up;
     double v_fov;
@@ -23,6 +27,7 @@ int main(int argc,char **argv)
     std::cin>>v_up.x>>v_up.y>>v_up.z;
     std::cout<<"Enter camera v_fov: "<<std::endl;
     std::cin>>v_fov;
+
     //create a scene
     std::vector<Object*> scene=createScene();
     // record rendering start time
@@ -33,6 +38,7 @@ int main(int argc,char **argv)
     auto end_time=std::chrono::high_resolution_clock::now();
     // Calculate rendering time
     std::chrono::duration<double> elapsed=end_time-start_time;
+
     // Output rendering time
     std::cout<<"Render complete. Time taken: "<<elapsed.count()<<" seconds."<< std::endl;
     std::cout<<"Render complete.Please check the outputfile: "<<output_path<<std::endl;

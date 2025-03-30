@@ -5,6 +5,10 @@
 #include "../ppm_writer/ppm_writer.c"
 #include "lambertian.h"
 #include <chrono>
+#include <omp.h>
+
+// Réduction OpenMP pour Vec3
+#pragma omp declare reduction(+ : Vec3 : omp_out = omp_out + omp_in) initializer(omp_priv = Vec3())
 
 // Calcule la couleur d'un point en fonction des intersections du rayon
 // Si le rayon touche un objet, calcule la couleur basée sur le matériau
@@ -42,11 +46,15 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
     Camera camera(origin,lookat,v_up,v_fov,aspect);
     double *img=new double[static_cast<int>(width)*static_cast<int>(height)*3];
     // Parcourt chaque pixel et calcule sa couleur
+    // OpenMP parallélise la boucle externe
+    #pragma omp parallel for schedule(dynamic)
     for (int i=height-1;i>=0;--i)
     {
         for (int j=0;j<width;++j)
         {
             Vec3 color(0,0,0);
+            // La boucle interne est également parallèle + réduction
+            #pragma omp parallel for reduction(+:color) schedule(dynamic)
             for (int s=0;s<samples_per_pixel;++s) {
                 double u=(j+randomDouble())/width;
                 double v=(i+randomDouble())/height;

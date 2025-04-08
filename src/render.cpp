@@ -28,6 +28,8 @@ int main(int argc,char **argv)
     std::cout<<"Enter camera v_fov: "<<std::endl;
     std::cin>>v_fov;
 
+    std::cout<<"Rendering effect is being generated......"<<std::endl;
+
     //create a scene
     std::vector<Object*> scene=createScene();
     // record rendering start time

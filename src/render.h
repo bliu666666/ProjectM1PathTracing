@@ -6,6 +6,9 @@
 #include "lambertian.h"
 #include <chrono>
 #include <omp.h>
+#include "specular.h"
+#include "glossy.h"
+#include "dielectric.h"
 
 // Réduction OpenMP pour Vec3
 #pragma omp declare reduction(+ : Vec3 : omp_out = omp_out + omp_in) initializer(omp_priv = Vec3())
@@ -83,7 +86,12 @@ std::vector<Object*> createScene()
     Lambertian* red_wall = new Lambertian(Vec3(0.65, 0.05, 0.05));    // Rouge
     Lambertian* green_wall = new Lambertian(Vec3(0.12, 0.45, 0.15));  // Vert
     Lambertian* white_wall = new Lambertian(Vec3(0.73, 0.73, 0.73));  // Blanc
+
+    // Matériaux pour les sphères
     Lambertian* red_material = new Lambertian(Vec3(0.8,0.3,0.3));
+    Specular* metal_material = new Specular(Vec3(0.8, 0.8, 0.8));     // Métallique brillant
+    Glossy* glossy_material = new Glossy(Vec3(0.9, 0.6, 0.2), 0.3);   // Glossy doré
+    Dielectric* glass_material = new Dielectric(1.5);                 // Verre (réfraction)
 
     std::vector<Object*> scene;
     
@@ -99,7 +107,10 @@ std::vector<Object*> createScene()
     scene.push_back(new AABB(white_wall, Vec3(-2.0, 2.0, -4.0), Vec3(2.0, 2.01, 0.0)));
 
     // Ajout d'une sphère rouge au centre
-    scene.push_back(new Sphere(red_material, 0.5, Vec3(0.0, -1.5, -2.0)));
+    scene.push_back(new Sphere(metal_material, 0.4, Vec3(-1.2, -1.6, -2.5))); // Métallique
+    scene.push_back(new Sphere(glossy_material, 0.4, Vec3(-0.4, -1.6, -2.5))); // Glossy 
+    scene.push_back(new Sphere(red_material, 0.4, Vec3(0.4, -1.6, -2.5)));   
+    scene.push_back(new Sphere(glass_material, 0.4, Vec3(1.2, -1.6, -2.5))); // Verre
 
     return scene;
 }

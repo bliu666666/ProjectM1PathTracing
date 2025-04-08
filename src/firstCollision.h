@@ -20,7 +20,7 @@ HitInfo findFirstCollision(const Ray& ray,const std::vector<Object*>& scene)
             closestHit.hitObject=obj;
             closestHit.intersection=intersection;
             closestHit.distance=t;
-            closestHit.normal=normal;
+            closestHit.setFaceNormal(ray, normal);
         }
     }
     return closestHit;

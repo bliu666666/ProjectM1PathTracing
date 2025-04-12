@@ -2,7 +2,7 @@
 
 int main(int argc,char **argv)
 {
-    if (argc!=6)
+    if (argc<7)
     {
         fprintf(stderr,"Usage:need 6 arguments\n");
         exit(0);
@@ -15,6 +15,7 @@ int main(int argc,char **argv)
     int samples_per_pixel=atoi(argv[3]); //Each pixel is sampled argv[3] times
     char *output_path=argv[4];
     int max_depth=atoi(argv[5]);
+    int render_mode=atoi(argv[6]); // Select the renderer type
 
     //user-defined camera parameters
     Vec3 origin,lookat,v_up;
@@ -32,10 +33,22 @@ int main(int argc,char **argv)
 
     //create a scene
     std::vector<Object*> scene=createScene();
+
     // record rendering start time
     auto start_time=std::chrono::high_resolution_clock::now();
     //render the image and output it to a file
-    render(width,height,scene,output_path,origin,lookat,v_up,v_fov,samples_per_pixel,max_depth);
+    if (render_mode==0)
+        render(width,height,scene,output_path,origin,lookat,v_up,v_fov,samples_per_pixel,max_depth);
+    else if (render_mode==1)
+    {
+        renderMLT(width,height,scene,output_path,origin,lookat,v_up,v_fov,samples_per_pixel,max_depth);
+        //renderMLT_DebugSinglePixel(width, height, scene, origin, lookat, v_up, v_fov, samples_per_pixel, max_depth);
+    }
+    else
+    {
+        std::cerr<<"Invalid render mode.Use 0 for normal render or 1 for MLT."<< std::endl;
+        exit(1);
+    }
      // Record rendering end time
     auto end_time=std::chrono::high_resolution_clock::now();
     // Calculate rendering time

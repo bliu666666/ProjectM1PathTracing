@@ -2,28 +2,26 @@
 #define SPHERE_H
 
 #include "object.h"
-#include <vector> 
+#include <vector>
+#include <memory>
+
 
 class Sphere : public Object {
 private:
     double radius;
-    std::vector<double> color; 
+    // std::vector<double> color;
 
 public:
-    // Constructeurs
     Sphere();
-    Sphere(Position p, double radius, std::vector<double> color);
+    Sphere(Position p, double radius, std::shared_ptr<Material> m); 
 
-    // Getters
     double getRadius() const;
-    const std::vector<double>& getColor() const; 
+    // const std::vector<double>& getColor() const; 
 
-    // Setters
     void setRadius(double radius);
-    void setColor(const std::vector<double>& color); 
+    // void setColor(const std::vector<double>& color); 
 
-
-    bool intersect(const Ray& ray, double& t) const override;
+    bool intersect(const Ray& ray, HitRecord& rec) const override;
 
     ~Sphere() = default;
 };

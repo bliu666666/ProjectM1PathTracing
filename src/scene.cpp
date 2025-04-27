@@ -1,10 +1,6 @@
 #include "scene.h"
 
-Scene::Scene() : camera() {}
-
-void Scene::setCamera(const Camera& camera) { 
-    this->camera = camera; 
-}
+Scene::Scene(const Camera& cam) : camera(cam) {}
 
 Camera Scene::getCamera() const { 
     return camera; 
@@ -18,23 +14,22 @@ std::vector<Object*> Scene::getObjects() const {
     return objects; 
 }
 
-bool Scene::trace(const Ray& ray, double& t, Object*& hitObject) const {
-    t = 1e9;
-    hitObject = nullptr;
+bool Scene::trace(const Ray& ray, HitRecord& rec) const {
+    HitRecord tempRec;
+    bool hitAnything = false;
+    double closestSoFar = 1e9;
 
     for (Object* object : objects) {
-        double tTemp;
-
-        // Test des intersections
-        if (object->intersect(ray, tTemp)) {
-            if (tTemp > 1e-4 && tTemp < t) { 
-                t = tTemp;   
-                hitObject = object;
+        if (object->intersect(ray, tempRec)) {
+            if (tempRec.t < closestSoFar) {
+                hitAnything = true;
+                closestSoFar = tempRec.t;
+                rec = tempRec;
             }
         }
     }
 
-    return hitObject != nullptr;
+    return hitAnything;
 }
 
 Scene::~Scene() {

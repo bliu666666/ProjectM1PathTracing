@@ -3,26 +3,27 @@
 
 #include "../src/entity.h"
 #include "../src/ray.h"
+#include "../src/material.h"
+#include "../src/hitrecord.h"
 #include <vector>
+#include <memory>
 
 class Object : public Entity {
 public:
     // Constructeurs
     Object();
-    Object(Position p, std::vector<double> color);
+    Object(Position p, std::shared_ptr<Material> m);
 
-    // Définit la couleur de l'objet
-    void setColor(const std::vector<double>& color);
+    // Méthode pour obtenir le matériau
+    std::shared_ptr<Material> getMaterial() const;
 
-    // Renvoie la couleur de l'objet
-    const std::vector<double>& getColor() const;
-
-    virtual bool intersect(const Ray& ray, double& t) const = 0;
+    // Méthode d'intersection mise à jour pour utiliser HitRecord
+    virtual bool intersect(const Ray& ray, HitRecord& rec) const = 0;
 
     virtual ~Object() = default;
 
-private:
-    std::vector<double> color; 
+protected:
+    std::shared_ptr<Material> material;
 };
 
 #endif // OBJECT_H

@@ -3,9 +3,7 @@
 // Constructors
 Entity::Entity() : position(0, 0, 0) {}
 
-Entity::Entity(double x, double y, double z) : position(x, y, z) {}
-
-Entity::Entity(Position p){this->position = p;}
+Entity::Entity(const Position& p) : position(p) {}
 
 // Getters
 Position Entity::getPosition() const {
@@ -13,8 +11,8 @@ Position Entity::getPosition() const {
 }
 
 // Setters
-void Entity::setPosition(const Position& newPosition) {
-    position = newPosition;
+void Entity::setPosition(const Position& p) {
+    position = p;
 }
 
 void Entity::setPosition(double x, double y, double z) {

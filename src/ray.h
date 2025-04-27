@@ -21,6 +21,9 @@ public:
     void setOrigin(const Position& origin);
     void setDirection(const Position& direction);
 
+    // Calcule le point à une distance t le long du rayon
+    Position at(double t) const { return origin + direction * t; }
+
     ~Ray() = default;
 };
 

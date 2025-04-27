@@ -1,3 +1,3 @@
-/home/amine/Documents/Cours/M1/PPN_RayTracing/build/CMakeFiles/RayTracer.dir
-/home/amine/Documents/Cours/M1/PPN_RayTracing/build/CMakeFiles/edit_cache.dir
-/home/amine/Documents/Cours/M1/PPN_RayTracing/build/CMakeFiles/rebuild_cache.dir
+/home/Amine/Documents/ProjectM1PathTracing-amine/build/CMakeFiles/RayTracer.dir
+/home/Amine/Documents/ProjectM1PathTracing-amine/build/CMakeFiles/edit_cache.dir
+/home/Amine/Documents/ProjectM1PathTracing-amine/build/CMakeFiles/rebuild_cache.dir

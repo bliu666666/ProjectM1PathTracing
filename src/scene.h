@@ -1,31 +1,25 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include <vector>
 #include "../shapes/object.h"
 #include "camera.h"
+#include <vector>
+#include "hitrecord.h"
 
 class Scene {
 private:
+    std::vector<Object*> objects;
     Camera camera;
-    std::vector<Object*> objects; // List of objects in the scene
 
 public:
-    // Constructor
-    Scene();
+    Scene(const Camera& cam);
+    ~Scene();
 
-    // Camera methods
-    void setCamera(const Camera& camera);
-    Camera getCamera() const;
-
-    // Object methods
     void addObject(Object* object);
     std::vector<Object*> getObjects() const;
+    Camera getCamera() const;
 
-    // Ray tracing
-    bool trace(const Ray& ray, double& t, Object*& hitObject) const;
-
-    ~Scene();
+    bool trace(const Ray& ray, HitRecord& rec) const;
 };
 
 #endif // SCENE_H

@@ -9,14 +9,13 @@ protected:
 
 public:
     Entity();
-    Entity(double x, double y, double z);
-    Entity(Position p);
+    Entity(const Position& p);
 
     Position getPosition() const;
-    void setPosition(const Position& newPosition);
+    void setPosition(const Position& p);
     void setPosition(double x, double y, double z);
 
-    virtual ~Entity() = default; 
+    virtual ~Entity() = default;
 };
 
 #endif // ENTITY_H

@@ -1,16 +1,15 @@
 #include "object.h"
+#include <utility> // Pour std::move
 
 // Constructeurs
-Object::Object() : Entity(), color({1.0, 1.0, 1.0}) {} // Couleur par défaut : blanc
+Object::Object() : Entity(), material(nullptr) {} // Matériau par défaut : nul
 
-Object::Object(Position p, std::vector<double> color)
-    : Entity(p) {this->color = color;}
+Object::Object(Position p, std::shared_ptr<Material> m)
+    : Entity(p), material(std::move(m)) {}
 
-// Définit la couleur de l'objet
-void Object::setColor(const std::vector<double>& color) { 
+// Renvoie le matériau de l'objet
+std::shared_ptr<Material> Object::getMaterial() const {
+    return material;
 }
 
-// Renvoie la couleur de l'objet
-const std::vector<double>& Object::getColor() const {
-    return color;
-}
+// Les méthodes setColor et getColor sont supprimées car remplacées par le matériau

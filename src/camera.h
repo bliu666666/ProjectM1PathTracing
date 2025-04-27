@@ -2,29 +2,25 @@
 #define CAMERA_H
 
 #include "entity.h"
+#include "ray.h"
 
 class Camera : public Entity {
 private:
-    double fov; 
-    unsigned imageWidth; 
-    unsigned imageHeight; 
-    Position direction; 
+    Position lookfrom;
+    Position lookat;
+    Position vup;
+    double vfov;
+    double aspect_ratio;
+
+    Position origin;
+    Position horizontal;
+    Position vertical;
+    Position lower_left_corner;
 
 public:
-    // Constructeurs
-    Camera();
-    Camera(const Position& position, const Position& direction, double fov, unsigned width, unsigned height);
+    Camera(Position lookfrom, Position lookat, Position vup, double vfov, double aspect_ratio);
 
-    // Getters
-    double getFov() const;
-    unsigned getImageWidth() const;
-    unsigned getImageHeight() const;
-    Position getDirection() const;
-
-    // Setters
-    void setFov(double fov);
-    void setImageDimensions(unsigned width, unsigned height);
-    void setDirection(const Position& direction);
+    Ray get_ray(double s, double t) const;
 
     ~Camera() = default;
 };

@@ -60,23 +60,6 @@ std::vector<PathVertex> generatePath(const Ray& ray,const std::vector<Object*>& 
 }
 
 // Support light source sampling to check whether the luminous material is hit in the path
-/*Vec3 evaluatePath(const std::vector<PathVertex>& path) 
-{
-    if (path.empty()) return Vec3(0,0,0);
-
-    const PathVertex& last=path.back();
-    const Emissive* light=dynamic_cast<const Emissive*>(last.material);
-
-    if (light&&(-last.incoming.normalize()).dot(last.normal.normalize())>0.0)
-    {
-        Vec3 result=last.weight*light->emitted();
-        return result;
-    }
-
-    return Vec3(0,0,0);
-}*/
-
-// Support light source sampling to check whether the luminous material is hit in the path
 Vec3 evaluatePath(const std::vector<PathVertex>& path)
 {
     if (path.empty()) return Vec3(0,0,0);
@@ -113,7 +96,6 @@ Vec3 metropolisRender(const std::vector<Object*>& scene,const Camera& camera,int
         // Each thread generates an independent seed using its own ID and time
         unsigned int thread_seed=std::chrono::system_clock::now().time_since_epoch().count()+omp_get_thread_num()*7919;
         Vec3 localAccum(0,0,0);
-        //int acceptedLightPaths=0;
 
         #pragma omp for schedule(dynamic) 
         for (int i=0;i<num_iterations;++i)
@@ -125,16 +107,7 @@ Vec3 metropolisRender(const std::vector<Object*>& scene,const Camera& camera,int
 
             std::vector<PathVertex> newPath=generatePath(mutatedRay,scene,max_depth);
             Vec3 newColor=evaluatePath(newPath);
-            /*if (newColor.length()>0.0)
-                ++acceptedLightPaths;
 
-            if (i<2) {
-                #pragma omp critical
-                {
-                    std::cout<<"[Debug] Iteration "<<i<<":evaluatePath(newPath)="<<newColor<<std::endl;
-                }
-            }
-            */
             // 3. Calculate the acceptance probability a = min(1, I_new / I_old)
             double currentLuminance=currentColor.x+currentColor.y+currentColor.z;
             double newLuminance=newColor.x+newColor.y+newColor.z;
@@ -156,72 +129,8 @@ Vec3 metropolisRender(const std::vector<Object*>& scene,const Camera& camera,int
         #pragma omp critical
         {
             accumulatedColor+=localAccum;
-            // std::cout<<"[Debug] Thread "<<omp_get_thread_num()<<" acceptedLightPaths = "<<acceptedLightPaths<<" / "<<num_iterations<<std::endl;
         }
     }
 
     return accumulatedColor/static_cast<double>(num_iterations);
 }
-
-/*Vec3 metropolisRender_Debug(const std::vector<Object*>& scene,const Camera& camera,int max_depth,int num_iterations,unsigned int seed_init)
-{
-    Vec3 accumulatedColor(0,0,0);
-
-    double u0=randomDoubleThread(seed_init);
-    double v0=randomDoubleThread(seed_init);
-    Ray initialRay=camera.getRay(u0, v0);
-    std::vector<PathVertex> currentPath=generatePath(initialRay,scene,max_depth);
-    Vec3 currentColor=evaluatePath(currentPath);
-
-    int accepted=0;
-
-    #pragma omp parallel
-    {
-        unsigned int thread_seed=seed_init+omp_get_thread_num()*7919;
-        Vec3 localAccum(0,0,0);
-        int local_accepted=0;
-
-        #pragma omp for schedule(dynamic)
-        for (int i=0;i<num_iterations;++i)
-        {
-            double perturb_strength=0.01;
-            double u1=std::fmod(u0+(randomDoubleThread(thread_seed)-0.5)*perturb_strength+1.0,1.0);
-            double v1=std::fmod(v0+(randomDoubleThread(thread_seed)-0.5)*perturb_strength+1.0,1.0);
-            Ray mutatedRay=camera.getRay(u1,v1);
-
-            std::vector<PathVertex> newPath=generatePath(mutatedRay,scene,max_depth);
-            Vec3 newColor=evaluatePath(newPath);
-
-            double currentLuminance=currentColor.x+currentColor.y+currentColor.z;
-            double newLuminance=newColor.x+newColor.y+newColor.z;
-            double a=std::min(1.0,newLuminance/(currentLuminance+1e-6));
-
-            if (randomDoubleThread(thread_seed)<a)
-            {
-                u0=u1;
-                v0=v1;
-                currentPath=newPath;
-                currentColor=newColor;
-                local_accepted++;
-            }
-
-            localAccum+=currentColor;
-
-            if (i<2)
-            {
-                #pragma omp critical
-                std::cout<<"[Debug] Iteration "<<i<<": evaluatePath(newPath) = "<<newColor<<std::endl;
-            }
-        }
-
-        #pragma omp critical
-        {
-            accumulatedColor+=localAccum;
-            accepted+=local_accepted;
-        }
-    }
-
-    std::cout<<"[Debug] Total accepted paths = "<<accepted<<" / "<<num_iterations<<std::endl;
-    return accumulatedColor/static_cast<double>(num_iterations);
-}
-*/

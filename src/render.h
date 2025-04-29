@@ -97,16 +97,14 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
 
 // Integrated MLT rendering engine
 void renderMLT(double width,double height,const std::vector<Object*>& scene,char* outputPath,const Vec3& origin,const Vec3& lookat,
-               const Vec3& v_up,double v_fov,int samples_per_pixel,int max_depth)
+               const Vec3& v_up,double v_fov,int samples_per_pixel,int max_depth,int num_iterations)
 {
 
     double aspect=width/height;
     Camera camera(origin,lookat,v_up,v_fov, aspect);
     double* img=new double[static_cast<int>(width)*static_cast<int>(height)*3];
 
-    /*Ray centerRay = camera.getRay(0.5, 0.5);
-    Vec3 centerColor = calculateColor(centerRay, scene, max_depth);
-    std::cout << "[Debug] Traditional center color = " << centerColor << std::endl;*/
+    int total_rows = static_cast<int>(height);
 
     #pragma omp parallel for schedule(dynamic)
     for (int i=0;i<static_cast<int>(height);++i)
@@ -128,7 +126,7 @@ void renderMLT(double width,double height,const std::vector<Object*>& scene,char
                 Ray ray=camera.getRay(u,v);
 
                 // Call the MLT main function to perform multiple sampling on a single path
-                Vec3 result=metropolisRender(scene,camera,max_depth,100); // Adjustable iterations
+                Vec3 result=metropolisRender(scene,camera,max_depth,num_iterations); // Adjustable iterations
 
                 pixelColor+=result;
             }
@@ -146,77 +144,19 @@ void renderMLT(double width,double height,const std::vector<Object*>& scene,char
             img[index+1]=pixelColor.y;
             img[index+2]=pixelColor.z;
         }
+
+        // real-time progress display output the current completion percentage every 5 lines rendered
+        if (i % 5 == 0) {
+            int progress = static_cast<int>(100.0 * i / total_rows);
+            #pragma omp critical
+            std::cout << "[Progress] " << progress << "%" <<"completed" << std::endl;
+        }
     }
 
     // Write image
     writePPM_MLT(outputPath,static_cast<unsigned>(width),static_cast<unsigned>(height),img);
     delete[] img;
 }
-
-/*void renderMLT_DebugSinglePixel(double width,double height,const std::vector<Object*>& scene,const Vec3& origin,const Vec3& lookat,
-    const Vec3& v_up,double v_fov,int samples_per_pixel,int max_depth)
-{
-    double aspect=width/height;
-    Camera camera(origin,lookat,v_up,v_fov,aspect);
-
-    #pragma omp parallel for schedule(dynamic)
-    for (int s=0;s<samples_per_pixel;++s)
-    {
-        unsigned int thread_seed=std::chrono::system_clock::now().time_since_epoch().count()+omp_get_thread_num()*7919;
-
-        Vec3 result=metropolisRender_Debug(scene,camera,max_depth,100,thread_seed);
-
-        #pragma omp critical
-        {
-        std::cout<<"[Result Sample "<<s<< "] = "<<result<<std::endl;
-        }
-    }
-}*/
-
-// Crée la scène : une Cornell Box avec une sphère
-// Définit les murs avec différentes couleurs et ajoute une sphère rouge au centre
-/*std::vector<Object*> createScene()
-{
-    // Définition des matériaux pour la Cornell Box
-    Lambertian* red_wall = new Lambertian(Vec3(0.65, 0.05, 0.05));    // Rouge
-    Lambertian* green_wall = new Lambertian(Vec3(0.12, 0.45, 0.15));  // Vert
-    Lambertian* white_wall = new Lambertian(Vec3(0.73, 0.73, 0.73));  // Blanc
-
-    // Matériaux pour les sphères
-    Lambertian* red_material = new Lambertian(Vec3(0.8,0.3,0.3));
-    Specular* metal_material = new Specular(Vec3(0.8, 0.8, 0.8));     // Métallique brillant
-    Glossy* glossy_material = new Glossy(Vec3(0.9, 0.6, 0.2), 0.3);   // Glossy doré
-    Dielectric* glass_material = new Dielectric(1.5);                 // Verre (réfraction)
-    // Add a top light source
-    Emissive* light=new Emissive(Vec3(10.0, 10.0, 10.0)); // glare
-    Emissive* floor=new Emissive(Vec3(4.0, 4.0, 4.0));
-    
-
-    std::vector<Object*> scene;
-
-    scene.push_back(new Sphere(light, 1.0, Vec3(0, 1.2, -2)));          // Light ball above
-    scene.push_back(new Sphere(floor, 1000.0, Vec3(0, -1000.5, -1.5)));     // Luminous floor
-    
-    // Mur du fond
-    scene.push_back(new AABB(white_wall, Vec3(-2.0, -2.0, -4.0), Vec3(2.0, 2.0, -3.99)));
-    // Mur gauche (vert)
-    scene.push_back(new AABB(green_wall, Vec3(-2.01, -2.0, -4.0), Vec3(-2.0, 2.0, 0.0)));
-    // Mur droit (rouge)
-    scene.push_back(new AABB(red_wall, Vec3(2.0, -2.0, -4.0), Vec3(2.01, 2.0, 0.0)));
-    // Sol
-    scene.push_back(new AABB(white_wall, Vec3(-2.0, -2.01, -4.0), Vec3(2.0, -2.0, 0.0)));
-    // Plafond
-    scene.push_back(new AABB(white_wall, Vec3(-2.0, 2.0, -4.0), Vec3(2.0, 2.01, 0.0)));
-    
-    // Ajout d'une sphère rouge au centre
-    scene.push_back(new Sphere(metal_material, 0.4, Vec3(-1.2, -1.6, -2.5))); // Métallique
-    scene.push_back(new Sphere(glossy_material, 0.4, Vec3(-0.4, -1.6, -2.5))); // Glossy 
-    scene.push_back(new Sphere(red_material, 0.4, Vec3(0.4, -1.6, -2.5)));   
-    scene.push_back(new Sphere(glass_material, 0.4, Vec3(1.2, -1.6, -2.5))); // Verre
-
-    return scene;
-}
-*/
 
 std::vector<Object*> createScene() 
 {
@@ -253,16 +193,19 @@ std::vector<Object*> createScene()
     return scene;
 }
 
-/*std::vector<Object*> createScene()
+/*
+    A simple scene used only for performance testing, 
+    with very few light bounces and light CPU load, 
+    very suitable for performance testing
+*/
+std::vector<Object*> createTestScene()
 {
     std::vector<Object*> scene;
+    Emissive* light = new Emissive(Vec3(8.0, 8.0, 8.0));
+    Lambertian* floor_material = new Lambertian(Vec3(0.7, 0.7, 0.7));
 
-    scene.push_back(new Sphere(new Emissive(Vec3(10, 10, 10)), 1.0 , Vec3(0, 1.2, -2)));          
-    scene.push_back(new Sphere(new Emissive(Vec3(4, 4, 4)), 1000.0 ,Vec3(0, -1000.5, -1.5)));     
-
-    scene.push_back(new Sphere(new Lambertian(Vec3(0.8, 0.8, 0.0)), 0.5, Vec3(0, 0, -1)));        
-    scene.push_back(new Sphere(new Lambertian(Vec3(0.1, 0.2, 0.5)), 0.5, Vec3(1, 0, -1)));        
-    scene.push_back(new Sphere(new Lambertian(Vec3(0.8, 0.6, 0.2)), 0.5, Vec3(-1, 0, -1)));       
+    scene.push_back(new Sphere(light, 0.8, Vec3(0, 1, -3)));  // 小光源
+    scene.push_back(new AABB(floor_material, Vec3(-5, -1, -5), Vec3(5, 0, 5))); // 地板
 
     return scene;
-}*/
+}

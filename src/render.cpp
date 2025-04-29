@@ -33,6 +33,7 @@ int main(int argc,char **argv)
 
     //create a scene
     std::vector<Object*> scene=createScene();
+    // std::vector<Object*> scene=createTestScene(); // Use only when testing performance
 
     // record rendering start time
     auto start_time=std::chrono::high_resolution_clock::now();
@@ -41,7 +42,10 @@ int main(int argc,char **argv)
         render(width,height,scene,output_path,origin,lookat,v_up,v_fov,samples_per_pixel,max_depth);
     else if (render_mode==1)
     {
-        renderMLT(width,height,scene,output_path,origin,lookat,v_up,v_fov,samples_per_pixel,max_depth);
+        int num_iterations;
+        std::cout<<"Enter MLT iterations: ";
+        std::cin>>num_iterations;
+        renderMLT(width,height,scene,output_path,origin,lookat,v_up,v_fov,samples_per_pixel,max_depth,num_iterations);
         //renderMLT_DebugSinglePixel(width, height, scene, origin, lookat, v_up, v_fov, samples_per_pixel, max_depth);
     }
     else

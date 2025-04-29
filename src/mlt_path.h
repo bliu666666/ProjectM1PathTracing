@@ -4,8 +4,6 @@
 #include "lambertian.h"
 #include <vector>
 #include "firstCollision.h"
-#include <chrono>
-#include <omp.h>
 #include "emissive.h"
 
 // Represent a vertex on the path: position, normal, material, direction, etc.
@@ -28,5 +26,3 @@ Vec3 evaluatePath(const std::vector<PathVertex>& path);
 
 // Path sampling and main loop (Metropolis sampling)
 Vec3 metropolisRender(const std::vector<Object*>& scene,const Camera& camera,int max_depth,int num_iterations);
-
-//Vec3 metropolisRender_Debug(const std::vector<Object*>& scene,const Camera& camera,int max_depth,int num_iterations,unsigned int seed_init);

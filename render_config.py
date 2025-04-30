@@ -4,6 +4,7 @@ import argparse
 import subprocess
 import os
 import shutil
+import time
 from pathlib import Path
 
 def get_next_output_filename(base_path):
@@ -25,6 +26,9 @@ def get_next_output_filename(base_path):
         counter += 1
 
 def main():
+    # Début de la mesure du temps
+    start_time = time.time()
+    
     parser = argparse.ArgumentParser(description='Configurer et lancer le rendu du ray tracer')
     
     # Arguments pour la configuration du rendu
@@ -100,6 +104,11 @@ def main():
         print(f"Erreur lors de l'exécution: {e}")
     except FileNotFoundError:
         print("Erreur: L'exécutable RayTracer n'a pas été trouvé. Vérifiez la compilation.")
+    
+    # Fin de la mesure du temps et affichage
+    end_time = time.time()
+    execution_time = end_time - start_time
+    print(f"\nTemps d'exécution total: {execution_time:.2f} secondes")
 
 if __name__ == '__main__':
     main() 

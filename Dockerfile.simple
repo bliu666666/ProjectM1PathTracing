@@ -1,0 +1,38 @@
+FROM --platform=linux/amd64 ubuntu:22.04
+
+# Définir les variables d'environnement pour éviter les interactions
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Installer uniquement les dépendances essentielles pour gprof
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    gdb \
+    binutils \
+    && rm -rf /var/lib/apt/lists/*
+
+# Créer un répertoire pour le projet
+WORKDIR /app
+
+# Créer un script pour exécuter gprof
+RUN echo '#!/bin/bash\n\
+echo "Compilation avec les options de profiling..."\n\
+cd /app/build\n\
+cmake .. -DENABLE_PROFILING=ON\n\
+make -j$(nproc)\n\
+\n\
+echo "Exécution du programme pour générer des données de profiling..."\n\
+./render $@\n\
+\n\
+if [ -f "gmon.out" ]; then\n\
+  echo "Génération du rapport de profiling..."\n\
+  gprof ./render gmon.out > profile_report.txt\n\
+  echo "Rapport généré avec succès dans /app/build/profile_report.txt"\n\
+else\n\
+  echo "Erreur: Le fichier gmon.out n\'a pas été généré."\n\
+  exit 1\n\
+fi\n\
+' > /usr/local/bin/run_profiling.sh && chmod +x /usr/local/bin/run_profiling.sh
+
+# Commande par défaut
+CMD ["/bin/bash"]

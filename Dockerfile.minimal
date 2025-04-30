@@ -1,0 +1,15 @@
+FROM --platform=linux/amd64 ubuntu:22.04
+
+# Définir les variables d'environnement pour éviter les interactions
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Installer uniquement les dépendances essentielles pour gprof
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    gdb \
+    binutils \
+    && rm -rf /var/lib/apt/lists/*
+
+# Créer un répertoire pour le projet
+WORKDIR /app

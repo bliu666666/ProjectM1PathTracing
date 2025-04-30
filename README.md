@@ -87,6 +87,14 @@ The project uses an object-oriented architecture with:
 2. A hierarchy of materials (Material -> Lambertian)
 3. A recursive ray tracing system for path tracing
 
+
+## Profiling
+
+For profiling, we use gprof with Docker containers to ensure uniform and reproducible profiling results across different platforms (Windows, macOS, Linux). The Docker-based approach guarantees that profiling is always performed on a consistent x86_64 architecture, regardless of the host machine.
+
+See [PROFILING.md](PROFILING.md) for detailed instructions on how to run profiling on your platform.
+
+
 ## Current Limitations
 
 - No explicit light sources (only uses ambient lighting)

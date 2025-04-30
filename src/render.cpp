@@ -2,19 +2,40 @@
 
 int main(int argc,char **argv)
 {
-    if (argc!=6)
+    if (argc<7)
     {
         fprintf(stderr,"Usage:need 6 arguments\n");
         exit(0);
     }
+    int num_procs = omp_get_num_procs(); // Get the number of available CPU cores
+    omp_set_num_threads(num_procs);      // Set the number of threads to the number of cores
+
     double width=atof(argv[1]);
     double height=atof(argv[2]);
     int samples_per_pixel=atoi(argv[3]); //Each pixel is sampled argv[3] times
     char *output_path=argv[4];
     int max_depth=atoi(argv[5]);
+    int render_mode=atoi(argv[6]); // Select the renderer type
+
     //user-defined camera parameters
     Vec3 origin,lookat,v_up;
     double v_fov;
+    
+#ifdef AUTO_CAMERA_PARAMS
+    // Utiliser des valeurs prédéfinies pour le mode automatique
+    origin = Vec3(0, 0, 0);
+    lookat = Vec3(0, 0, -1);
+    v_up = Vec3(0, -1, 0);
+    v_fov = 90;
+
+    // Afficher les valeurs utilisées
+    std::cout<<"Using predefined camera parameters:"<<std::endl;
+    std::cout<<"Camera origin: "<<origin.x<<" "<<origin.y<<" "<<origin.z<<std::endl;
+    std::cout<<"Camera lookat: "<<lookat.x<<" "<<lookat.y<<" "<<lookat.z<<std::endl;
+    std::cout<<"Camera v_up: "<<v_up.x<<" "<<v_up.y<<" "<<v_up.z<<std::endl;
+    std::cout<<"Camera v_fov: "<<v_fov<<std::endl;
+#else
+    // Demander à l'utilisateur de saisir les paramètres
     std::cout<<"Enter camera origin: (x,y,z)"<<std::endl;
     std::cin>>origin.x>>origin.y>>origin.z;
     std::cout<<"Enter camera lookat: (x,y,z)"<<std::endl;
@@ -23,16 +44,38 @@ int main(int argc,char **argv)
     std::cin>>v_up.x>>v_up.y>>v_up.z;
     std::cout<<"Enter camera v_fov: "<<std::endl;
     std::cin>>v_fov;
+#endif
+
+    // Afficher le début du rendu
+    std::cout<<"Rendering effect is being generated......"<<std::endl;
+
     //create a scene
     std::vector<Object*> scene=createScene();
+    // std::vector<Object*> scene=createTestScene(); // Use only when testing performance
+
     // record rendering start time
     auto start_time=std::chrono::high_resolution_clock::now();
     //render the image and output it to a file
-    render(width,height,scene,output_path,origin,lookat,v_up,v_fov,samples_per_pixel,max_depth);
+    if (render_mode==0)
+        render(width,height,scene,output_path,origin,lookat,v_up,v_fov,samples_per_pixel,max_depth);
+    else if (render_mode==1)
+    {
+        int num_iterations;
+        std::cout<<"Enter MLT iterations: ";
+        std::cin>>num_iterations;
+        renderMLT(width,height,scene,output_path,origin,lookat,v_up,v_fov,samples_per_pixel,max_depth,num_iterations);
+        //renderMLT_DebugSinglePixel(width, height, scene, origin, lookat, v_up, v_fov, samples_per_pixel, max_depth);
+    }
+    else
+    {
+        std::cerr<<"Invalid render mode.Use 0 for normal render or 1 for MLT."<< std::endl;
+        exit(1);
+    }
      // Record rendering end time
     auto end_time=std::chrono::high_resolution_clock::now();
     // Calculate rendering time
     std::chrono::duration<double> elapsed=end_time-start_time;
+
     // Output rendering time
     std::cout<<"Render complete. Time taken: "<<elapsed.count()<<" seconds."<< std::endl;
     std::cout<<"Render complete.Please check the outputfile: "<<output_path<<std::endl;

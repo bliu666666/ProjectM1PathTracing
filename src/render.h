@@ -22,10 +22,24 @@ Vec3 calculateColor(const Ray& ray, const std::vector<Object*>& scene,int depth)
     HitInfo hitInfo=findFirstCollision(ray,scene);
     if (hitInfo.hitObject)
     {
+        Material* mat=hitInfo.hitObject->material;
+        Emissive* light=dynamic_cast<Emissive*>(mat);
+        if (light) 
+        {
+            // S'il s'agit d'une source lumineuse, renvoie sa couleur d'émission (seules les directions orientées vers l'avant sont autorisées)
+            if (hitInfo.front_face) 
+            {
+                return light->emitted();
+            } 
+            else 
+            {
+                return Vec3(0, 0, 0);
+            }
+        }
         Ray scattered;
         Vec3 attenuation;
         // Si le matériau diffuse la lumière, continue le traçage
-        if (hitInfo.hitObject->material->scatter(ray,hitInfo,attenuation,scattered))
+        if (mat->scatter(ray,hitInfo,attenuation,scattered))
         {
             return attenuation*calculateColor(scattered, scene, depth - 1);
         }

@@ -20,7 +20,7 @@
 // Calcule la couleur d'un point en fonction des intersections du rayon
 // Si le rayon touche un objet, calcule la couleur basée sur le matériau
 // Sinon, retourne la couleur du fond (ciel)
-Vec3 calculateColor(const Ray& ray, const std::vector<Object*>& scene,int depth)
+Vec3 calculateColorCPU(const Ray& ray, const std::vector<Object*>& scene,int depth)
 {
     if (depth <= 0) {
         return Vec3(0,0,0); // Dépassement de la profondeur maximale, retourne noir
@@ -33,7 +33,7 @@ Vec3 calculateColor(const Ray& ray, const std::vector<Object*>& scene,int depth)
         // Si le matériau diffuse la lumière, continue le traçage
         if (hitInfo.hitObject->material->scatter(ray,hitInfo,attenuation,scattered))
         {
-            return attenuation*calculateColor(scattered, scene, depth - 1);
+            return attenuation*calculateColorCPU(scattered, scene, depth - 1);
         }
         return Vec3(0,0,0);// Si le matériau ne diffuse pas, retourne noir
     }
@@ -75,7 +75,7 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
                             double u=(j+randomDouble())/width;
                             double v=(i+randomDouble())/height;
                             Ray ray=camera.getRay(u, v);
-                            Vec3 col=calculateColor(ray,scene,max_depth);
+                            Vec3 col=calculateColorCPU(ray,scene,max_depth);
                             thread_colors[tid]=thread_colors[tid]+col;
                         }
                     }
@@ -119,6 +119,20 @@ enum MaterialType {
     MAT_EMISSIVE = 4
 };
 
+// Prototypes des fonctions utilitaires CUDA
+__device__ Vec3 reflect(const Vec3& v, const Vec3& n);
+__device__ Vec3 refract(const Vec3& uv, const Vec3& n, double etai_over_etat);
+__device__ double schlick(double cosine, double ref_idx);
+__device__ Vec3 randomUnitVector(unsigned int& seed);
+__device__ Vec3 randomInUnitSphere(unsigned int& seed);
+
+// Déclaration anticipée de la fonction calculateColorGPU
+__device__ Vec3 calculateColorGPU(const Ray& ray, int* obj_types, 
+                              Vec3* sphere_centers, double* sphere_radii,
+                              Vec3* aabb_min, Vec3* aabb_max,
+                              int* mat_types, Vec3* mat_colors, double* mat_params,
+                              int scene_size, int depth, unsigned int& seed);
+
 __global__ void render_kernel(double* img, int width, int height, int* obj_types, int scene_size,Vec3* sphere_centers, double* sphere_radii,Vec3* aabb_min, Vec3* aabb_max,int* mat_types, Vec3* mat_colors, double* mat_params,Camera camera, int samples_per_pixel, int max_depth, unsigned int seed) {
     // Calculate pixel coordinates
     int j = blockIdx.x * blockDim.x + threadIdx.x;
@@ -140,7 +154,7 @@ __global__ void render_kernel(double* img, int width, int height, int* obj_types
         Ray ray = camera.getRay(u, v);
         
         // Trace path and accumulate color
-        pixelColor += calculateColor(ray, obj_types, sphere_centers, sphere_radii, 
+        pixelColor += calculateColorGPU(ray, obj_types, sphere_centers, sphere_radii, 
                                     aabb_min, aabb_max, mat_types, mat_colors, mat_params,
                                     scene_size, max_depth, thread_seed);
     }
@@ -157,7 +171,7 @@ __global__ void render_kernel(double* img, int width, int height, int* obj_types
 }
 
 // Helper function to calculate color for CUDA kernel
-__device__ Vec3 calculateColor(const Ray& ray, int* obj_types, 
+__device__ Vec3 calculateColorGPU(const Ray& ray, int* obj_types, 
                               Vec3* sphere_centers, double* sphere_radii,
                               Vec3* aabb_min, Vec3* aabb_max,
                               int* mat_types, Vec3* mat_colors, double* mat_params,
@@ -274,7 +288,7 @@ __device__ Vec3 calculateColor(const Ray& ray, int* obj_types,
         if (mat_types[hit_obj_idx] == MAT_LAMBERTIAN) {
             // Matériau lambertien (diffus)
             Vec3 scatter_direction = hit_normal + randomUnitVector(seed);
-            if (scatter_direction.near_zero()) {
+            if (scatter_direction.nearZero()) {
                 scatter_direction = hit_normal;
             }
             scattered = Ray(hit_point, scatter_direction);
@@ -490,12 +504,14 @@ void render_cuda(double width, double height, const std::vector<Object*>& scene,
     unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
     
     // Launch CUDA kernel
+#ifdef __CUDACC__
     render_kernel<<<grid, block>>>(d_img, width, height, 
-                                  d_obj_types, scene_size,
-                                  d_sphere_centers, d_sphere_radii,
-                                  d_aabb_min, d_aabb_max,
-                                  d_mat_types, d_mat_colors, d_mat_params,
-                                  camera, samples_per_pixel, max_depth, seed);
+                                   d_obj_types, scene_size,
+                                   d_sphere_centers, d_sphere_radii,
+                                   d_aabb_min, d_aabb_max,
+                                   d_mat_types, d_mat_colors, d_mat_params,
+                                   camera, samples_per_pixel, max_depth, seed);
+#endif
     
     // Copy result back to host
     cudaMemcpy(h_img, d_img, static_cast<int>(width) * static_cast<int>(height) * 3 * sizeof(double), cudaMemcpyDeviceToHost);
@@ -574,9 +590,23 @@ void renderMLT(double width,double height,const std::vector<Object*>& scene,char
 
                 pixelColor+=result;
             }
+            
+            // Appliquer la correction gamma et stocker dans l'image
+            pixelColor = pixelColor / static_cast<double>(samples_per_pixel);
+            img[3*(i*static_cast<int>(width)+j)+0] = sqrt(pixelColor.x);
+            img[3*(i*static_cast<int>(width)+j)+1] = sqrt(pixelColor.y);
+            img[3*(i*static_cast<int>(width)+j)+2] = sqrt(pixelColor.z);
+        }
+    }
+    
+    // Convertir et écrire l'image
+    unsigned char* rgbImg = img2rgb(width, height, img);
+    writePPM_normal(outputPath, width, height, rgbImg);
+    delete[] img;
+    free(rgbImg);
+}
 
-        
-
+// Définition de la scène avec différents matériaux et objets
 std::vector<Object*> createScene() 
 {
     // Material Definition

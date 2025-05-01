@@ -99,12 +99,15 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
 void renderMLT(double width,double height,const std::vector<Object*>& scene,char* outputPath,const Vec3& origin,const Vec3& lookat,
                const Vec3& v_up,double v_fov,int samples_per_pixel,int max_depth,int num_iterations)
 {
-
     double aspect=width/height;
     Camera camera(origin,lookat,v_up,v_fov, aspect);
     double* img=new double[static_cast<int>(width)*static_cast<int>(height)*3];
 
     int total_rows = static_cast<int>(height);
+    
+    // Réduire le nombre d'itérations par pixel pour éviter les calculs excessifs
+    int iterations_per_pixel = std::max(10, num_iterations / 100);
+    std::cout << "Using " << iterations_per_pixel << " MLT iterations per pixel (reduced from " << num_iterations << ")" << std::endl;
 
     #pragma omp parallel for schedule(dynamic)
     for (int i=0;i<static_cast<int>(height);++i)
@@ -125,38 +128,13 @@ void renderMLT(double width,double height,const std::vector<Object*>& scene,char
                 // Set up camera light for MLT initialization
                 Ray ray=camera.getRay(u,v);
 
-                // Call the MLT main function to perform multiple sampling on a single path
-                Vec3 result=metropolisRender(scene,camera,max_depth,num_iterations); // Adjustable iterations
+                // Call the MLT main function with REDUCED iterations
+                Vec3 result=metropolisRender(scene,camera,max_depth,iterations_per_pixel);
 
                 pixelColor+=result;
             }
 
-            pixelColor=pixelColor/static_cast<double>(samples_per_pixel);
-
-            // Clamp to [0,1] before writing
-            pixelColor.x=std::min(1.0,std::max(0.0,pixelColor.x));
-            pixelColor.y=std::min(1.0,std::max(0.0,pixelColor.y));
-            pixelColor.z=std::min(1.0,std::max(0.0,pixelColor.z));
-
-            // Gamma correction and write to image buffer
-            int index=3*(i*static_cast<int>(width)+j);
-            img[index+0]=pixelColor.x; 
-            img[index+1]=pixelColor.y;
-            img[index+2]=pixelColor.z;
-        }
-
-        // real-time progress display output the current completion percentage every 5 lines rendered
-        if (i % 5 == 0) {
-            int progress = static_cast<int>(100.0 * i / total_rows);
-            #pragma omp critical
-            std::cout << "[Progress] " << progress << "%" <<"completed" << std::endl;
-        }
-    }
-
-    // Write image
-    writePPM_MLT(outputPath,static_cast<unsigned>(width),static_cast<unsigned>(height),img);
-    delete[] img;
-}
+        
 
 std::vector<Object*> createScene() 
 {

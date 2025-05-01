@@ -134,6 +134,34 @@ void renderMLT(double width,double height,const std::vector<Object*>& scene,char
                 pixelColor+=result;
             }
 
+            pixelColor=pixelColor/static_cast<double>(samples_per_pixel);
+
+            // Clamp to [0,1] before writing
+            pixelColor.x=std::min(1.0,std::max(0.0,pixelColor.x));
+            pixelColor.y=std::min(1.0,std::max(0.0,pixelColor.y));
+            pixelColor.z=std::min(1.0,std::max(0.0,pixelColor.z));
+
+            // Gamma correction and write to image buffer
+            int index=3*(i*static_cast<int>(width)+j);
+            img[index+0]=pixelColor.x; 
+            img[index+1]=pixelColor.y;
+            img[index+2]=pixelColor.z;
+        }
+
+    // real-time progress display output the current completion percentage every 5 lines rendered
+    if (i % 5 == 0) {
+        int progress = static_cast<int>(100.0 * i / total_rows);
+        #pragma omp critical
+        std::cout << "[Progress] " << progress << "%" <<"completed" << std::endl;
+    }
+}
+
+// Write image
+writePPM_MLT(outputPath,static_cast<unsigned>(width),static_cast<unsigned>(height),img);
+delete[] img;
+}
+
+
         
 
 std::vector<Object*> createScene() 

@@ -1,10 +1,12 @@
 #pragma once
 
 #include "hitInfo.h"
+#include "cuda_compat.h"
+
 class Material
 {
     public:
         // Détermine comment la lumière est diffusée par le matériau
-        virtual bool scatter(const Ray& ray_in,const HitInfo& hit,Vec3& attenuation,Ray& scattered)const=0;
-        virtual ~Material()=default;
+        CUDA_HOST_DEVICE virtual bool scatter(const Ray& ray_in,const HitInfo& hit,Vec3& attenuation,Ray& scattered)const=0;
+        CUDA_HOST_DEVICE virtual ~Material()=default;
 };

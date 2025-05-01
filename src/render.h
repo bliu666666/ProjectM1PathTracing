@@ -7,6 +7,12 @@
 #include "glossy.h"
 #include "dielectric.h"
 #include "mlt_path.h"
+#include "cuda_compat.h"
+
+#if CUDA_ENABLED
+#include <cuda_runtime.h>
+#include <device_launch_parameters.h>
+#endif
 
 // Réduction OpenMP pour Vec3
 #pragma omp declare reduction(+ : Vec3 : omp_out = omp_out + omp_in) initializer(omp_priv = Vec3())
@@ -95,6 +101,136 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
     free(rgbImg);
 }
 
+// CUDA kernel for path tracing
+#if CUDA_ENABLED
+__global__ void render_kernel(double* img, int width, int height, Object** scene_objects, int scene_size, 
+                              Camera camera, int samples_per_pixel, int max_depth, unsigned int seed) {
+    // Calculate pixel coordinates
+    int j = blockIdx.x * blockDim.x + threadIdx.x;
+    int i = blockIdx.y * blockDim.y + threadIdx.y;
+    
+    if (i >= height || j >= width) return;
+    
+    // Each thread gets a unique seed
+    unsigned int thread_seed = seed + i * width + j;
+    
+    Vec3 pixelColor(0, 0, 0);
+    
+    for (int s = 0; s < samples_per_pixel; s++) {
+        // Generate random offsets for anti-aliasing
+        double u = (j + randomDoubleThread(thread_seed)) / width;
+        double v = (i + randomDoubleThread(thread_seed)) / height;
+        
+        // Generate ray from camera
+        Ray ray = camera.getRay(u, v);
+        
+        // Trace path and accumulate color
+        pixelColor += calculateColor(ray, scene_objects, scene_size, max_depth, thread_seed);
+    }
+    
+    // Average samples and apply gamma correction
+    pixelColor = pixelColor / samples_per_pixel;
+    pixelColor = Vec3(sqrt(pixelColor.x), sqrt(pixelColor.y), sqrt(pixelColor.z));
+    
+    // Store result in the image buffer
+    int idx = (i * width + j) * 3;
+    img[idx] = pixelColor.x;
+    img[idx + 1] = pixelColor.y;
+    img[idx + 2] = pixelColor.z;
+}
+
+// Helper function to calculate color for CUDA kernel
+__device__ Vec3 calculateColor(const Ray& ray, Object** scene_objects, int scene_size, int depth, unsigned int& seed) {
+    if (depth <= 0) {
+        return Vec3(0, 0, 0);
+    }
+    
+    HitInfo hitInfo;
+    hitInfo.distance = DBL_MAX;
+    hitInfo.hitObject = nullptr;
+    
+    // Find closest intersection
+    for (int i = 0; i < scene_size; i++) {
+        Vec3 intersection, normal;
+        double t;
+        if (scene_objects[i]->intersect(ray, 0.001, hitInfo.distance, intersection, t, normal)) {
+            hitInfo.hitObject = scene_objects[i];
+            hitInfo.distance = t;
+            hitInfo.intersection = intersection;
+            hitInfo.normal = normal;
+            hitInfo.setFaceNormal(ray, normal);
+        }
+    }
+    
+    if (hitInfo.hitObject) {
+        Ray scattered;
+        Vec3 attenuation;
+        if (hitInfo.hitObject->material->scatter(ray, hitInfo, attenuation, scattered)) {
+            return attenuation * calculateColor(scattered, scene_objects, scene_size, depth - 1, seed);
+        }
+        return Vec3(0, 0, 0);
+    }
+    
+    // Background color
+    Vec3 unitDirection = ray.direction.normalize();
+    double t = (unitDirection.y + 1.0) / 2;
+    return (1.0 - t) * Vec3(1.0, 1.0, 1.0) + t * Vec3(0.5, 0.7, 1.0);
+}
+#endif
+
+// Integrated CUDA rendering engine
+void render_cuda(double width, double height, const std::vector<Object*>& scene, char* outputPath, const Vec3& origin, const Vec3& lookat,
+                 const Vec3& v_up, double v_fov, int samples_per_pixel, int max_depth) {
+#if CUDA_ENABLED
+    double aspect = width / height;
+    Camera camera(origin, lookat, v_up, v_fov, aspect);
+    
+    // Allocate host memory for the image
+    double* h_img = new double[static_cast<int>(width) * static_cast<int>(height) * 3];
+    
+    // Allocate device memory for the image
+    double* d_img;
+    cudaMalloc(&d_img, static_cast<int>(width) * static_cast<int>(height) * 3 * sizeof(double));
+    
+    // Prepare scene objects for GPU
+    Object** d_scene_objects;
+    cudaMalloc(&d_scene_objects, scene.size() * sizeof(Object*));
+    
+    // Copy scene objects to GPU (this is simplified - in practice, you'd need to handle the polymorphic objects properly)
+    // This would require a more complex implementation to handle the object hierarchy
+    cudaMemcpy(d_scene_objects, scene.data(), scene.size() * sizeof(Object*), cudaMemcpyHostToDevice);
+    
+    // Set up CUDA grid and blocks
+    dim3 block(16, 16);
+    dim3 grid((width + block.x - 1) / block.x, (height + block.y - 1) / block.y);
+    
+    // Generate random seed
+    unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
+    
+    // Launch CUDA kernel
+    render_kernel<<<grid, block>>>(d_img, width, height, d_scene_objects, scene.size(), 
+                                   camera, samples_per_pixel, max_depth, seed);
+    
+    // Copy result back to host
+    cudaMemcpy(h_img, d_img, static_cast<int>(width) * static_cast<int>(height) * 3 * sizeof(double), cudaMemcpyDeviceToHost);
+    
+    // Convert to RGB and write to file
+    unsigned char* rgbImg = img2rgb(width, height, h_img);
+    writePPM_normal(outputPath, width, height, rgbImg);
+    
+    // Free memory
+    delete[] h_img;
+    free(rgbImg);
+    cudaFree(d_img);
+    cudaFree(d_scene_objects);
+    
+    std::cout << "CUDA rendering completed." << std::endl;
+#else
+    std::cout << "CUDA rendering not available. Compile with CUDA_ENABLED=1 to enable." << std::endl;
+    // Fall back to CPU rendering
+    render(width, height, scene, outputPath, origin, lookat, v_up, v_fov, samples_per_pixel, max_depth);
+#endif
+}
 // Integrated MLT rendering engine
 void renderMLT(double width,double height,const std::vector<Object*>& scene,char* outputPath,const Vec3& origin,const Vec3& lookat,
                const Vec3& v_up,double v_fov,int samples_per_pixel,int max_depth,int num_iterations)

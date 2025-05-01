@@ -22,10 +22,24 @@ Vec3 calculateColor(const Ray& ray, const std::vector<Object*>& scene,int depth)
     HitInfo hitInfo=findFirstCollision(ray,scene);
     if (hitInfo.hitObject)
     {
+        Material* mat=hitInfo.hitObject->material;
+        Emissive* light=dynamic_cast<Emissive*>(mat);
+        if (light) 
+        {
+            // S'il s'agit d'une source lumineuse, renvoie sa couleur d'émission (seules les directions orientées vers l'avant sont autorisées)
+            if (hitInfo.front_face) 
+            {
+                return light->emitted();
+            } 
+            else 
+            {
+                return Vec3(0, 0, 0);
+            }
+        }
         Ray scattered;
         Vec3 attenuation;
         // Si le matériau diffuse la lumière, continue le traçage
-        if (hitInfo.hitObject->material->scatter(ray,hitInfo,attenuation,scattered))
+        if (mat->scatter(ray,hitInfo,attenuation,scattered))
         {
             return attenuation*calculateColor(scattered, scene, depth - 1);
         }
@@ -204,8 +218,8 @@ std::vector<Object*> createTestScene()
     Emissive* light = new Emissive(Vec3(8.0, 8.0, 8.0));
     Lambertian* floor_material = new Lambertian(Vec3(0.7, 0.7, 0.7));
 
-    scene.push_back(new Sphere(light, 0.8, Vec3(0, 1, -3)));  // 小光源
-    scene.push_back(new AABB(floor_material, Vec3(-5, -1, -5), Vec3(5, 0, 5))); // 地板
+    scene.push_back(new Sphere(light, 0.8, Vec3(0, 1, -3)));  
+    scene.push_back(new AABB(floor_material, Vec3(-5, -1, -5), Vec3(5, 0, 5))); 
 
     return scene;
 }

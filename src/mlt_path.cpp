@@ -41,21 +41,25 @@ std::vector<PathVertex> generatePath(const Ray& ray, const std::vector<Object*>&
     return path;
 }
 
-
 // Support light source sampling to check whether the luminous material is hit in the path
 Vec3 evaluatePath(const std::vector<PathVertex>& path) 
 {
-    if (path.empty()) return Vec3(0,0,0);
     Vec3 result(0,0,0);
-    for (const auto& v : path) {
+    for (auto& v : path) {
         const Emissive* light = dynamic_cast<const Emissive*>(v.material);
         if (light && (-v.incoming.normalize()).dot(v.normal.normalize()) > 0.0) {
             result += v.weight * light->emitted();
         }
     }
-
-    // Add gamma correction
-    return Vec3(std::sqrt(result.x), std::sqrt(result.y), std::sqrt(result.z));
+    if (result.x==0 && result.y==0 && result.z==0) {
+        // Miss or no light source → add some ambient diffuse reflection
+        Vec3 env(0.2, 0.3, 0.5);
+        // throughput = last vertex weight or 1 if no vertex
+        Vec3 throughput = path.empty()? Vec3(1.0,1.0,1.0): path.back().weight;
+        result = throughput * env;
+    }
+    // gamma‐correct
+    return Vec3(std::sqrt(result.x),std::sqrt(result.y),std::sqrt(result.z));
 }
 
 Vec3 metropolisRender(const std::vector<Object*>& scene,const Camera& camera,int max_depth,int num_iterations,double u_init,double v_init,double pixel_w,double pixel_h) {
@@ -103,6 +107,6 @@ Vec3 metropolisRender(const std::vector<Object*>& scene,const Camera& camera,int
         #pragma omp critical
             accum += localAccum;
     }
-    
+
     return accum / static_cast<double>(num_iterations);
 }

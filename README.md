@@ -12,6 +12,16 @@ This project is an implementation of a rendering engine using the path tracing t
 - Antialiasing by multiple sampling
 - Gamma correction
 - Export to PPM format
+- Parallelized with OpenMp
+- Support for different object materials:
+  - Specular
+  - Glossy
+  - Dielectric
+- Different rendering methods:
+  - Path Tracing Monte Carlo
+  - Metropolis Light Transport
+- Light sources
+
 
 ## Prerequisites
 
@@ -47,12 +57,12 @@ make
 
 The program takes several command line arguments :
 ```bash
-./render [width] [height] [samples_per_pixel] [output_path] [max_depth]
+./render [width] [height] [samples_per_pixel] [output_path] [max_depth][render_mode]
 ```
 
 Exemple :
 ```bash
-./render 800 600 100 output.ppm 50
+./render 800 600 100 output.ppm 50 0
 ```
 
 After execution, you will be prompted to enter the camera parameters:
@@ -79,6 +89,13 @@ python3 convert_ppm.py [outputppm_path] [outputpng_path]
   - `vec3.h/.cpp` : Class for 3D vectors
   - `ray.h/.cpp` : Class for rays
   - `camera.h/.cpp` : Camera Management
+  - `dielectric.h/.cpp` : Implementation of dielectric (transparent) material
+  - `glossy.h/.cpp` : Implementation of glossy material
+  - `specular.h/.cpp` : Implementation of specular reflection
+  - `emissive.h/.cpp` : Implementation of emissive (light-emitting) material
+  - `firstCollision.h/.cpp` : Functions to compute the first ray-object intersection
+  - `AABB.h/.cpp` : Axis-Aligned Bounding Box for spatial acceleration
+  - `mlt_path.h/.cpp` : Functions related to path tracing using Metropolis Light Transport
 
 ## Project Architecture
 
@@ -86,10 +103,3 @@ The project uses an object-oriented architecture with:
 1. A hierarchy of geometric objects (Object -> Sphere, AABB)
 2. A hierarchy of materials (Material -> Lambertian)
 3. A recursive ray tracing system for path tracing
-
-## Current Limitations
-
-- No explicit light sources (only uses ambient lighting)
-- No support for reflective or refractive materials
-- No optimization by accelerating structures (BVH, etc.)
-- No parallelization (such as OpenMP or std::thread) is used for per-row or per-pixel calculations (main goal for next semester)

@@ -12,6 +12,6 @@ for t in 1 2 4 8 16
 do
   export OMP_NUM_THREADS=$t
   echo "Running with $t threads..." >> $OUTPUT
-  cat $INPUT_FILE | ../build/render 200 200 100 ../output/testMLT.ppm 3 1 >> $OUTPUT
+  cat $INPUT_FILE | ../build/render 200 200 1 ../output/testMLT.ppm 5 1 >> $OUTPUT
   echo "--------------------------------------------------------------"
 done

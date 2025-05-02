@@ -26,15 +26,8 @@ Vec3 calculateColor(const Ray& ray, const std::vector<Object*>& scene,int depth)
         Emissive* light=dynamic_cast<Emissive*>(mat);
         if (light) 
         {
-            // S'il s'agit d'une source lumineuse, renvoie sa couleur d'émission (seules les directions orientées vers l'avant sont autorisées)
-            if (hitInfo.front_face) 
-            {
-                return light->emitted();
-            } 
-            else 
-            {
-                return Vec3(0, 0, 0);
-            }
+            // S'il s'agit d'une source lumineuse, renvoie sa couleur d'émission
+            return light->emitted();
         }
         Ray scattered;
         Vec3 attenuation;
@@ -46,15 +39,16 @@ Vec3 calculateColor(const Ray& ray, const std::vector<Object*>& scene,int depth)
         return Vec3(0,0,0);// Si le matériau ne diffuse pas, retourne noir
     }
     // Couleur de fond en dégradé
-    Vec3 unitDirection=ray.direction.normalize();
-    double t=(unitDirection.y+1.0)/2;
-    return (1.0-t)*Vec3(1.0,1.0,1.0)+t*Vec3(0.5,0.7,1.0);
+    //Vec3 unitDirection=ray.direction.normalize();
+    //double t=(unitDirection.y+1.0)/2;
+    //return (1.0-t)*Vec3(1.0,1.0,1.0)+t*Vec3(0.5,0.7,1.0);
+    return Vec3(0,0,0);
 }
 
 // Fonction principale de rendu
 // Parcourt chaque pixel et calcule sa couleur par échantillonnage multiple
 void render(double width,double height,const std::vector<Object*>& scene,char* outputPath,const Vec3& origin,const Vec3& lookat,
-            const Vec3& v_up, double v_fov,int samples_per_pixel,int max_depth)
+            const Vec3& v_up, double v_fov,int samples_per_pixel,int max_depth, int chunk_size = 1)
 {
     double aspect=width/height;
     // Utilise les paramètres spécifiés par l'utilisateur pour la caméra
@@ -62,8 +56,8 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
     double *img=new double[static_cast<int>(width)*static_cast<int>(height)*3];
 
     // Parcourt chaque pixel et calcule sa couleur
-    // OpenMP parallélise la boucle externe
-    #pragma omp parallel for collapse(2) schedule(dynamic)
+    // OpenMP parallélise la boucle externe avec une taille de chunk personnalisée
+    #pragma omp parallel for collapse(2) schedule(dynamic, chunk_size)
     for (int i=static_cast<int>(height)-1;i>=0;--i)
     {
         for (int j=0;j<static_cast<int>(width);++j)
@@ -195,7 +189,7 @@ std::vector<Object*> createScene()
     std::vector<Object*> scene;
 
     // light source
-    scene.push_back(new Sphere(light, 1.0, Vec3(0, 1.2, -2)));
+    scene.push_back(new Sphere(light, 1.0, Vec3(0, 0.5, -2)));
 
     // Wall and floor
     scene.push_back(new AABB(white_wall, Vec3(-2.0, -2.0, -4.0), Vec3(2.0, 2.0, -3.99))); // Back Wall

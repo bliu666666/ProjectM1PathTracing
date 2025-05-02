@@ -115,68 +115,54 @@ void renderMLT(double width,double height,const std::vector<Object*>& scene,char
 {
     double aspect=width/height;
     Camera camera(origin,lookat,v_up,v_fov, aspect);
-    double* img=new double[static_cast<int>(width)*static_cast<int>(height)*3];
 
-    int total_rows = static_cast<int>(height);
-    
-    // Réduire le nombre d'itérations par pixel pour éviter les calculs excessifs
-    int iterations_per_pixel = std::max(10, num_iterations / 100);
-    std::cout << "Using " << iterations_per_pixel << " MLT iterations per pixel (reduced from " << num_iterations << ")" << std::endl;
+    int w=static_cast<int>(width);
+    int h=static_cast<int>(height);
+    double pixel_w = 1.0 / w;
+    double pixel_h = 1.0 / h;
+    double* img=new double[w*h*3];
 
-    #pragma omp parallel for schedule(dynamic)
-    for (int i=0;i<static_cast<int>(height);++i)
+    #pragma omp parallel for schedule(dynamic) ordered
+    for (int i=0;i<h;++i)
     {
-        for (int j=0;j<static_cast<int>(width);++j)
+        unsigned int thread_seed = static_cast<unsigned int>(std::chrono::system_clock::now().time_since_epoch().count()) + i * w;
+        for (int j=0;j<w;++j)
         {
-            Vec3 pixelColor(0,0,0);
-
-            // Each pixel (i,j) has a unique seed
-            unsigned int thread_seed=std::chrono::system_clock::now().time_since_epoch().count()+i*static_cast<int>(width)+j;
-
+            Vec3 col(0,0,0);
+            double u0 = (j + randomDoubleThread(thread_seed)) * pixel_w;
+            double v0 = (i + randomDoubleThread(thread_seed)) * pixel_h;
             for (int s=0;s<samples_per_pixel;++s)
             {
-                // Normalize the u, v range of each pixel
-                double u=(j+randomDoubleThread(thread_seed))/width;
-                double v=(i+randomDoubleThread(thread_seed))/height;
-
-                // Set up camera light for MLT initialization
-                Ray ray=camera.getRay(u,v);
-
-                // Call the MLT main function with REDUCED iterations
-                Vec3 result=metropolisRender(scene,camera,max_depth,iterations_per_pixel);
-
-                pixelColor+=result;
+                col += metropolisRender(scene, camera, max_depth, num_iterations, u0, v0, pixel_w, pixel_h);
             }
 
-            pixelColor=pixelColor/static_cast<double>(samples_per_pixel);
+            col=col/static_cast<double>(samples_per_pixel);
+            // Clamp
+            col.x = std::clamp(col.x, 0.0, 1.0);
+            col.y = std::clamp(col.y, 0.0, 1.0);
+            col.z = std::clamp(col.z, 0.0, 1.0);
 
-            // Clamp to [0,1] before writing
-            pixelColor.x=std::min(1.0,std::max(0.0,pixelColor.x));
-            pixelColor.y=std::min(1.0,std::max(0.0,pixelColor.y));
-            pixelColor.z=std::min(1.0,std::max(0.0,pixelColor.z));
-
-            // Gamma correction and write to image buffer
-            int index=3*(i*static_cast<int>(width)+j);
-            img[index+0]=pixelColor.x; 
-            img[index+1]=pixelColor.y;
-            img[index+2]=pixelColor.z;
+            // write to image buffer
+            int idx = 3 * (i * w + j);
+            img[idx]   = col.x;
+            img[idx+1] = col.y;
+            img[idx+2] = col.z;
         }
 
     // real-time progress display output the current completion percentage every 5 lines rendered
     if (i % 5 == 0) {
-        int progress = static_cast<int>(100.0 * i / total_rows);
-        #pragma omp critical
-        std::cout << "[Progress] " << progress << "%" <<"completed" << std::endl;
+        #pragma omp ordered
+        {
+            int p = int(100.0 * i / height);
+            std::cout << "[Progress] " << p << "%"<<"completed\n";
+        }
     }
 }
 
-// Write image
-writePPM_MLT(outputPath,static_cast<unsigned>(width),static_cast<unsigned>(height),img);
-delete[] img;
+    // Write image
+    writePPM_MLT(outputPath,w,h,img);
+    delete[] img;
 }
-
-
-        
 
 std::vector<Object*> createScene() 
 {
@@ -190,7 +176,7 @@ std::vector<Object*> createScene()
     Specular* metal_material = new Specular(Vec3(0.8, 0.8, 0.8));
     Glossy* glossy_material = new Glossy(Vec3(0.9, 0.6, 0.2), 0.3);
     Dielectric* glass_material = new Dielectric(1.5);
-    Emissive* light = new Emissive(Vec3(10.0, 10.0, 10.0));
+    Emissive* light = new Emissive(Vec3(5.0, 5.0, 5.0));
 
     std::vector<Object*> scene;
 
@@ -224,8 +210,8 @@ std::vector<Object*> createTestScene()
     Emissive* light = new Emissive(Vec3(8.0, 8.0, 8.0));
     Lambertian* floor_material = new Lambertian(Vec3(0.7, 0.7, 0.7));
 
-    scene.push_back(new Sphere(light, 0.8, Vec3(0, 1, -3)));  // 小光源
-    scene.push_back(new AABB(floor_material, Vec3(-5, -1, -5), Vec3(5, 0, 5))); // 地板
+    scene.push_back(new Sphere(light, 0.8, Vec3(0, 1, -3))); 
+    scene.push_back(new AABB(floor_material, Vec3(-5, -1, -5), Vec3(5, 0, 5))); 
 
     return scene;
 }

@@ -5,6 +5,7 @@
 #include <vector>
 #include "firstCollision.h"
 #include "emissive.h"
+#include <algorithm>
 
 // Represent a vertex on the path: position, normal, material, direction, etc.
 struct PathVertex {
@@ -25,4 +26,4 @@ std::vector<PathVertex> generatePath(const Ray& ray,const std::vector<Object*>& 
 Vec3 evaluatePath(const std::vector<PathVertex>& path);
 
 // Path sampling and main loop (Metropolis sampling)
-Vec3 metropolisRender(const std::vector<Object*>& scene,const Camera& camera,int max_depth,int num_iterations);
+Vec3 metropolisRender(const std::vector<Object*>& scene,const Camera& camera,int max_depth,int num_iterations,double u_init,double v_init,double pixel_w,double pixel_h);

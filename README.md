@@ -33,7 +33,7 @@ This project is an implementation of a rendering engine using the path tracing t
 
 1. Clone the repository :
 ```bash
-git clone [votre-repo]
+git clone [repo_address]
 cd ProjectM1PathTracing
 ```
 
@@ -69,7 +69,8 @@ After execution, you will be prompted to enter the camera parameters:
 - Camera position (x,y,z)
 - Aim point (x,y,z)
 - Up vector (x,y,z)
-- Vertical field of view (in degrees)
+- Vertical field of view (in degrees) 
+- Number of iterations if you choose the mode MLT
 
 ### Converting PPM file
 
@@ -101,5 +102,6 @@ python3 convert_ppm.py [outputppm_path] [outputpng_path]
 
 The project uses an object-oriented architecture with:
 1. A hierarchy of geometric objects (Object -> Sphere, AABB)
-2. A hierarchy of materials (Material -> Lambertian)
-3. A recursive ray tracing system for path tracing
+2. A hierarchy of materials (Material -> Lambertian,Specular,Glossy,Dielectric,Emissive)
+3. A recursive ray tracing system for path tracing  
+4. An integrated MLT rendering engine

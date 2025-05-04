@@ -4,6 +4,7 @@ import argparse
 import subprocess
 import os
 import shutil
+import time
 from pathlib import Path
 
 def get_next_output_filename(base_path):
@@ -35,7 +36,6 @@ def main():
     parser.add_argument('--mode', type=int, default=0, help='Mode de rendu (0: normal, 1: MLT, défaut: 0)')
     parser.add_argument('--iterations', type=int, default=1000, help='Nombre d\'itérations MLT (défaut: 1000)')
     parser.add_argument('--output', type=str, default='output/output.ppm', help='Chemin du fichier de sortie (défaut: output/output.ppm)')
-    parser.add_argument('--chunk-size', type=int, default=1, help='Taille des chunks pour la parallélisation (défaut: 1)')
     parser.add_argument('--threads', type=int, default=16, help='Nombre de threads à utiliser (défaut: nombre de cœurs CPU)')
     
     args = parser.parse_args()
@@ -72,7 +72,6 @@ def main():
     print(f"- Échantillons par pixel: {args.samples}")
     print(f"- Profondeur maximale: {args.depth}")
     print(f"- Mode de rendu: {'Normal' if args.mode == 0 else 'MLT'}")
-    print(f"- Taille des chunks: {args.chunk_size}")
     print(f"- Nombre de threads: {args.threads}")
     if args.mode == 1:
         print(f"- Itérations MLT: {args.iterations}")
@@ -87,15 +86,21 @@ def main():
                final_output, 
                str(args.depth), 
                str(args.mode),
-               str(args.threads),
-               str(args.chunk_size)]
+               str(args.threads)]
+        
+        # Mesurer le temps d'exécution
+        start_time = time.time()
         
         # Exécuter le programme
         process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout, stderr = process.communicate()
         
+        end_time = time.time()
+        execution_time = end_time - start_time
+        
         if process.returncode == 0:
             print(f"Rendu terminé avec succès. Fichier sauvegardé sous: {final_output}")
+            print(f"Temps d'exécution: {execution_time:.2f} secondes")
         else:
             print(f"Erreur lors de l'exécution: {stderr.decode()}")
             

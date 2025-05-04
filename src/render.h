@@ -57,7 +57,7 @@ void render(double width,double height,const std::vector<Object*>& scene,char* o
 
     // Parcourt chaque pixel et calcule sa couleur
     // OpenMP parallélise la boucle externe avec une taille de chunk personnalisée
-    #pragma omp parallel for collapse(2) schedule(dynamic, chunk_size)
+    #pragma omp parallel for collapse(2) schedule(dynamic)
     for (int i=static_cast<int>(height)-1;i>=0;--i)
     {
         for (int j=0;j<static_cast<int>(width);++j)

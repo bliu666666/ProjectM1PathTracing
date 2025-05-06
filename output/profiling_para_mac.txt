@@ -1,0 +1,1290 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 26.06      3.74     3.74   626774     0.01     0.01  double std::generate_canonical<double, 53ul, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+ 14.36      5.80     2.06 13973297     0.00     0.00  Vec3::operator[](int) const
+  5.78      6.63     0.83  1246916     0.00     0.00  AABB::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const
+  5.23      7.38     0.75  1794788     0.00     0.00  bool __gnu_cxx::operator!=<Object* const*, std::vector<Object*, std::allocator<Object*> > >(__gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > > const&, __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > > const&)
+  4.95      8.09     0.71  5656067     0.00     0.00  Vec3::Vec3()
+  3.62      8.61     0.52   621642     0.00     0.01  double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_real_distribution<double>::param_type const&)
+  2.93      9.03     0.42  2854895     0.00     0.00  double const& std::min<double>(double const&, double const&)
+  2.89      9.45     0.41  3799108     0.00     0.00  __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::base() const
+  2.89      9.86     0.41  1442401     0.00     0.00  std::enable_if<std::__and_<std::__not_<std::__is_tuple_like<double> >, std::is_move_constructible<double>, std::is_move_assignable<double> >::value, void>::type std::swap<double>(double&, double&)
+  2.33     10.20     0.34  3318263     0.00     0.00  Vec3::Vec3(double, double, double)
+  2.16     10.51     0.31     2041     0.15     0.15  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+  1.95     10.79     0.28  4385605     0.00     0.00  std::remove_reference<double&>::type&& std::move<double&>(double&)
+  1.81     11.04     0.26   573794     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+  1.67     11.29     0.24   232203     0.00     0.03  findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&)
+  1.57     11.51     0.23   776375     0.00     0.00  Vec3::operator+(Vec3 const&) const
+  1.11     11.67     0.16  1006833     0.00     0.00  Vec3::dot(Vec3 const&) const
+  1.11     11.83     0.16   476325     0.00     0.01  randomDouble()
+  1.11     11.99     0.16   116048     0.00     0.10  calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int)
+  1.01     12.13     0.14  1197458     0.00     0.00  Vec3::length() const
+  0.66     12.23     0.10  1521710     0.00     0.00  __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::operator++()
+  0.66     12.32     0.10   504412     0.00     0.00  __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::__normal_iterator(Object* const* const&)
+  0.63     12.41     0.09  1723126     0.00     0.00  __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::operator*() const
+  0.63     12.51     0.09   551717     0.00     0.00  std::uniform_real_distribution<double>::param_type::a() const
+  0.63     12.60     0.09   374288     0.00     0.00  Vec3::operator-(Vec3 const&) const
+  0.63     12.69     0.09   187786     0.00     0.00  bool __gnu_cxx::operator!=<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >(__gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > > const&, __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > > const&)
+  0.56     12.77     0.08   594612     0.00     0.00  std::__detail::_Adaptor<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, double>::_Adaptor(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+  0.56     12.85     0.08   416073     0.00     0.00  Vec3::operator*(double) const
+  0.49     12.91     0.07                             _init
+  0.45     12.98     0.07   233064     0.00     0.02  Lambertian::scatter(Ray const&, HitInfo const&, Vec3&, Ray&) const
+  0.42     13.04     0.06   248056     0.00     0.00  Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const
+  0.42     13.10     0.06   241260     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::end() const
+  0.42     13.16     0.06   199030     0.00     0.02  Lambertian::randomInHemisphere(Vec3 const&) const
+  0.42     13.22     0.06                             _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE
+  0.38     13.28     0.06                             AABB::~AABB()
+  0.35     13.32     0.05   854336     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::min()
+  0.35     13.38     0.05   275878     0.00     0.00  Ray::Ray(Vec3 const&, Vec3 const&)
+  0.35     13.43     0.05   246252     0.00     0.00  HitInfo::HitInfo()
+  0.35     13.47     0.05   215538     0.00     0.00  Ray::at(double) const
+  0.35     13.53     0.05   160382     0.00     0.00  operator new(unsigned long, void*)
+  0.35     13.57     0.05   117829     0.00     0.00  std::uniform_real_distribution<double>::param_type::b() const
+  0.28     13.62     0.04   382139     0.00     0.00  __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::base() const
+  0.28     13.65     0.04   274235     0.00     0.00  Ray::Ray()
+  0.28     13.70     0.04   270038     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::begin() const
+  0.28     13.73     0.04   151649     0.00     0.00  Vec3 const& std::forward<Vec3 const&>(std::remove_reference<Vec3 const&>::type&)
+  0.24     13.77     0.04   310018     0.00     0.00  Vec3::normalize() const
+  0.24     13.80     0.04    23624     0.00     0.00  std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_create_storage(unsigned long)
+  0.21     13.84     0.03   572152     0.00     0.01  double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+  0.21     13.87     0.03   254076     0.00     0.00  Vec3::operator*(Vec3 const&) const
+  0.21     13.89     0.03   152878     0.00     0.00  void std::_Construct<Vec3, Vec3 const&>(Vec3*, Vec3 const&)
+  0.21     13.93     0.03    50852     0.00     0.00  operator*(double, Vec3 const&)
+  0.21     13.96     0.03     5806     0.01     0.01  std::vector<Vec3, std::allocator<Vec3> >::begin()
+  0.17     13.98     0.03   204052     0.00     0.02  Lambertian::randomUnitVector() const
+  0.17     14.01     0.03     9591     0.00     0.00  std::allocator<Vec3>::allocator()
+  0.14     14.03     0.02   162151     0.00     0.00  __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::operator++()
+  0.14     14.04     0.02   154747     0.00     0.00  Vec3::nearZero() const
+  0.14     14.06     0.02   150385     0.00     0.00  Vec3* std::__addressof<Vec3>(Vec3&)
+  0.14     14.09     0.02    66203     0.00     0.00  Vec3::operator-()
+  0.14     14.11     0.02    33666     0.00     0.00  std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_get_Tp_allocator()
+  0.14     14.12     0.02    22297     0.00     0.00  __gnu_cxx::new_allocator<Vec3>::allocate(unsigned long, void const*)
+  0.14     14.14     0.02    20342     0.00     0.01  Vec3* std::__uninitialized_fill_n<false>::__uninit_fill_n<Vec3*, unsigned long, Vec3>(Vec3*, unsigned long, Vec3 const&)
+  0.14     14.16     0.02    19116     0.00     0.00  std::vector<Vec3, std::allocator<Vec3> >::_S_check_init_len(unsigned long, std::allocator<Vec3> const&)
+  0.14     14.19     0.02    11923     0.00     0.00  __gnu_cxx::new_allocator<Vec3>::new_allocator()
+  0.14     14.21     0.02        1    20.00    20.00  __static_initialization_and_destruction_0(int, int)
+  0.10     14.22     0.01    20642     0.00     0.00  std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_deallocate(Vec3*, unsigned long)
+  0.07     14.23     0.01   521611     0.00     0.01  std::__detail::_Adaptor<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, double>::operator()()
+  0.07     14.24     0.01   268186     0.00     0.00  std::vector<Vec3, std::allocator<Vec3> >::operator[](unsigned long)
+  0.07     14.25     0.01   175562     0.00     0.00  __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::operator*() const
+  0.07     14.26     0.01    54882     0.00     0.00  std::allocator<Vec3>::~allocator()
+  0.07     14.27     0.01    39340     0.00     0.00  std::allocator<Vec3>::allocator(std::allocator<Vec3> const&)
+  0.07     14.28     0.01    26216     0.00     0.00  __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::__normal_iterator(Vec3* const&)
+  0.07     14.29     0.01    22049     0.00     0.00  std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_allocate(unsigned long)
+  0.07     14.30     0.01    21365     0.00     0.01  Vec3* std::__uninitialized_fill_n_a<Vec3*, unsigned long, Vec3, Vec3>(Vec3*, unsigned long, Vec3 const&, std::allocator<Vec3>&)
+  0.07     14.31     0.01    21020     0.00     0.00  __gnu_cxx::new_allocator<Vec3>::deallocate(Vec3*, unsigned long)
+  0.07     14.32     0.01    20052     0.00     0.00  std::vector<Vec3, std::allocator<Vec3> >::_S_max_size(std::allocator<Vec3> const&)
+  0.07     14.33     0.01    16643     0.00     0.02  std::vector<Vec3, std::allocator<Vec3> >::vector(unsigned long, Vec3 const&, std::allocator<Vec3> const&)
+  0.07     14.34     0.01        2     5.00     5.00  Vec3::cross(Vec3 const&) const
+  0.07     14.35     0.01        1    10.00    10.00  __static_initialization_and_destruction_0(int, int)
+  0.00     14.35     0.00    64826     0.00     0.00  __gnu_cxx::new_allocator<Vec3>::~new_allocator()
+  0.00     14.35     0.00    60506     0.00     0.00  Camera::getRay(double, double) const
+  0.00     14.35     0.00    48470     0.00     0.00  __gnu_cxx::new_allocator<Vec3>::_M_max_size() const
+  0.00     14.35     0.00    42059     0.00     0.00  __gnu_cxx::new_allocator<Vec3>::new_allocator(__gnu_cxx::new_allocator<Vec3> const&)
+  0.00     14.35     0.00    24370     0.00     0.00  std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl_data::_Vector_impl_data()
+  0.00     14.35     0.00    23303     0.00     0.00  std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_base(unsigned long, std::allocator<Vec3> const&)
+  0.00     14.35     0.00    22983     0.00     0.00  unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)
+  0.00     14.35     0.00    21924     0.00     0.00  std::allocator_traits<std::allocator<Vec3> >::allocate(std::allocator<Vec3>&, unsigned long)
+  0.00     14.35     0.00    21876     0.00     0.00  std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl::_Vector_impl(std::allocator<Vec3> const&)
+  0.00     14.35     0.00    21568     0.00     0.01  Vec3* std::uninitialized_fill_n<Vec3*, unsigned long, Vec3>(Vec3*, unsigned long, Vec3 const&)
+  0.00     14.35     0.00    20764     0.00     0.00  Vec3::operator/(double) const
+  0.00     14.35     0.00    20651     0.00     0.00  __gnu_cxx::new_allocator<Vec3>::max_size() const
+  0.00     14.35     0.00    19654     0.00     0.00  std::allocator_traits<std::allocator<Vec3> >::deallocate(std::allocator<Vec3>&, Vec3*, unsigned long)
+  0.00     14.35     0.00    19160     0.00     0.00  std::allocator_traits<std::allocator<Vec3> >::max_size(std::allocator<Vec3> const&)
+  0.00     14.35     0.00    18460     0.00     0.01  std::vector<Vec3, std::allocator<Vec3> >::_M_fill_initialize(unsigned long, Vec3 const&)
+  0.00     14.35     0.00    18430     0.00     0.00  std::_Vector_base<Vec3, std::allocator<Vec3> >::~_Vector_base()
+  0.00     14.35     0.00    18008     0.00     0.00  Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const::{lambda(double)#1}::operator()(double) const
+  0.00     14.35     0.00    16905     0.00     0.00  void std::_Destroy_aux<true>::__destroy<Vec3*>(Vec3*, Vec3*)
+  0.00     14.35     0.00    15812     0.00     0.00  std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl::~_Vector_impl()
+  0.00     14.35     0.00    15654     0.00     0.00  void std::_Destroy<Vec3*, Vec3>(Vec3*, Vec3*, std::allocator<Vec3>&)
+  0.00     14.35     0.00    15282     0.00     0.00  void std::_Destroy<Vec3*>(Vec3*, Vec3*)
+  0.00     14.35     0.00    13047     0.00     0.00  std::vector<Vec3, std::allocator<Vec3> >::end()
+  0.00     14.35     0.00    11349     0.00     0.00  std::vector<Vec3, std::allocator<Vec3> >::~vector()
+  0.00     14.35     0.00     3913     0.00     0.00  std::__detail::_Mod<unsigned long, 4294967296ul, 1ul, 0ul, true, true>::__calc(unsigned long)
+  0.00     14.35     0.00     3907     0.00     0.00  std::__detail::_Mod<unsigned long, 624ul, 1ul, 0ul, true, true>::__calc(unsigned long)
+  0.00     14.35     0.00     3894     0.00     0.00  unsigned long std::__detail::__mod<unsigned long, 624ul, 1ul, 0ul>(unsigned long)
+  0.00     14.35     0.00     3874     0.00     0.00  unsigned long std::__detail::__mod<unsigned long, 4294967296ul, 1ul, 0ul>(unsigned long)
+  0.00     14.35     0.00       24     0.00     0.00  Object** std::__niter_base<Object**>(Object**)
+  0.00     14.35     0.00       22     0.00     0.00  Object*&& std::forward<Object*>(std::remove_reference<Object*>::type&)
+  0.00     14.35     0.00       20     0.00     0.00  __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::__normal_iterator(Object** const&)
+  0.00     14.35     0.00       16     0.00     0.00  __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::base() const
+  0.00     14.35     0.00       16     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::size() const
+  0.00     14.35     0.00       12     0.00     0.00  __gnu_cxx::new_allocator<Object*>::_M_max_size() const
+  0.00     14.35     0.00       10     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::end()
+  0.00     14.35     0.00        9     0.00     0.00  std::_Vector_base<Object*, std::allocator<Object*> >::_M_get_Tp_allocator()
+  0.00     14.35     0.00        8     0.00     0.00  bool __gnu_cxx::__is_null_pointer<char const>(char const*)
+  0.00     14.35     0.00        8     0.00     0.00  __gnu_cxx::new_allocator<Object*>::max_size() const
+  0.00     14.35     0.00        8     0.00     0.00  std::_Vector_base<Object*, std::allocator<Object*> >::_M_get_Tp_allocator() const
+  0.00     14.35     0.00        8     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::max_size() const
+  0.00     14.35     0.00        8     0.00     0.00  std::char_traits<char>::length(char const*)
+  0.00     14.35     0.00        8     0.00     0.00  std::random_device::random_device()
+  0.00     14.35     0.00        8     0.00     0.00  std::random_device::operator()()
+  0.00     14.35     0.00        8     0.00     0.00  std::allocator_traits<std::allocator<Object*> >::max_size(std::allocator<Object*> const&)
+  0.00     14.35     0.00        8     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::seed(unsigned long)
+  0.00     14.35     0.00        8     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::mersenne_twister_engine(unsigned long)
+  0.00     14.35     0.00        8     0.00     0.00  std::uniform_real_distribution<double>::param_type::param_type(double, double)
+  0.00     14.35     0.00        8     0.00     0.00  std::uniform_real_distribution<double>::uniform_real_distribution(double, double)
+  0.00     14.35     0.00        8     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::_S_max_size(std::allocator<Object*> const&)
+  0.00     14.35     0.00        8     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::_S_relocate(Object**, Object**, Object**, std::allocator<Object*>&)
+  0.00     14.35     0.00        8     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::_S_do_relocate(Object**, Object**, Object**, std::allocator<Object*>&, std::integral_constant<bool, true>)
+  0.00     14.35     0.00        8     0.00     0.00  void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+  0.00     14.35     0.00        8     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&)
+  0.00     14.35     0.00        8     0.00     0.00  std::iterator_traits<char const*>::difference_type std::__distance<char const*>(char const*, char const*, std::random_access_iterator_tag)
+  0.00     14.35     0.00        8     0.00     0.00  Object** std::__relocate_a<Object**, Object**, std::allocator<Object*> >(Object**, Object**, Object**, std::allocator<Object*>&)
+  0.00     14.35     0.00        8     0.00     0.00  std::enable_if<std::__is_bitwise_relocatable<Object*, void>::value, Object**>::type std::__relocate_a_1<Object*, Object*>(Object**, Object**, Object**, std::allocator<Object*>&)
+  0.00     14.35     0.00        8     0.00     0.00  std::iterator_traits<char const*>::iterator_category std::__iterator_category<char const*>(char const* const&)
+  0.00     14.35     0.00        8     0.00     0.00  std::iterator_traits<char const*>::difference_type std::distance<char const*>(char const*, char const*)
+  0.00     14.35     0.00        6     0.00     0.00  Object::Object(Material*)
+  0.00     14.35     0.00        6     0.00     0.00  void __gnu_cxx::new_allocator<Object*>::construct<Object*, Object*>(Object**, Object*&&)
+  0.00     14.35     0.00        6     0.00     0.00  __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::operator*() const
+  0.00     14.35     0.00        6     0.00     0.00  __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::operator-(long) const
+  0.00     14.35     0.00        6     0.00     0.00  void std::allocator_traits<std::allocator<Object*> >::construct<Object*, Object*>(std::allocator<Object*>&, Object**, Object*&&)
+  0.00     14.35     0.00        6     0.00     0.00  Object*& std::vector<Object*, std::allocator<Object*> >::emplace_back<Object*>(Object*&&)
+  0.00     14.35     0.00        6     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::back()
+  0.00     14.35     0.00        6     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::push_back(Object*&&)
+  0.00     14.35     0.00        6     0.00     0.00  std::remove_reference<Object*&>::type&& std::move<Object*&>(Object*&)
+  0.00     14.35     0.00        5     0.00     0.00  AABB::AABB(Material*, Vec3 const&, Vec3 const&)
+  0.00     14.35     0.00        5     0.00     0.00  std::_Vector_base<Object*, std::allocator<Object*> >::_M_deallocate(Object**, unsigned long)
+  0.00     14.35     0.00        5     0.00     0.00  std::random_device::~random_device()
+  0.00     14.35     0.00        4     0.00     0.00  Lambertian::Lambertian(Vec3 const&)
+  0.00     14.35     0.00        4     0.00     0.00  Material::Material()
+  0.00     14.35     0.00        4     0.00     0.00  __gnu_cxx::new_allocator<Object*>::deallocate(Object**, unsigned long)
+  0.00     14.35     0.00        4     0.00     0.00  __gnu_cxx::new_allocator<Object*>::allocate(unsigned long, void const*)
+  0.00     14.35     0.00        4     0.00     0.00  __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::difference_type __gnu_cxx::operator-<Object**, std::vector<Object*, std::allocator<Object*> > >(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > > const&, __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > > const&)
+  0.00     14.35     0.00        4     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::_M_check_len(unsigned long, char const*) const
+  0.00     14.35     0.00        4     0.00     0.00  std::_Vector_base<Object*, std::allocator<Object*> >::_M_allocate(unsigned long)
+  0.00     14.35     0.00        4     0.00     0.00  std::allocator_traits<std::allocator<Object*> >::deallocate(std::allocator<Object*>&, Object**, unsigned long)
+  0.00     14.35     0.00        4     0.00     0.00  std::allocator_traits<std::allocator<Object*> >::allocate(std::allocator<Object*>&, unsigned long)
+  0.00     14.35     0.00        4     0.00     0.00  void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&)
+  0.00     14.35     0.00        4     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::begin()
+  0.00     14.35     0.00        4     0.00     0.00  unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&)
+  0.00     14.35     0.00        3     0.00     0.00  std::chrono::duration<long, std::ratio<1l, 1000000000l> >::count() const
+  0.00     14.35     0.00        2     0.00     0.00  std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::time_since_epoch() const
+  0.00     14.35     0.00        2     0.00     0.00  std::chrono::duration<double, std::ratio<1l, 1l> >::count() const
+  0.00     14.35     0.00        1     0.00     0.00  createScene()
+  0.00     14.35     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     14.35     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     14.35     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     14.35     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     14.35     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     14.35     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     14.35     0.00        1     0.00    10.01  render(double, double, std::vector<Object*, std::allocator<Object*> > const&, char*, Vec3 const&, Vec3 const&, Vec3 const&, double, int, int)
+  0.00     14.35     0.00        1     0.00     0.00  img2rgb(unsigned int, unsigned int, double*)
+  0.00     14.35     0.00        1     0.00     0.00  writePPM(char*, unsigned int, unsigned int, unsigned char*)
+  0.00     14.35     0.00        1     0.00    10.01  Camera::Camera(Vec3 const&, Vec3 const&, Vec3 const&, double, double)
+  0.00     14.35     0.00        1     0.00     0.00  Sphere::Sphere(Material*, double, Vec3 const&)
+  0.00     14.35     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<Object*>::new_allocator()
+  0.00     14.35     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<Object*>::~new_allocator()
+  0.00     14.35     0.00        1     0.00     0.00  std::allocator<Object*>::allocator()
+  0.00     14.35     0.00        1     0.00     0.00  std::allocator<Object*>::~allocator()
+  0.00     14.35     0.00        1     0.00     0.00  void std::_Destroy_aux<true>::__destroy<Object**>(Object**, Object**)
+  0.00     14.35     0.00        1     0.00     0.00  std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl::_Vector_impl()
+  0.00     14.35     0.00        1     0.00     0.00  std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl::~_Vector_impl()
+  0.00     14.35     0.00        1     0.00     0.00  std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl_data::_Vector_impl_data()
+  0.00     14.35     0.00        1     0.00     0.00  std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_base()
+  0.00     14.35     0.00        1     0.00     0.00  std::_Vector_base<Object*, std::allocator<Object*> >::~_Vector_base()
+  0.00     14.35     0.00        1     0.00     0.00  std::enable_if<std::chrono::__is_duration<std::chrono::duration<double, std::ratio<1l, 1l> > >::value, std::chrono::duration<double, std::ratio<1l, 1l> > >::type std::chrono::duration_cast<std::chrono::duration<double, std::ratio<1l, 1l> >, long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&)
+  0.00     14.35     0.00        1     0.00     0.00  std::chrono::duration<double, std::ratio<1l, 1l> > std::chrono::__duration_cast_impl<std::chrono::duration<double, std::ratio<1l, 1l> >, std::ratio<1l, 1000000000l>, double, true, false>::__cast<long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&)
+  0.00     14.35     0.00        1     0.00     0.00  std::chrono::duration<double, std::ratio<1l, 1l> >::duration<long, std::ratio<1l, 1000000000l>, void>(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&)
+  0.00     14.35     0.00        1     0.00     0.00  std::chrono::duration<double, std::ratio<1l, 1l> >::duration<double, void>(double const&)
+  0.00     14.35     0.00        1     0.00     0.00  std::chrono::duration<long, std::ratio<1l, 1000000000l> >::duration<long, void>(long const&)
+  0.00     14.35     0.00        1     0.00     0.00  std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >(std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&, std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&)
+  0.00     14.35     0.00        1     0.00     0.00  std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<long, std::ratio<1l, 1000000000l>, long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&, std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&)
+  0.00     14.35     0.00        1     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::vector()
+  0.00     14.35     0.00        1     0.00     0.00  std::vector<Object*, std::allocator<Object*> >::~vector()
+  0.00     14.35     0.00        1     0.00     0.00  void std::_Destroy<Object**>(Object**, Object**)
+  0.00     14.35     0.00        1     0.00     0.00  void std::_Destroy<Object**, Object*>(Object**, Object**, std::allocator<Object*>&)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.07% of 14.35 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     98.9    0.06   14.12                 _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+                0.16   11.53  116048/116048      calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+                0.04    1.42  131625/476325      randomDouble() [4]
+                0.01    0.29   16643/16643       std::vector<Vec3, std::allocator<Vec3> >::vector(unsigned long, Vec3 const&, std::allocator<Vec3> const&) [24]
+                0.00    0.26   60506/60506       Camera::getRay(double, double) const [26]
+                0.09    0.04  187786/187786      bool __gnu_cxx::operator!=<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >(__gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > > const&, __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > > const&) [36]
+                0.08    0.03  291711/776375      Vec3::operator+(Vec3 const&) const [23]
+                0.03    0.02    9591/9591        std::allocator<Vec3>::allocator() [57]
+                0.00    0.04   11349/11349       std::vector<Vec3, std::allocator<Vec3> >::~vector() [61]
+                0.03    0.00    5806/5806        std::vector<Vec3, std::allocator<Vec3> >::begin() [63]
+                0.02    0.00  162151/162151      __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::operator++() [68]
+                0.01    0.00  268186/268186      std::vector<Vec3, std::allocator<Vec3> >::operator[](unsigned long) [82]
+                0.01    0.00  175562/175562      __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::operator*() const [83]
+                0.00    0.01   13047/13047       std::vector<Vec3, std::allocator<Vec3> >::end() [92]
+                0.00    0.00   16414/54882       std::allocator<Vec3>::~allocator() [84]
+                0.00    0.00   20764/20764       Vec3::operator/(double) const [95]
+                0.00    0.00   21160/3318263     Vec3::Vec3(double, double, double) [20]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [179]
+-----------------------------------------------
+                              185568             calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+                0.16   11.53  116048/116048      _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[2]     81.4    0.16   11.53  116048+185568  calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+                0.24    6.80  232203/232203      findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [3]
+                0.07    4.15  233064/233064      Lambertian::scatter(Ray const&, HitInfo const&, Vec3&, Ray&) const [10]
+                0.04    0.07  274235/274235      Ray::Ray() [41]
+                0.03    0.03  254076/254076      Vec3::operator*(Vec3 const&) const [52]
+                0.03    0.01   50852/50852       operator*(double, Vec3 const&) [62]
+                0.03    0.00  261847/5656067     Vec3::Vec3() [15]
+                0.00    0.01   24961/310018      Vec3::normalize() const [29]
+                0.02    0.00  155091/3318263     Vec3::Vec3(double, double, double) [20]
+                0.01    0.00   22192/776375      Vec3::operator+(Vec3 const&) const [23]
+                              185568             calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+-----------------------------------------------
+                0.24    6.80  232203/232203      calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+[3]     49.0    0.24    6.80  232203         findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [3]
+                0.83    3.61 1246916/1246916     AABB::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [7]
+                0.75    0.41 1794788/1794788     bool __gnu_cxx::operator!=<Object* const*, std::vector<Object*, std::allocator<Object*> > >(__gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > > const&, __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > > const&) [14]
+                0.39    0.00 3100532/5656067     Vec3::Vec3() [15]
+                0.06    0.25  248056/248056      Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [21]
+                0.05    0.06  246252/246252      HitInfo::HitInfo() [40]
+                0.06    0.05  241260/241260      std::vector<Object*, std::allocator<Object*> >::end() const [42]
+                0.10    0.00 1521710/1521710     __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::operator++() [43]
+                0.09    0.00 1723126/1723126     __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::operator*() const [45]
+                0.04    0.05  270038/270038      std::vector<Object*, std::allocator<Object*> >::begin() const [47]
+-----------------------------------------------
+                0.04    1.42  131625/476325      _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+                0.12    3.72  344700/476325      Lambertian::randomUnitVector() const [12]
+[4]     36.9    0.16    5.14  476325         randomDouble() [4]
+                0.03    5.11  572152/572152      double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [5]
+                0.00    0.00       8/8           std::random_device::random_device() [137]
+                0.00    0.00       8/8           std::random_device::operator()() [138]
+                0.00    0.00       8/8           std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::mersenne_twister_engine(unsigned long) [141]
+                0.00    0.00       8/8           std::uniform_real_distribution<double>::uniform_real_distribution(double, double) [143]
+                0.00    0.00       5/5           std::random_device::~random_device() [161]
+-----------------------------------------------
+                0.03    5.11  572152/572152      randomDouble() [4]
+[5]     35.8    0.03    5.11  572152         double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [5]
+                0.52    4.59  621642/621642      double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_real_distribution<double>::param_type const&) [6]
+-----------------------------------------------
+                0.52    4.59  621642/621642      double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [5]
+[6]     35.6    0.52    4.59  621642         double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_real_distribution<double>::param_type const&) [6]
+                0.01    4.36  521611/521611      std::__detail::_Adaptor<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, double>::operator()() [8]
+                0.09    0.00  551717/551717      std::uniform_real_distribution<double>::param_type::a() const [46]
+                0.08    0.00  594612/594612      std::__detail::_Adaptor<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, double>::_Adaptor(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [48]
+                0.05    0.00  117829/117829      std::uniform_real_distribution<double>::param_type::b() const [56]
+-----------------------------------------------
+                0.83    3.61 1246916/1246916     findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [3]
+[7]     30.9    0.83    3.61 1246916         AABB::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [7]
+                2.06    0.00 13973297/13973297     Vec3::operator[](int) const [13]
+                0.41    0.28 1442401/1442401     std::enable_if<std::__and_<std::__not_<std::__is_tuple_like<double> >, std::is_move_constructible<double>, std::is_move_assignable<double> >::value, void>::type std::swap<double>(double&, double&) [16]
+                0.42    0.00 2854895/2854895     double const& std::min<double>(double const&, double const&) [18]
+                0.05    0.16  207723/215538      Ray::at(double) const [28]
+                0.16    0.00 1246524/5656067     Vec3::Vec3() [15]
+                0.07    0.00  669052/3318263     Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                0.01    4.36  521611/521611      double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_real_distribution<double>::param_type const&) [6]
+[8]     30.5    0.01    4.36  521611         std::__detail::_Adaptor<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, double>::operator()() [8]
+                3.74    0.62  626774/626774      double std::generate_canonical<double, 53ul, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [9]
+-----------------------------------------------
+                3.74    0.62  626774/626774      std::__detail::_Adaptor<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, double>::operator()() [8]
+[9]     30.4    3.74    0.62  626774         double std::generate_canonical<double, 53ul, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [9]
+                0.26    0.31  573794/573794      std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [17]
+                0.05    0.00  854336/854336      std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::min() [54]
+-----------------------------------------------
+                0.07    4.15  233064/233064      calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+[10]    29.4    0.07    4.15  233064         Lambertian::scatter(Ray const&, HitInfo const&, Vec3&, Ray&) const [10]
+                0.06    3.91  199030/199030      Lambertian::randomInHemisphere(Vec3 const&) const [11]
+                0.03    0.12  176163/275878      Ray::Ray(Vec3 const&, Vec3 const&) [27]
+                0.02    0.00  154747/154747      Vec3::nearZero() const [69]
+-----------------------------------------------
+                0.06    3.91  199030/199030      Lambertian::scatter(Ray const&, HitInfo const&, Vec3&, Ray&) const [10]
+[11]    27.7    0.06    3.91  199030         Lambertian::randomInHemisphere(Vec3 const&) const [11]
+                0.03    3.84  204052/204052      Lambertian::randomUnitVector() const [12]
+                0.02    0.01   66203/66203       Vec3::operator-() [65]
+                0.02    0.00  113109/1006833     Vec3::dot(Vec3 const&) const [32]
+-----------------------------------------------
+                0.03    3.84  204052/204052      Lambertian::randomInHemisphere(Vec3 const&) const [11]
+[12]    26.9    0.03    3.84  204052         Lambertian::randomUnitVector() const [12]
+                0.12    3.72  344700/476325      randomDouble() [4]
+                0.01    0.00   64205/3318263     Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                2.06    0.00 13973297/13973297     AABB::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [7]
+[13]    14.4    2.06    0.00 13973297         Vec3::operator[](int) const [13]
+-----------------------------------------------
+                0.75    0.41 1794788/1794788     findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [3]
+[14]     8.1    0.75    0.41 1794788         bool __gnu_cxx::operator!=<Object* const*, std::vector<Object*, std::allocator<Object*> > >(__gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > > const&, __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > > const&) [14]
+                0.41    0.00 3799108/3799108     __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::base() const [19]
+-----------------------------------------------
+                0.00    0.00       3/5656067     main [78]
+                0.00    0.00       4/5656067     Camera::Camera(Vec3 const&, Vec3 const&, Vec3 const&, double, double) [80]
+                0.03    0.00  261847/5656067     calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+                0.06    0.00  511558/5656067     HitInfo::HitInfo() [40]
+                0.07    0.00  535599/5656067     Ray::Ray() [41]
+                0.16    0.00 1246524/5656067     AABB::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [7]
+                0.39    0.00 3100532/5656067     findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [3]
+[15]     4.9    0.71    0.00 5656067         Vec3::Vec3() [15]
+-----------------------------------------------
+                0.41    0.28 1442401/1442401     AABB::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [7]
+[16]     4.8    0.41    0.28 1442401         std::enable_if<std::__and_<std::__not_<std::__is_tuple_like<double> >, std::is_move_constructible<double>, std::is_move_assignable<double> >::value, void>::type std::swap<double>(double&, double&) [16]
+                0.28    0.00 4385605/4385605     std::remove_reference<double&>::type&& std::move<double&>(double&) [25]
+-----------------------------------------------
+                0.26    0.31  573794/573794      double std::generate_canonical<double, 53ul, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [9]
+[17]     4.0    0.26    0.31  573794         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [17]
+                0.31    0.00    2041/2041        std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [22]
+-----------------------------------------------
+                0.42    0.00 2854895/2854895     AABB::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [7]
+[18]     2.9    0.42    0.00 2854895         double const& std::min<double>(double const&, double const&) [18]
+-----------------------------------------------
+                0.41    0.00 3799108/3799108     bool __gnu_cxx::operator!=<Object* const*, std::vector<Object*, std::allocator<Object*> > >(__gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > > const&, __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > > const&) [14]
+[19]     2.9    0.41    0.00 3799108         __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::base() const [19]
+-----------------------------------------------
+                0.00    0.00       2/3318263     Vec3::cross(Vec3 const&) const [81]
+                0.00    0.00       3/3318263     main [78]
+                0.00    0.00      15/3318263     createScene() [96]
+                0.00    0.00   21160/3318263     _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+                0.00    0.00   21669/3318263     Vec3::operator/(double) const [95]
+                0.01    0.00   52217/3318263     operator*(double, Vec3 const&) [62]
+                0.01    0.00   64205/3318263     Lambertian::randomUnitVector() const [12]
+                0.01    0.00   83214/3318263     Vec3::operator-() [65]
+                0.02    0.00  155091/3318263     calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+                0.03    0.00  269390/3318263     Vec3::operator*(Vec3 const&) const [52]
+                0.04    0.00  367424/3318263     Vec3::normalize() const [29]
+                0.04    0.00  374575/3318263     Vec3::operator-(Vec3 const&) const [37]
+                0.04    0.00  439627/3318263     Vec3::operator*(double) const [38]
+                0.07    0.00  669052/3318263     AABB::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [7]
+                0.08    0.00  800619/3318263     Vec3::operator+(Vec3 const&) const [23]
+[20]     2.3    0.34    0.00 3318263         Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                0.06    0.25  248056/248056      findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [3]
+[21]     2.2    0.06    0.25  248056         Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [21]
+                0.14    0.00  893724/1006833     Vec3::dot(Vec3 const&) const [32]
+                0.06    0.03  265817/374288      Vec3::operator-(Vec3 const&) const [37]
+                0.00    0.02   18008/18008       Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const::{lambda(double)#1}::operator()(double) const [77]
+-----------------------------------------------
+                0.31    0.00    2041/2041        std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [17]
+[22]     2.2    0.31    0.00    2041         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [22]
+-----------------------------------------------
+                0.01    0.00   22192/776375      calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+                0.06    0.02  215909/776375      Camera::getRay(double, double) const [26]
+                0.07    0.03  246563/776375      Ray::at(double) const [28]
+                0.08    0.03  291711/776375      _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[23]     2.1    0.23    0.08  776375         Vec3::operator+(Vec3 const&) const [23]
+                0.08    0.00  800619/3318263     Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                0.01    0.29   16643/16643       _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[24]     2.1    0.01    0.29   16643         std::vector<Vec3, std::allocator<Vec3> >::vector(unsigned long, Vec3 const&, std::allocator<Vec3> const&) [24]
+                0.00    0.18   18460/18460       std::vector<Vec3, std::allocator<Vec3> >::_M_fill_initialize(unsigned long, Vec3 const&) [30]
+                0.00    0.07   23303/23303       std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_base(unsigned long, std::allocator<Vec3> const&) [49]
+                0.02    0.02   19116/19116       std::vector<Vec3, std::allocator<Vec3> >::_S_check_init_len(unsigned long, std::allocator<Vec3> const&) [60]
+-----------------------------------------------
+                0.28    0.00 4385605/4385605     std::enable_if<std::__and_<std::__not_<std::__is_tuple_like<double> >, std::is_move_constructible<double>, std::is_move_assignable<double> >::value, void>::type std::swap<double>(double&, double&) [16]
+[25]     2.0    0.28    0.00 4385605         std::remove_reference<double&>::type&& std::move<double&>(double&) [25]
+-----------------------------------------------
+                0.00    0.26   60506/60506       _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[26]     1.8    0.00    0.26   60506         Camera::getRay(double, double) const [26]
+                0.02    0.07   99715/275878      Ray::Ray(Vec3 const&, Vec3 const&) [27]
+                0.06    0.02  215909/776375      Vec3::operator+(Vec3 const&) const [23]
+                0.03    0.02  179100/416073      Vec3::operator*(double) const [38]
+                0.02    0.01   99024/374288      Vec3::operator-(Vec3 const&) const [37]
+-----------------------------------------------
+                0.02    0.07   99715/275878      Camera::getRay(double, double) const [26]
+                0.03    0.12  176163/275878      Lambertian::scatter(Ray const&, HitInfo const&, Vec3&, Ray&) const [10]
+[27]     1.7    0.05    0.19  275878         Ray::Ray(Vec3 const&, Vec3 const&) [27]
+                0.03    0.16  275862/310018      Vec3::normalize() const [29]
+-----------------------------------------------
+                0.00    0.01    7815/215538      Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const::{lambda(double)#1}::operator()(double) const [77]
+                0.05    0.16  207723/215538      AABB::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [7]
+[28]     1.5    0.05    0.17  215538         Ray::at(double) const [28]
+                0.07    0.03  246563/776375      Vec3::operator+(Vec3 const&) const [23]
+                0.05    0.03  236967/416073      Vec3::operator*(double) const [38]
+-----------------------------------------------
+                0.00    0.00       2/310018      Camera::Camera(Vec3 const&, Vec3 const&, Vec3 const&, double, double) [80]
+                0.00    0.01    9193/310018      Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const::{lambda(double)#1}::operator()(double) const [77]
+                0.00    0.01   24961/310018      calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+                0.03    0.16  275862/310018      Ray::Ray(Vec3 const&, Vec3 const&) [27]
+[29]     1.5    0.04    0.18  310018         Vec3::normalize() const [29]
+                0.14    0.00 1197458/1197458     Vec3::length() const [35]
+                0.04    0.00  367424/3318263     Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                0.00    0.18   18460/18460       std::vector<Vec3, std::allocator<Vec3> >::vector(unsigned long, Vec3 const&, std::allocator<Vec3> const&) [24]
+[30]     1.3    0.00    0.18   18460         std::vector<Vec3, std::allocator<Vec3> >::_M_fill_initialize(unsigned long, Vec3 const&) [30]
+                0.01    0.16   21365/21365       Vec3* std::__uninitialized_fill_n_a<Vec3*, unsigned long, Vec3, Vec3>(Vec3*, unsigned long, Vec3 const&, std::allocator<Vec3>&) [31]
+                0.01    0.00   19299/33666       std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_get_Tp_allocator() [71]
+-----------------------------------------------
+                0.01    0.16   21365/21365       std::vector<Vec3, std::allocator<Vec3> >::_M_fill_initialize(unsigned long, Vec3 const&) [30]
+[31]     1.2    0.01    0.16   21365         Vec3* std::__uninitialized_fill_n_a<Vec3*, unsigned long, Vec3, Vec3>(Vec3*, unsigned long, Vec3 const&, std::allocator<Vec3>&) [31]
+                0.00    0.16   21568/21568       Vec3* std::uninitialized_fill_n<Vec3*, unsigned long, Vec3>(Vec3*, unsigned long, Vec3 const&) [33]
+-----------------------------------------------
+                0.02    0.00  113109/1006833     Lambertian::randomInHemisphere(Vec3 const&) const [11]
+                0.14    0.00  893724/1006833     Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [21]
+[32]     1.1    0.16    0.00 1006833         Vec3::dot(Vec3 const&) const [32]
+-----------------------------------------------
+                0.00    0.16   21568/21568       Vec3* std::__uninitialized_fill_n_a<Vec3*, unsigned long, Vec3, Vec3>(Vec3*, unsigned long, Vec3 const&, std::allocator<Vec3>&) [31]
+[33]     1.1    0.00    0.16   21568         Vec3* std::uninitialized_fill_n<Vec3*, unsigned long, Vec3>(Vec3*, unsigned long, Vec3 const&) [33]
+                0.02    0.14   20342/20342       Vec3* std::__uninitialized_fill_n<false>::__uninit_fill_n<Vec3*, unsigned long, Vec3>(Vec3*, unsigned long, Vec3 const&) [34]
+-----------------------------------------------
+                0.02    0.14   20342/20342       Vec3* std::uninitialized_fill_n<Vec3*, unsigned long, Vec3>(Vec3*, unsigned long, Vec3 const&) [33]
+[34]     1.1    0.02    0.14   20342         Vec3* std::__uninitialized_fill_n<false>::__uninit_fill_n<Vec3*, unsigned long, Vec3>(Vec3*, unsigned long, Vec3 const&) [34]
+                0.03    0.09  152878/152878      void std::_Construct<Vec3, Vec3 const&>(Vec3*, Vec3 const&) [39]
+                0.02    0.00  150385/150385      Vec3* std::__addressof<Vec3>(Vec3&) [70]
+-----------------------------------------------
+                0.14    0.00 1197458/1197458     Vec3::normalize() const [29]
+[35]     1.0    0.14    0.00 1197458         Vec3::length() const [35]
+-----------------------------------------------
+                0.09    0.04  187786/187786      _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[36]     0.9    0.09    0.04  187786         bool __gnu_cxx::operator!=<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >(__gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > > const&, __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > > const&) [36]
+                0.04    0.00  382139/382139      __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::base() const [58]
+-----------------------------------------------
+                0.00    0.00       4/374288      Camera::Camera(Vec3 const&, Vec3 const&, Vec3 const&, double, double) [80]
+                0.00    0.00    9443/374288      Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const::{lambda(double)#1}::operator()(double) const [77]
+                0.02    0.01   99024/374288      Camera::getRay(double, double) const [26]
+                0.06    0.03  265817/374288      Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [21]
+[37]     0.9    0.09    0.04  374288         Vec3::operator-(Vec3 const&) const [37]
+                0.04    0.00  374575/3318263     Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                0.00    0.00       6/416073      Camera::Camera(Vec3 const&, Vec3 const&, Vec3 const&, double, double) [80]
+                0.03    0.02  179100/416073      Camera::getRay(double, double) const [26]
+                0.05    0.03  236967/416073      Ray::at(double) const [28]
+[38]     0.9    0.08    0.04  416073         Vec3::operator*(double) const [38]
+                0.04    0.00  439627/3318263     Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                0.03    0.09  152878/152878      Vec3* std::__uninitialized_fill_n<false>::__uninit_fill_n<Vec3*, unsigned long, Vec3>(Vec3*, unsigned long, Vec3 const&) [34]
+[39]     0.8    0.03    0.09  152878         void std::_Construct<Vec3, Vec3 const&>(Vec3*, Vec3 const&) [39]
+                0.05    0.00  160376/160382      operator new(unsigned long, void*) [55]
+                0.04    0.00  151649/151649      Vec3 const& std::forward<Vec3 const&>(std::remove_reference<Vec3 const&>::type&) [59]
+-----------------------------------------------
+                0.05    0.06  246252/246252      findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [3]
+[40]     0.8    0.05    0.06  246252         HitInfo::HitInfo() [40]
+                0.06    0.00  511558/5656067     Vec3::Vec3() [15]
+-----------------------------------------------
+                0.04    0.07  274235/274235      calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+[41]     0.7    0.04    0.07  274235         Ray::Ray() [41]
+                0.07    0.00  535599/5656067     Vec3::Vec3() [15]
+-----------------------------------------------
+                0.06    0.05  241260/241260      findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [3]
+[42]     0.7    0.06    0.05  241260         std::vector<Object*, std::allocator<Object*> >::end() const [42]
+                0.05    0.00  242389/504412      __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::__normal_iterator(Object* const* const&) [44]
+-----------------------------------------------
+                0.10    0.00 1521710/1521710     findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [3]
+[43]     0.7    0.10    0.00 1521710         __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::operator++() [43]
+-----------------------------------------------
+                0.05    0.00  242389/504412      std::vector<Object*, std::allocator<Object*> >::end() const [42]
+                0.05    0.00  262023/504412      std::vector<Object*, std::allocator<Object*> >::begin() const [47]
+[44]     0.7    0.10    0.00  504412         __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::__normal_iterator(Object* const* const&) [44]
+-----------------------------------------------
+                0.09    0.00 1723126/1723126     findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [3]
+[45]     0.6    0.09    0.00 1723126         __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::operator*() const [45]
+-----------------------------------------------
+                0.09    0.00  551717/551717      double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_real_distribution<double>::param_type const&) [6]
+[46]     0.6    0.09    0.00  551717         std::uniform_real_distribution<double>::param_type::a() const [46]
+-----------------------------------------------
+                0.04    0.05  270038/270038      findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [3]
+[47]     0.6    0.04    0.05  270038         std::vector<Object*, std::allocator<Object*> >::begin() const [47]
+                0.05    0.00  262023/504412      __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::__normal_iterator(Object* const* const&) [44]
+-----------------------------------------------
+                0.08    0.00  594612/594612      double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_real_distribution<double>::param_type const&) [6]
+[48]     0.6    0.08    0.00  594612         std::__detail::_Adaptor<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, double>::_Adaptor(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [48]
+-----------------------------------------------
+                0.00    0.07   23303/23303       std::vector<Vec3, std::allocator<Vec3> >::vector(unsigned long, Vec3 const&, std::allocator<Vec3> const&) [24]
+[49]     0.5    0.00    0.07   23303         std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_base(unsigned long, std::allocator<Vec3> const&) [49]
+                0.04    0.03   23624/23624       std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_create_storage(unsigned long) [51]
+                0.00    0.01   21876/21876       std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl::_Vector_impl(std::allocator<Vec3> const&) [93]
+-----------------------------------------------
+                                                 <spontaneous>
+[50]     0.5    0.07    0.00                 _init [50]
+-----------------------------------------------
+                0.04    0.03   23624/23624       std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_base(unsigned long, std::allocator<Vec3> const&) [49]
+[51]     0.5    0.04    0.03   23624         std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_create_storage(unsigned long) [51]
+                0.01    0.02   22049/22049       std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_allocate(unsigned long) [64]
+-----------------------------------------------
+                0.03    0.03  254076/254076      calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+[52]     0.4    0.03    0.03  254076         Vec3::operator*(Vec3 const&) const [52]
+                0.03    0.00  269390/3318263     Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                                                 <spontaneous>
+[53]     0.4    0.06    0.00                 AABB::~AABB() [53]
+-----------------------------------------------
+                0.05    0.00  854336/854336      double std::generate_canonical<double, 53ul, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [9]
+[54]     0.3    0.05    0.00  854336         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::min() [54]
+-----------------------------------------------
+                0.00    0.00       6/160382      void __gnu_cxx::new_allocator<Object*>::construct<Object*, Object*>(Object**, Object*&&) [97]
+                0.05    0.00  160376/160382      void std::_Construct<Vec3, Vec3 const&>(Vec3*, Vec3 const&) [39]
+[55]     0.3    0.05    0.00  160382         operator new(unsigned long, void*) [55]
+-----------------------------------------------
+                0.05    0.00  117829/117829      double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_real_distribution<double>::param_type const&) [6]
+[56]     0.3    0.05    0.00  117829         std::uniform_real_distribution<double>::param_type::b() const [56]
+-----------------------------------------------
+                0.03    0.02    9591/9591        _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[57]     0.3    0.03    0.02    9591         std::allocator<Vec3>::allocator() [57]
+                0.02    0.00   11923/11923       __gnu_cxx::new_allocator<Vec3>::new_allocator() [74]
+-----------------------------------------------
+                0.04    0.00  382139/382139      bool __gnu_cxx::operator!=<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >(__gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > > const&, __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > > const&) [36]
+[58]     0.3    0.04    0.00  382139         __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::base() const [58]
+-----------------------------------------------
+                0.04    0.00  151649/151649      void std::_Construct<Vec3, Vec3 const&>(Vec3*, Vec3 const&) [39]
+[59]     0.3    0.04    0.00  151649         Vec3 const& std::forward<Vec3 const&>(std::remove_reference<Vec3 const&>::type&) [59]
+-----------------------------------------------
+                0.02    0.02   19116/19116       std::vector<Vec3, std::allocator<Vec3> >::vector(unsigned long, Vec3 const&, std::allocator<Vec3> const&) [24]
+[60]     0.3    0.02    0.02   19116         std::vector<Vec3, std::allocator<Vec3> >::_S_check_init_len(unsigned long, std::allocator<Vec3> const&) [60]
+                0.01    0.00   20052/20052       std::vector<Vec3, std::allocator<Vec3> >::_S_max_size(std::allocator<Vec3> const&) [88]
+                0.00    0.00   19301/39340       std::allocator<Vec3>::allocator(std::allocator<Vec3> const&) [85]
+                0.00    0.00   21392/54882       std::allocator<Vec3>::~allocator() [84]
+-----------------------------------------------
+                0.00    0.04   11349/11349       _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[61]     0.3    0.00    0.04   11349         std::vector<Vec3, std::allocator<Vec3> >::~vector() [61]
+                0.00    0.03   18430/18430       std::_Vector_base<Vec3, std::allocator<Vec3> >::~_Vector_base() [66]
+                0.01    0.00   14367/33666       std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_get_Tp_allocator() [71]
+                0.00    0.00   15654/15654       void std::_Destroy<Vec3*, Vec3>(Vec3*, Vec3*, std::allocator<Vec3>&) [118]
+-----------------------------------------------
+                0.03    0.01   50852/50852       calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [2]
+[62]     0.2    0.03    0.01   50852         operator*(double, Vec3 const&) [62]
+                0.01    0.00   52217/3318263     Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                0.03    0.00    5806/5806        _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[63]     0.2    0.03    0.00    5806         std::vector<Vec3, std::allocator<Vec3> >::begin() [63]
+                0.00    0.00   11400/26216       __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::__normal_iterator(Vec3* const&) [86]
+-----------------------------------------------
+                0.01    0.02   22049/22049       std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_create_storage(unsigned long) [51]
+[64]     0.2    0.01    0.02   22049         std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_allocate(unsigned long) [64]
+                0.00    0.02   21924/21924       std::allocator_traits<std::allocator<Vec3> >::allocate(std::allocator<Vec3>&, unsigned long) [73]
+-----------------------------------------------
+                0.02    0.01   66203/66203       Lambertian::randomInHemisphere(Vec3 const&) const [11]
+[65]     0.2    0.02    0.01   66203         Vec3::operator-() [65]
+                0.01    0.00   83214/3318263     Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                0.00    0.03   18430/18430       std::vector<Vec3, std::allocator<Vec3> >::~vector() [61]
+[66]     0.2    0.00    0.03   18430         std::_Vector_base<Vec3, std::allocator<Vec3> >::~_Vector_base() [66]
+                0.01    0.01   20642/20642       std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_deallocate(Vec3*, unsigned long) [67]
+                0.00    0.00   15812/15812       std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl::~_Vector_impl() [94]
+-----------------------------------------------
+                0.01    0.01   20642/20642       std::_Vector_base<Vec3, std::allocator<Vec3> >::~_Vector_base() [66]
+[67]     0.2    0.01    0.01   20642         std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_deallocate(Vec3*, unsigned long) [67]
+                0.00    0.01   19654/19654       std::allocator_traits<std::allocator<Vec3> >::deallocate(std::allocator<Vec3>&, Vec3*, unsigned long) [89]
+-----------------------------------------------
+                0.02    0.00  162151/162151      _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[68]     0.1    0.02    0.00  162151         __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::operator++() [68]
+-----------------------------------------------
+                0.02    0.00  154747/154747      Lambertian::scatter(Ray const&, HitInfo const&, Vec3&, Ray&) const [10]
+[69]     0.1    0.02    0.00  154747         Vec3::nearZero() const [69]
+-----------------------------------------------
+                0.02    0.00  150385/150385      Vec3* std::__uninitialized_fill_n<false>::__uninit_fill_n<Vec3*, unsigned long, Vec3>(Vec3*, unsigned long, Vec3 const&) [34]
+[70]     0.1    0.02    0.00  150385         Vec3* std::__addressof<Vec3>(Vec3&) [70]
+-----------------------------------------------
+                0.01    0.00   14367/33666       std::vector<Vec3, std::allocator<Vec3> >::~vector() [61]
+                0.01    0.00   19299/33666       std::vector<Vec3, std::allocator<Vec3> >::_M_fill_initialize(unsigned long, Vec3 const&) [30]
+[71]     0.1    0.02    0.00   33666         std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_get_Tp_allocator() [71]
+-----------------------------------------------
+                0.02    0.00   22297/22297       std::allocator_traits<std::allocator<Vec3> >::allocate(std::allocator<Vec3>&, unsigned long) [73]
+[72]     0.1    0.02    0.00   22297         __gnu_cxx::new_allocator<Vec3>::allocate(unsigned long, void const*) [72]
+                0.00    0.00   24563/48470       __gnu_cxx::new_allocator<Vec3>::_M_max_size() const [111]
+-----------------------------------------------
+                0.00    0.02   21924/21924       std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_allocate(unsigned long) [64]
+[73]     0.1    0.00    0.02   21924         std::allocator_traits<std::allocator<Vec3> >::allocate(std::allocator<Vec3>&, unsigned long) [73]
+                0.02    0.00   22297/22297       __gnu_cxx::new_allocator<Vec3>::allocate(unsigned long, void const*) [72]
+-----------------------------------------------
+                0.02    0.00   11923/11923       std::allocator<Vec3>::allocator() [57]
+[74]     0.1    0.02    0.00   11923         __gnu_cxx::new_allocator<Vec3>::new_allocator() [74]
+-----------------------------------------------
+                0.02    0.00       1/1           _GLOBAL__sub_I__ZN6CameraC2ERK4Vec3S2_S2_dd [76]
+[75]     0.1    0.02    0.00       1         __static_initialization_and_destruction_0(int, int) [75]
+-----------------------------------------------
+                                                 <spontaneous>
+[76]     0.1    0.00    0.02                 _GLOBAL__sub_I__ZN6CameraC2ERK4Vec3S2_S2_dd [76]
+                0.02    0.00       1/1           __static_initialization_and_destruction_0(int, int) [75]
+-----------------------------------------------
+                0.00    0.02   18008/18008       Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [21]
+[77]     0.1    0.00    0.02   18008         Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const::{lambda(double)#1}::operator()(double) const [77]
+                0.00    0.01    7815/215538      Ray::at(double) const [28]
+                0.00    0.01    9193/310018      Vec3::normalize() const [29]
+                0.00    0.00    9443/374288      Vec3::operator-(Vec3 const&) const [37]
+-----------------------------------------------
+                                                 <spontaneous>
+[78]     0.1    0.00    0.01                 main [78]
+                0.00    0.01       1/1           render(double, double, std::vector<Object*, std::allocator<Object*> > const&, char*, Vec3 const&, Vec3 const&, Vec3 const&, double, int, int) [79]
+                0.00    0.00       1/1           createScene() [96]
+                0.00    0.00       3/5656067     Vec3::Vec3() [15]
+                0.00    0.00       3/3318263     Vec3::Vec3(double, double, double) [20]
+                0.00    0.00       1/1           std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >(std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&, std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&) [200]
+                0.00    0.00       1/1           std::chrono::duration<double, std::ratio<1l, 1l> >::duration<long, std::ratio<1l, 1000000000l>, void>(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [197]
+                0.00    0.00       1/2           std::chrono::duration<double, std::ratio<1l, 1l> >::count() const [175]
+                0.00    0.00       1/1           std::vector<Object*, std::allocator<Object*> >::~vector() [203]
+-----------------------------------------------
+                0.00    0.01       1/1           main [78]
+[79]     0.1    0.00    0.01       1         render(double, double, std::vector<Object*, std::allocator<Object*> > const&, char*, Vec3 const&, Vec3 const&, Vec3 const&, double, int, int) [79]
+                0.00    0.01       1/1           Camera::Camera(Vec3 const&, Vec3 const&, Vec3 const&, double, double) [80]
+                0.00    0.00       1/1           img2rgb(unsigned int, unsigned int, double*) [182]
+                0.00    0.00       1/1           writePPM(char*, unsigned int, unsigned int, unsigned char*) [183]
+-----------------------------------------------
+                0.00    0.01       1/1           render(double, double, std::vector<Object*, std::allocator<Object*> > const&, char*, Vec3 const&, Vec3 const&, Vec3 const&, double, int, int) [79]
+[80]     0.1    0.00    0.01       1         Camera::Camera(Vec3 const&, Vec3 const&, Vec3 const&, double, double) [80]
+                0.01    0.00       2/2           Vec3::cross(Vec3 const&) const [81]
+                0.00    0.00       6/416073      Vec3::operator*(double) const [38]
+                0.00    0.00       2/310018      Vec3::normalize() const [29]
+                0.00    0.00       4/374288      Vec3::operator-(Vec3 const&) const [37]
+                0.00    0.00       4/5656067     Vec3::Vec3() [15]
+-----------------------------------------------
+                0.01    0.00       2/2           Camera::Camera(Vec3 const&, Vec3 const&, Vec3 const&, double, double) [80]
+[81]     0.1    0.01    0.00       2         Vec3::cross(Vec3 const&) const [81]
+                0.00    0.00       2/3318263     Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                0.01    0.00  268186/268186      _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[82]     0.1    0.01    0.00  268186         std::vector<Vec3, std::allocator<Vec3> >::operator[](unsigned long) [82]
+-----------------------------------------------
+                0.01    0.00  175562/175562      _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[83]     0.1    0.01    0.00  175562         __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::operator*() const [83]
+-----------------------------------------------
+                0.00    0.00   16414/54882       _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+                0.00    0.00   17076/54882       std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl::~_Vector_impl() [94]
+                0.00    0.00   21392/54882       std::vector<Vec3, std::allocator<Vec3> >::_S_check_init_len(unsigned long, std::allocator<Vec3> const&) [60]
+[84]     0.1    0.01    0.00   54882         std::allocator<Vec3>::~allocator() [84]
+                0.00    0.00   64826/64826       __gnu_cxx::new_allocator<Vec3>::~new_allocator() [110]
+-----------------------------------------------
+                0.00    0.00   19301/39340       std::vector<Vec3, std::allocator<Vec3> >::_S_check_init_len(unsigned long, std::allocator<Vec3> const&) [60]
+                0.01    0.00   20039/39340       std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl::_Vector_impl(std::allocator<Vec3> const&) [93]
+[85]     0.1    0.01    0.00   39340         std::allocator<Vec3>::allocator(std::allocator<Vec3> const&) [85]
+                0.00    0.00   42059/42059       __gnu_cxx::new_allocator<Vec3>::new_allocator(__gnu_cxx::new_allocator<Vec3> const&) [112]
+-----------------------------------------------
+                0.00    0.00   11400/26216       std::vector<Vec3, std::allocator<Vec3> >::begin() [63]
+                0.01    0.00   14816/26216       std::vector<Vec3, std::allocator<Vec3> >::end() [92]
+[86]     0.1    0.01    0.00   26216         __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::__normal_iterator(Vec3* const&) [86]
+-----------------------------------------------
+                0.01    0.00   21020/21020       std::allocator_traits<std::allocator<Vec3> >::deallocate(std::allocator<Vec3>&, Vec3*, unsigned long) [89]
+[87]     0.1    0.01    0.00   21020         __gnu_cxx::new_allocator<Vec3>::deallocate(Vec3*, unsigned long) [87]
+-----------------------------------------------
+                0.01    0.00   20052/20052       std::vector<Vec3, std::allocator<Vec3> >::_S_check_init_len(unsigned long, std::allocator<Vec3> const&) [60]
+[88]     0.1    0.01    0.00   20052         std::vector<Vec3, std::allocator<Vec3> >::_S_max_size(std::allocator<Vec3> const&) [88]
+                0.00    0.00   22975/22983       unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&) [114]
+                0.00    0.00   19160/19160       std::allocator_traits<std::allocator<Vec3> >::max_size(std::allocator<Vec3> const&) [116]
+-----------------------------------------------
+                0.00    0.01   19654/19654       std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_deallocate(Vec3*, unsigned long) [67]
+[89]     0.1    0.00    0.01   19654         std::allocator_traits<std::allocator<Vec3> >::deallocate(std::allocator<Vec3>&, Vec3*, unsigned long) [89]
+                0.01    0.00   21020/21020       __gnu_cxx::new_allocator<Vec3>::deallocate(Vec3*, unsigned long) [87]
+-----------------------------------------------
+                0.01    0.00       1/1           _GLOBAL__sub_I__ZNK3Ray2atEd [91]
+[90]     0.1    0.01    0.00       1         __static_initialization_and_destruction_0(int, int) [90]
+-----------------------------------------------
+                                                 <spontaneous>
+[91]     0.1    0.00    0.01                 _GLOBAL__sub_I__ZNK3Ray2atEd [91]
+                0.01    0.00       1/1           __static_initialization_and_destruction_0(int, int) [90]
+-----------------------------------------------
+                0.00    0.01   13047/13047       _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[92]     0.0    0.00    0.01   13047         std::vector<Vec3, std::allocator<Vec3> >::end() [92]
+                0.01    0.00   14816/26216       __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::__normal_iterator(Vec3* const&) [86]
+-----------------------------------------------
+                0.00    0.01   21876/21876       std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_base(unsigned long, std::allocator<Vec3> const&) [49]
+[93]     0.0    0.00    0.01   21876         std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl::_Vector_impl(std::allocator<Vec3> const&) [93]
+                0.01    0.00   20039/39340       std::allocator<Vec3>::allocator(std::allocator<Vec3> const&) [85]
+                0.00    0.00   24370/24370       std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl_data::_Vector_impl_data() [113]
+-----------------------------------------------
+                0.00    0.00   15812/15812       std::_Vector_base<Vec3, std::allocator<Vec3> >::~_Vector_base() [66]
+[94]     0.0    0.00    0.00   15812         std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl::~_Vector_impl() [94]
+                0.00    0.00   17076/54882       std::allocator<Vec3>::~allocator() [84]
+-----------------------------------------------
+                0.00    0.00   20764/20764       _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[95]     0.0    0.00    0.00   20764         Vec3::operator/(double) const [95]
+                0.00    0.00   21669/3318263     Vec3::Vec3(double, double, double) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           main [78]
+[96]     0.0    0.00    0.00       1         createScene() [96]
+                0.00    0.00       6/6           std::vector<Object*, std::allocator<Object*> >::push_back(Object*&&) [100]
+                0.00    0.00      15/3318263     Vec3::Vec3(double, double, double) [20]
+                0.00    0.00       5/5           AABB::AABB(Material*, Vec3 const&, Vec3 const&) [159]
+                0.00    0.00       4/4           Lambertian::Lambertian(Vec3 const&) [162]
+                0.00    0.00       1/1           std::vector<Object*, std::allocator<Object*> >::vector() [202]
+                0.00    0.00       1/1           Sphere::Sphere(Material*, double, Vec3 const&) [184]
+-----------------------------------------------
+                0.00    0.00       6/6           void std::allocator_traits<std::allocator<Object*> >::construct<Object*, Object*>(std::allocator<Object*>&, Object**, Object*&&) [98]
+[97]     0.0    0.00    0.00       6         void __gnu_cxx::new_allocator<Object*>::construct<Object*, Object*>(Object**, Object*&&) [97]
+                0.00    0.00       6/160382      operator new(unsigned long, void*) [55]
+                0.00    0.00       6/22          Object*&& std::forward<Object*>(std::remove_reference<Object*>::type&) [125]
+-----------------------------------------------
+                0.00    0.00       2/6           Object*& std::vector<Object*, std::allocator<Object*> >::emplace_back<Object*>(Object*&&) [99]
+                0.00    0.00       4/6           void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+[98]     0.0    0.00    0.00       6         void std::allocator_traits<std::allocator<Object*> >::construct<Object*, Object*>(std::allocator<Object*>&, Object**, Object*&&) [98]
+                0.00    0.00       6/6           void __gnu_cxx::new_allocator<Object*>::construct<Object*, Object*>(Object**, Object*&&) [97]
+                0.00    0.00       6/22          Object*&& std::forward<Object*>(std::remove_reference<Object*>::type&) [125]
+-----------------------------------------------
+                0.00    0.00       6/6           std::vector<Object*, std::allocator<Object*> >::push_back(Object*&&) [100]
+[99]     0.0    0.00    0.00       6         Object*& std::vector<Object*, std::allocator<Object*> >::emplace_back<Object*>(Object*&&) [99]
+                0.00    0.00       4/4           void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+                0.00    0.00       2/6           void std::allocator_traits<std::allocator<Object*> >::construct<Object*, Object*>(std::allocator<Object*>&, Object**, Object*&&) [98]
+                0.00    0.00       6/22          Object*&& std::forward<Object*>(std::remove_reference<Object*>::type&) [125]
+                0.00    0.00       6/6           std::vector<Object*, std::allocator<Object*> >::back() [157]
+                0.00    0.00       4/10          std::vector<Object*, std::allocator<Object*> >::end() [130]
+-----------------------------------------------
+                0.00    0.00       6/6           createScene() [96]
+[100]    0.0    0.00    0.00       6         std::vector<Object*, std::allocator<Object*> >::push_back(Object*&&) [100]
+                0.00    0.00       6/6           Object*& std::vector<Object*, std::allocator<Object*> >::emplace_back<Object*>(Object*&&) [99]
+                0.00    0.00       6/6           std::remove_reference<Object*&>::type&& std::move<Object*&>(Object*&) [158]
+-----------------------------------------------
+                0.00    0.00       4/4           Object*& std::vector<Object*, std::allocator<Object*> >::emplace_back<Object*>(Object*&&) [99]
+[101]    0.0    0.00    0.00       4         void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+                0.00    0.00       4/6           void std::allocator_traits<std::allocator<Object*> >::construct<Object*, Object*>(std::allocator<Object*>&, Object**, Object*&&) [98]
+                0.00    0.00       8/9           std::_Vector_base<Object*, std::allocator<Object*> >::_M_get_Tp_allocator() [131]
+                0.00    0.00       8/16          __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::base() const [127]
+                0.00    0.00       8/8           std::vector<Object*, std::allocator<Object*> >::_S_relocate(Object**, Object**, Object**, std::allocator<Object*>&) [145]
+                0.00    0.00       4/4           std::vector<Object*, std::allocator<Object*> >::_M_check_len(unsigned long, char const*) const [167]
+                0.00    0.00       4/4           std::vector<Object*, std::allocator<Object*> >::begin() [171]
+                0.00    0.00       4/4           __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::difference_type __gnu_cxx::operator-<Object**, std::vector<Object*, std::allocator<Object*> > >(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > > const&, __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > > const&) [166]
+                0.00    0.00       4/4           std::_Vector_base<Object*, std::allocator<Object*> >::_M_allocate(unsigned long) [168]
+                0.00    0.00       4/22          Object*&& std::forward<Object*>(std::remove_reference<Object*>::type&) [125]
+                0.00    0.00       4/5           std::_Vector_base<Object*, std::allocator<Object*> >::_M_deallocate(Object**, unsigned long) [160]
+-----------------------------------------------
+                0.00    0.00   64826/64826       std::allocator<Vec3>::~allocator() [84]
+[110]    0.0    0.00    0.00   64826         __gnu_cxx::new_allocator<Vec3>::~new_allocator() [110]
+-----------------------------------------------
+                0.00    0.00   23907/48470       __gnu_cxx::new_allocator<Vec3>::max_size() const [115]
+                0.00    0.00   24563/48470       __gnu_cxx::new_allocator<Vec3>::allocate(unsigned long, void const*) [72]
+[111]    0.0    0.00    0.00   48470         __gnu_cxx::new_allocator<Vec3>::_M_max_size() const [111]
+-----------------------------------------------
+                0.00    0.00   42059/42059       std::allocator<Vec3>::allocator(std::allocator<Vec3> const&) [85]
+[112]    0.0    0.00    0.00   42059         __gnu_cxx::new_allocator<Vec3>::new_allocator(__gnu_cxx::new_allocator<Vec3> const&) [112]
+-----------------------------------------------
+                0.00    0.00   24370/24370       std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl::_Vector_impl(std::allocator<Vec3> const&) [93]
+[113]    0.0    0.00    0.00   24370         std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl_data::_Vector_impl_data() [113]
+-----------------------------------------------
+                0.00    0.00       8/22983       std::vector<Object*, std::allocator<Object*> >::_S_max_size(std::allocator<Object*> const&) [144]
+                0.00    0.00   22975/22983       std::vector<Vec3, std::allocator<Vec3> >::_S_max_size(std::allocator<Vec3> const&) [88]
+[114]    0.0    0.00    0.00   22983         unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&) [114]
+-----------------------------------------------
+                0.00    0.00   20651/20651       std::allocator_traits<std::allocator<Vec3> >::max_size(std::allocator<Vec3> const&) [116]
+[115]    0.0    0.00    0.00   20651         __gnu_cxx::new_allocator<Vec3>::max_size() const [115]
+                0.00    0.00   23907/48470       __gnu_cxx::new_allocator<Vec3>::_M_max_size() const [111]
+-----------------------------------------------
+                0.00    0.00   19160/19160       std::vector<Vec3, std::allocator<Vec3> >::_S_max_size(std::allocator<Vec3> const&) [88]
+[116]    0.0    0.00    0.00   19160         std::allocator_traits<std::allocator<Vec3> >::max_size(std::allocator<Vec3> const&) [116]
+                0.00    0.00   20651/20651       __gnu_cxx::new_allocator<Vec3>::max_size() const [115]
+-----------------------------------------------
+                0.00    0.00   16905/16905       void std::_Destroy<Vec3*>(Vec3*, Vec3*) [119]
+[117]    0.0    0.00    0.00   16905         void std::_Destroy_aux<true>::__destroy<Vec3*>(Vec3*, Vec3*) [117]
+-----------------------------------------------
+                0.00    0.00   15654/15654       std::vector<Vec3, std::allocator<Vec3> >::~vector() [61]
+[118]    0.0    0.00    0.00   15654         void std::_Destroy<Vec3*, Vec3>(Vec3*, Vec3*, std::allocator<Vec3>&) [118]
+                0.00    0.00   15282/15282       void std::_Destroy<Vec3*>(Vec3*, Vec3*) [119]
+-----------------------------------------------
+                0.00    0.00   15282/15282       void std::_Destroy<Vec3*, Vec3>(Vec3*, Vec3*, std::allocator<Vec3>&) [118]
+[119]    0.0    0.00    0.00   15282         void std::_Destroy<Vec3*>(Vec3*, Vec3*) [119]
+                0.00    0.00   16905/16905       void std::_Destroy_aux<true>::__destroy<Vec3*>(Vec3*, Vec3*) [117]
+-----------------------------------------------
+                0.00    0.00    3913/3913        unsigned long std::__detail::__mod<unsigned long, 4294967296ul, 1ul, 0ul>(unsigned long) [123]
+[120]    0.0    0.00    0.00    3913         std::__detail::_Mod<unsigned long, 4294967296ul, 1ul, 0ul, true, true>::__calc(unsigned long) [120]
+-----------------------------------------------
+                0.00    0.00    3907/3907        unsigned long std::__detail::__mod<unsigned long, 624ul, 1ul, 0ul>(unsigned long) [122]
+[121]    0.0    0.00    0.00    3907         std::__detail::_Mod<unsigned long, 624ul, 1ul, 0ul, true, true>::__calc(unsigned long) [121]
+-----------------------------------------------
+                0.00    0.00    3894/3894        std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::seed(unsigned long) [140]
+[122]    0.0    0.00    0.00    3894         unsigned long std::__detail::__mod<unsigned long, 624ul, 1ul, 0ul>(unsigned long) [122]
+                0.00    0.00    3907/3907        std::__detail::_Mod<unsigned long, 624ul, 1ul, 0ul, true, true>::__calc(unsigned long) [121]
+-----------------------------------------------
+                0.00    0.00    3874/3874        std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::seed(unsigned long) [140]
+[123]    0.0    0.00    0.00    3874         unsigned long std::__detail::__mod<unsigned long, 4294967296ul, 1ul, 0ul>(unsigned long) [123]
+                0.00    0.00    3913/3913        std::__detail::_Mod<unsigned long, 4294967296ul, 1ul, 0ul, true, true>::__calc(unsigned long) [120]
+-----------------------------------------------
+                0.00    0.00      24/24          Object** std::__relocate_a<Object**, Object**, std::allocator<Object*> >(Object**, Object**, Object**, std::allocator<Object*>&) [150]
+[124]    0.0    0.00    0.00      24         Object** std::__niter_base<Object**>(Object**) [124]
+-----------------------------------------------
+                0.00    0.00       4/22          void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+                0.00    0.00       6/22          Object*& std::vector<Object*, std::allocator<Object*> >::emplace_back<Object*>(Object*&&) [99]
+                0.00    0.00       6/22          void std::allocator_traits<std::allocator<Object*> >::construct<Object*, Object*>(std::allocator<Object*>&, Object**, Object*&&) [98]
+                0.00    0.00       6/22          void __gnu_cxx::new_allocator<Object*>::construct<Object*, Object*>(Object**, Object*&&) [97]
+[125]    0.0    0.00    0.00      22         Object*&& std::forward<Object*>(std::remove_reference<Object*>::type&) [125]
+-----------------------------------------------
+                0.00    0.00       4/20          std::vector<Object*, std::allocator<Object*> >::begin() [171]
+                0.00    0.00       6/20          __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::operator-(long) const [156]
+                0.00    0.00      10/20          std::vector<Object*, std::allocator<Object*> >::end() [130]
+[126]    0.0    0.00    0.00      20         __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::__normal_iterator(Object** const&) [126]
+-----------------------------------------------
+                0.00    0.00       8/16          void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+                0.00    0.00       8/16          __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::difference_type __gnu_cxx::operator-<Object**, std::vector<Object*, std::allocator<Object*> > >(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > > const&, __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > > const&) [166]
+[127]    0.0    0.00    0.00      16         __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::base() const [127]
+-----------------------------------------------
+                0.00    0.00      16/16          std::vector<Object*, std::allocator<Object*> >::_M_check_len(unsigned long, char const*) const [167]
+[128]    0.0    0.00    0.00      16         std::vector<Object*, std::allocator<Object*> >::size() const [128]
+-----------------------------------------------
+                0.00    0.00       4/12          __gnu_cxx::new_allocator<Object*>::allocate(unsigned long, void const*) [165]
+                0.00    0.00       8/12          __gnu_cxx::new_allocator<Object*>::max_size() const [133]
+[129]    0.0    0.00    0.00      12         __gnu_cxx::new_allocator<Object*>::_M_max_size() const [129]
+-----------------------------------------------
+                0.00    0.00       4/10          Object*& std::vector<Object*, std::allocator<Object*> >::emplace_back<Object*>(Object*&&) [99]
+                0.00    0.00       6/10          std::vector<Object*, std::allocator<Object*> >::back() [157]
+[130]    0.0    0.00    0.00      10         std::vector<Object*, std::allocator<Object*> >::end() [130]
+                0.00    0.00      10/20          __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::__normal_iterator(Object** const&) [126]
+-----------------------------------------------
+                0.00    0.00       1/9           std::vector<Object*, std::allocator<Object*> >::~vector() [203]
+                0.00    0.00       8/9           void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+[131]    0.0    0.00    0.00       9         std::_Vector_base<Object*, std::allocator<Object*> >::_M_get_Tp_allocator() [131]
+-----------------------------------------------
+                0.00    0.00       8/8           void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [147]
+[132]    0.0    0.00    0.00       8         bool __gnu_cxx::__is_null_pointer<char const>(char const*) [132]
+-----------------------------------------------
+                0.00    0.00       8/8           std::allocator_traits<std::allocator<Object*> >::max_size(std::allocator<Object*> const&) [139]
+[133]    0.0    0.00    0.00       8         __gnu_cxx::new_allocator<Object*>::max_size() const [133]
+                0.00    0.00       8/12          __gnu_cxx::new_allocator<Object*>::_M_max_size() const [129]
+-----------------------------------------------
+                0.00    0.00       8/8           std::vector<Object*, std::allocator<Object*> >::max_size() const [135]
+[134]    0.0    0.00    0.00       8         std::_Vector_base<Object*, std::allocator<Object*> >::_M_get_Tp_allocator() const [134]
+-----------------------------------------------
+                0.00    0.00       8/8           std::vector<Object*, std::allocator<Object*> >::_M_check_len(unsigned long, char const*) const [167]
+[135]    0.0    0.00    0.00       8         std::vector<Object*, std::allocator<Object*> >::max_size() const [135]
+                0.00    0.00       8/8           std::vector<Object*, std::allocator<Object*> >::_S_max_size(std::allocator<Object*> const&) [144]
+                0.00    0.00       8/8           std::_Vector_base<Object*, std::allocator<Object*> >::_M_get_Tp_allocator() const [134]
+-----------------------------------------------
+                0.00    0.00       8/8           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&) [148]
+[136]    0.0    0.00    0.00       8         std::char_traits<char>::length(char const*) [136]
+-----------------------------------------------
+                0.00    0.00       8/8           randomDouble() [4]
+[137]    0.0    0.00    0.00       8         std::random_device::random_device() [137]
+                0.00    0.00       8/8           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&) [148]
+-----------------------------------------------
+                0.00    0.00       8/8           randomDouble() [4]
+[138]    0.0    0.00    0.00       8         std::random_device::operator()() [138]
+-----------------------------------------------
+                0.00    0.00       8/8           std::vector<Object*, std::allocator<Object*> >::_S_max_size(std::allocator<Object*> const&) [144]
+[139]    0.0    0.00    0.00       8         std::allocator_traits<std::allocator<Object*> >::max_size(std::allocator<Object*> const&) [139]
+                0.00    0.00       8/8           __gnu_cxx::new_allocator<Object*>::max_size() const [133]
+-----------------------------------------------
+                0.00    0.00       8/8           std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::mersenne_twister_engine(unsigned long) [141]
+[140]    0.0    0.00    0.00       8         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::seed(unsigned long) [140]
+                0.00    0.00    3894/3894        unsigned long std::__detail::__mod<unsigned long, 624ul, 1ul, 0ul>(unsigned long) [122]
+                0.00    0.00    3874/3874        unsigned long std::__detail::__mod<unsigned long, 4294967296ul, 1ul, 0ul>(unsigned long) [123]
+-----------------------------------------------
+                0.00    0.00       8/8           randomDouble() [4]
+[141]    0.0    0.00    0.00       8         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::mersenne_twister_engine(unsigned long) [141]
+                0.00    0.00       8/8           std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::seed(unsigned long) [140]
+-----------------------------------------------
+                0.00    0.00       8/8           std::uniform_real_distribution<double>::uniform_real_distribution(double, double) [143]
+[142]    0.0    0.00    0.00       8         std::uniform_real_distribution<double>::param_type::param_type(double, double) [142]
+-----------------------------------------------
+                0.00    0.00       8/8           randomDouble() [4]
+[143]    0.0    0.00    0.00       8         std::uniform_real_distribution<double>::uniform_real_distribution(double, double) [143]
+                0.00    0.00       8/8           std::uniform_real_distribution<double>::param_type::param_type(double, double) [142]
+-----------------------------------------------
+                0.00    0.00       8/8           std::vector<Object*, std::allocator<Object*> >::max_size() const [135]
+[144]    0.0    0.00    0.00       8         std::vector<Object*, std::allocator<Object*> >::_S_max_size(std::allocator<Object*> const&) [144]
+                0.00    0.00       8/8           std::allocator_traits<std::allocator<Object*> >::max_size(std::allocator<Object*> const&) [139]
+                0.00    0.00       8/22983       unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&) [114]
+-----------------------------------------------
+                0.00    0.00       8/8           void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+[145]    0.0    0.00    0.00       8         std::vector<Object*, std::allocator<Object*> >::_S_relocate(Object**, Object**, Object**, std::allocator<Object*>&) [145]
+                0.00    0.00       8/8           std::vector<Object*, std::allocator<Object*> >::_S_do_relocate(Object**, Object**, Object**, std::allocator<Object*>&, std::integral_constant<bool, true>) [146]
+-----------------------------------------------
+                0.00    0.00       8/8           std::vector<Object*, std::allocator<Object*> >::_S_relocate(Object**, Object**, Object**, std::allocator<Object*>&) [145]
+[146]    0.0    0.00    0.00       8         std::vector<Object*, std::allocator<Object*> >::_S_do_relocate(Object**, Object**, Object**, std::allocator<Object*>&, std::integral_constant<bool, true>) [146]
+                0.00    0.00       8/8           Object** std::__relocate_a<Object**, Object**, std::allocator<Object*> >(Object**, Object**, Object**, std::allocator<Object*>&) [150]
+-----------------------------------------------
+                0.00    0.00       8/8           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&) [148]
+[147]    0.0    0.00    0.00       8         void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [147]
+                0.00    0.00       8/8           bool __gnu_cxx::__is_null_pointer<char const>(char const*) [132]
+                0.00    0.00       8/8           std::iterator_traits<char const*>::difference_type std::distance<char const*>(char const*, char const*) [153]
+-----------------------------------------------
+                0.00    0.00       8/8           std::random_device::random_device() [137]
+[148]    0.0    0.00    0.00       8         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&) [148]
+                0.00    0.00       8/8           std::char_traits<char>::length(char const*) [136]
+                0.00    0.00       8/8           void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [147]
+-----------------------------------------------
+                0.00    0.00       8/8           std::iterator_traits<char const*>::difference_type std::distance<char const*>(char const*, char const*) [153]
+[149]    0.0    0.00    0.00       8         std::iterator_traits<char const*>::difference_type std::__distance<char const*>(char const*, char const*, std::random_access_iterator_tag) [149]
+-----------------------------------------------
+                0.00    0.00       8/8           std::vector<Object*, std::allocator<Object*> >::_S_do_relocate(Object**, Object**, Object**, std::allocator<Object*>&, std::integral_constant<bool, true>) [146]
+[150]    0.0    0.00    0.00       8         Object** std::__relocate_a<Object**, Object**, std::allocator<Object*> >(Object**, Object**, Object**, std::allocator<Object*>&) [150]
+                0.00    0.00      24/24          Object** std::__niter_base<Object**>(Object**) [124]
+                0.00    0.00       8/8           std::enable_if<std::__is_bitwise_relocatable<Object*, void>::value, Object**>::type std::__relocate_a_1<Object*, Object*>(Object**, Object**, Object**, std::allocator<Object*>&) [151]
+-----------------------------------------------
+                0.00    0.00       8/8           Object** std::__relocate_a<Object**, Object**, std::allocator<Object*> >(Object**, Object**, Object**, std::allocator<Object*>&) [150]
+[151]    0.0    0.00    0.00       8         std::enable_if<std::__is_bitwise_relocatable<Object*, void>::value, Object**>::type std::__relocate_a_1<Object*, Object*>(Object**, Object**, Object**, std::allocator<Object*>&) [151]
+-----------------------------------------------
+                0.00    0.00       8/8           std::iterator_traits<char const*>::difference_type std::distance<char const*>(char const*, char const*) [153]
+[152]    0.0    0.00    0.00       8         std::iterator_traits<char const*>::iterator_category std::__iterator_category<char const*>(char const* const&) [152]
+-----------------------------------------------
+                0.00    0.00       8/8           void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [147]
+[153]    0.0    0.00    0.00       8         std::iterator_traits<char const*>::difference_type std::distance<char const*>(char const*, char const*) [153]
+                0.00    0.00       8/8           std::iterator_traits<char const*>::iterator_category std::__iterator_category<char const*>(char const* const&) [152]
+                0.00    0.00       8/8           std::iterator_traits<char const*>::difference_type std::__distance<char const*>(char const*, char const*, std::random_access_iterator_tag) [149]
+-----------------------------------------------
+                0.00    0.00       1/6           Sphere::Sphere(Material*, double, Vec3 const&) [184]
+                0.00    0.00       5/6           AABB::AABB(Material*, Vec3 const&, Vec3 const&) [159]
+[154]    0.0    0.00    0.00       6         Object::Object(Material*) [154]
+-----------------------------------------------
+                0.00    0.00       6/6           std::vector<Object*, std::allocator<Object*> >::back() [157]
+[155]    0.0    0.00    0.00       6         __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::operator*() const [155]
+-----------------------------------------------
+                0.00    0.00       6/6           std::vector<Object*, std::allocator<Object*> >::back() [157]
+[156]    0.0    0.00    0.00       6         __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::operator-(long) const [156]
+                0.00    0.00       6/20          __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::__normal_iterator(Object** const&) [126]
+-----------------------------------------------
+                0.00    0.00       6/6           Object*& std::vector<Object*, std::allocator<Object*> >::emplace_back<Object*>(Object*&&) [99]
+[157]    0.0    0.00    0.00       6         std::vector<Object*, std::allocator<Object*> >::back() [157]
+                0.00    0.00       6/10          std::vector<Object*, std::allocator<Object*> >::end() [130]
+                0.00    0.00       6/6           __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::operator-(long) const [156]
+                0.00    0.00       6/6           __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::operator*() const [155]
+-----------------------------------------------
+                0.00    0.00       6/6           std::vector<Object*, std::allocator<Object*> >::push_back(Object*&&) [100]
+[158]    0.0    0.00    0.00       6         std::remove_reference<Object*&>::type&& std::move<Object*&>(Object*&) [158]
+-----------------------------------------------
+                0.00    0.00       5/5           createScene() [96]
+[159]    0.0    0.00    0.00       5         AABB::AABB(Material*, Vec3 const&, Vec3 const&) [159]
+                0.00    0.00       5/6           Object::Object(Material*) [154]
+-----------------------------------------------
+                0.00    0.00       1/5           std::_Vector_base<Object*, std::allocator<Object*> >::~_Vector_base() [194]
+                0.00    0.00       4/5           void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+[160]    0.0    0.00    0.00       5         std::_Vector_base<Object*, std::allocator<Object*> >::_M_deallocate(Object**, unsigned long) [160]
+                0.00    0.00       4/4           std::allocator_traits<std::allocator<Object*> >::deallocate(std::allocator<Object*>&, Object**, unsigned long) [169]
+-----------------------------------------------
+                0.00    0.00       5/5           randomDouble() [4]
+[161]    0.0    0.00    0.00       5         std::random_device::~random_device() [161]
+-----------------------------------------------
+                0.00    0.00       4/4           createScene() [96]
+[162]    0.0    0.00    0.00       4         Lambertian::Lambertian(Vec3 const&) [162]
+                0.00    0.00       4/4           Material::Material() [163]
+-----------------------------------------------
+                0.00    0.00       4/4           Lambertian::Lambertian(Vec3 const&) [162]
+[163]    0.0    0.00    0.00       4         Material::Material() [163]
+-----------------------------------------------
+                0.00    0.00       4/4           std::allocator_traits<std::allocator<Object*> >::deallocate(std::allocator<Object*>&, Object**, unsigned long) [169]
+[164]    0.0    0.00    0.00       4         __gnu_cxx::new_allocator<Object*>::deallocate(Object**, unsigned long) [164]
+-----------------------------------------------
+                0.00    0.00       4/4           std::allocator_traits<std::allocator<Object*> >::allocate(std::allocator<Object*>&, unsigned long) [170]
+[165]    0.0    0.00    0.00       4         __gnu_cxx::new_allocator<Object*>::allocate(unsigned long, void const*) [165]
+                0.00    0.00       4/12          __gnu_cxx::new_allocator<Object*>::_M_max_size() const [129]
+-----------------------------------------------
+                0.00    0.00       4/4           void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+[166]    0.0    0.00    0.00       4         __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::difference_type __gnu_cxx::operator-<Object**, std::vector<Object*, std::allocator<Object*> > >(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > > const&, __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > > const&) [166]
+                0.00    0.00       8/16          __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::base() const [127]
+-----------------------------------------------
+                0.00    0.00       4/4           void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+[167]    0.0    0.00    0.00       4         std::vector<Object*, std::allocator<Object*> >::_M_check_len(unsigned long, char const*) const [167]
+                0.00    0.00      16/16          std::vector<Object*, std::allocator<Object*> >::size() const [128]
+                0.00    0.00       8/8           std::vector<Object*, std::allocator<Object*> >::max_size() const [135]
+                0.00    0.00       4/4           unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [172]
+-----------------------------------------------
+                0.00    0.00       4/4           void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+[168]    0.0    0.00    0.00       4         std::_Vector_base<Object*, std::allocator<Object*> >::_M_allocate(unsigned long) [168]
+                0.00    0.00       4/4           std::allocator_traits<std::allocator<Object*> >::allocate(std::allocator<Object*>&, unsigned long) [170]
+-----------------------------------------------
+                0.00    0.00       4/4           std::_Vector_base<Object*, std::allocator<Object*> >::_M_deallocate(Object**, unsigned long) [160]
+[169]    0.0    0.00    0.00       4         std::allocator_traits<std::allocator<Object*> >::deallocate(std::allocator<Object*>&, Object**, unsigned long) [169]
+                0.00    0.00       4/4           __gnu_cxx::new_allocator<Object*>::deallocate(Object**, unsigned long) [164]
+-----------------------------------------------
+                0.00    0.00       4/4           std::_Vector_base<Object*, std::allocator<Object*> >::_M_allocate(unsigned long) [168]
+[170]    0.0    0.00    0.00       4         std::allocator_traits<std::allocator<Object*> >::allocate(std::allocator<Object*>&, unsigned long) [170]
+                0.00    0.00       4/4           __gnu_cxx::new_allocator<Object*>::allocate(unsigned long, void const*) [165]
+-----------------------------------------------
+                0.00    0.00       4/4           void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&) [101]
+[171]    0.0    0.00    0.00       4         std::vector<Object*, std::allocator<Object*> >::begin() [171]
+                0.00    0.00       4/20          __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::__normal_iterator(Object** const&) [126]
+-----------------------------------------------
+                0.00    0.00       4/4           std::vector<Object*, std::allocator<Object*> >::_M_check_len(unsigned long, char const*) const [167]
+[172]    0.0    0.00    0.00       4         unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [172]
+-----------------------------------------------
+                0.00    0.00       1/3           std::chrono::duration<double, std::ratio<1l, 1l> > std::chrono::__duration_cast_impl<std::chrono::duration<double, std::ratio<1l, 1l> >, std::ratio<1l, 1000000000l>, double, true, false>::__cast<long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [196]
+                0.00    0.00       2/3           std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<long, std::ratio<1l, 1000000000l>, long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&, std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [201]
+[173]    0.0    0.00    0.00       3         std::chrono::duration<long, std::ratio<1l, 1000000000l> >::count() const [173]
+-----------------------------------------------
+                0.00    0.00       2/2           std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >(std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&, std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&) [200]
+[174]    0.0    0.00    0.00       2         std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::time_since_epoch() const [174]
+-----------------------------------------------
+                0.00    0.00       1/2           main [78]
+                0.00    0.00       1/2           std::chrono::duration<double, std::ratio<1l, 1l> >::duration<long, std::ratio<1l, 1000000000l>, void>(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [197]
+[175]    0.0    0.00    0.00       2         std::chrono::duration<double, std::ratio<1l, 1l> >::count() const [175]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZNK4AABB9intersectERK3RayddR4Vec3RdS4_ [209]
+[176]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [176]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZNK10Lambertian7scatterERK3RayRK7HitInfoR4Vec3RS0_ [208]
+[177]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [177]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN9RayTracerC2Eii [207]
+[178]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [178]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [1]
+[179]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [179]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZNK6Sphere9intersectERK3RayddR4Vec3RdS4_ [210]
+[180]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [180]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN4Vec3C2Ev [206]
+[181]    0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [181]
+-----------------------------------------------
+                0.00    0.00       1/1           render(double, double, std::vector<Object*, std::allocator<Object*> > const&, char*, Vec3 const&, Vec3 const&, Vec3 const&, double, int, int) [79]
+[182]    0.0    0.00    0.00       1         img2rgb(unsigned int, unsigned int, double*) [182]
+-----------------------------------------------
+                0.00    0.00       1/1           render(double, double, std::vector<Object*, std::allocator<Object*> > const&, char*, Vec3 const&, Vec3 const&, Vec3 const&, double, int, int) [79]
+[183]    0.0    0.00    0.00       1         writePPM(char*, unsigned int, unsigned int, unsigned char*) [183]
+-----------------------------------------------
+                0.00    0.00       1/1           createScene() [96]
+[184]    0.0    0.00    0.00       1         Sphere::Sphere(Material*, double, Vec3 const&) [184]
+                0.00    0.00       1/6           Object::Object(Material*) [154]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<Object*>::allocator() [187]
+[185]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<Object*>::new_allocator() [185]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<Object*>::~allocator() [188]
+[186]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<Object*>::~new_allocator() [186]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl::_Vector_impl() [190]
+[187]    0.0    0.00    0.00       1         std::allocator<Object*>::allocator() [187]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<Object*>::new_allocator() [185]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl::~_Vector_impl() [191]
+[188]    0.0    0.00    0.00       1         std::allocator<Object*>::~allocator() [188]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<Object*>::~new_allocator() [186]
+-----------------------------------------------
+                0.00    0.00       1/1           void std::_Destroy<Object**>(Object**, Object**) [204]
+[189]    0.0    0.00    0.00       1         void std::_Destroy_aux<true>::__destroy<Object**>(Object**, Object**) [189]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_base() [193]
+[190]    0.0    0.00    0.00       1         std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl::_Vector_impl() [190]
+                0.00    0.00       1/1           std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl_data::_Vector_impl_data() [192]
+                0.00    0.00       1/1           std::allocator<Object*>::allocator() [187]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<Object*, std::allocator<Object*> >::~_Vector_base() [194]
+[191]    0.0    0.00    0.00       1         std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl::~_Vector_impl() [191]
+                0.00    0.00       1/1           std::allocator<Object*>::~allocator() [188]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl::_Vector_impl() [190]
+[192]    0.0    0.00    0.00       1         std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl_data::_Vector_impl_data() [192]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<Object*, std::allocator<Object*> >::vector() [202]
+[193]    0.0    0.00    0.00       1         std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_base() [193]
+                0.00    0.00       1/1           std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl::_Vector_impl() [190]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<Object*, std::allocator<Object*> >::~vector() [203]
+[194]    0.0    0.00    0.00       1         std::_Vector_base<Object*, std::allocator<Object*> >::~_Vector_base() [194]
+                0.00    0.00       1/1           std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl::~_Vector_impl() [191]
+                0.00    0.00       1/5           std::_Vector_base<Object*, std::allocator<Object*> >::_M_deallocate(Object**, unsigned long) [160]
+-----------------------------------------------
+                0.00    0.00       1/1           std::chrono::duration<double, std::ratio<1l, 1l> >::duration<long, std::ratio<1l, 1000000000l>, void>(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [197]
+[195]    0.0    0.00    0.00       1         std::enable_if<std::chrono::__is_duration<std::chrono::duration<double, std::ratio<1l, 1l> > >::value, std::chrono::duration<double, std::ratio<1l, 1l> > >::type std::chrono::duration_cast<std::chrono::duration<double, std::ratio<1l, 1l> >, long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [195]
+                0.00    0.00       1/1           std::chrono::duration<double, std::ratio<1l, 1l> > std::chrono::__duration_cast_impl<std::chrono::duration<double, std::ratio<1l, 1l> >, std::ratio<1l, 1000000000l>, double, true, false>::__cast<long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [196]
+-----------------------------------------------
+                0.00    0.00       1/1           std::enable_if<std::chrono::__is_duration<std::chrono::duration<double, std::ratio<1l, 1l> > >::value, std::chrono::duration<double, std::ratio<1l, 1l> > >::type std::chrono::duration_cast<std::chrono::duration<double, std::ratio<1l, 1l> >, long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [195]
+[196]    0.0    0.00    0.00       1         std::chrono::duration<double, std::ratio<1l, 1l> > std::chrono::__duration_cast_impl<std::chrono::duration<double, std::ratio<1l, 1l> >, std::ratio<1l, 1000000000l>, double, true, false>::__cast<long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [196]
+                0.00    0.00       1/3           std::chrono::duration<long, std::ratio<1l, 1000000000l> >::count() const [173]
+                0.00    0.00       1/1           std::chrono::duration<double, std::ratio<1l, 1l> >::duration<double, void>(double const&) [198]
+-----------------------------------------------
+                0.00    0.00       1/1           main [78]
+[197]    0.0    0.00    0.00       1         std::chrono::duration<double, std::ratio<1l, 1l> >::duration<long, std::ratio<1l, 1000000000l>, void>(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [197]
+                0.00    0.00       1/1           std::enable_if<std::chrono::__is_duration<std::chrono::duration<double, std::ratio<1l, 1l> > >::value, std::chrono::duration<double, std::ratio<1l, 1l> > >::type std::chrono::duration_cast<std::chrono::duration<double, std::ratio<1l, 1l> >, long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [195]
+                0.00    0.00       1/2           std::chrono::duration<double, std::ratio<1l, 1l> >::count() const [175]
+-----------------------------------------------
+                0.00    0.00       1/1           std::chrono::duration<double, std::ratio<1l, 1l> > std::chrono::__duration_cast_impl<std::chrono::duration<double, std::ratio<1l, 1l> >, std::ratio<1l, 1000000000l>, double, true, false>::__cast<long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [196]
+[198]    0.0    0.00    0.00       1         std::chrono::duration<double, std::ratio<1l, 1l> >::duration<double, void>(double const&) [198]
+-----------------------------------------------
+                0.00    0.00       1/1           std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<long, std::ratio<1l, 1000000000l>, long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&, std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [201]
+[199]    0.0    0.00    0.00       1         std::chrono::duration<long, std::ratio<1l, 1000000000l> >::duration<long, void>(long const&) [199]
+-----------------------------------------------
+                0.00    0.00       1/1           main [78]
+[200]    0.0    0.00    0.00       1         std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >(std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&, std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&) [200]
+                0.00    0.00       2/2           std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::time_since_epoch() const [174]
+                0.00    0.00       1/1           std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<long, std::ratio<1l, 1000000000l>, long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&, std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [201]
+-----------------------------------------------
+                0.00    0.00       1/1           std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >(std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&, std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&) [200]
+[201]    0.0    0.00    0.00       1         std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<long, std::ratio<1l, 1000000000l>, long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&, std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&) [201]
+                0.00    0.00       2/3           std::chrono::duration<long, std::ratio<1l, 1000000000l> >::count() const [173]
+                0.00    0.00       1/1           std::chrono::duration<long, std::ratio<1l, 1000000000l> >::duration<long, void>(long const&) [199]
+-----------------------------------------------
+                0.00    0.00       1/1           createScene() [96]
+[202]    0.0    0.00    0.00       1         std::vector<Object*, std::allocator<Object*> >::vector() [202]
+                0.00    0.00       1/1           std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_base() [193]
+-----------------------------------------------
+                0.00    0.00       1/1           main [78]
+[203]    0.0    0.00    0.00       1         std::vector<Object*, std::allocator<Object*> >::~vector() [203]
+                0.00    0.00       1/9           std::_Vector_base<Object*, std::allocator<Object*> >::_M_get_Tp_allocator() [131]
+                0.00    0.00       1/1           void std::_Destroy<Object**, Object*>(Object**, Object**, std::allocator<Object*>&) [205]
+                0.00    0.00       1/1           std::_Vector_base<Object*, std::allocator<Object*> >::~_Vector_base() [194]
+-----------------------------------------------
+                0.00    0.00       1/1           void std::_Destroy<Object**, Object*>(Object**, Object**, std::allocator<Object*>&) [205]
+[204]    0.0    0.00    0.00       1         void std::_Destroy<Object**>(Object**, Object**) [204]
+                0.00    0.00       1/1           void std::_Destroy_aux<true>::__destroy<Object**>(Object**, Object**) [189]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<Object*, std::allocator<Object*> >::~vector() [203]
+[205]    0.0    0.00    0.00       1         void std::_Destroy<Object**, Object*>(Object**, Object**, std::allocator<Object*>&) [205]
+                0.00    0.00       1/1           void std::_Destroy<Object**>(Object**, Object**) [204]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+   [1] _GLOBAL__sub_I__Z18findFirstCollisionRK3RayRKSt6vectorIP6ObjectSaIS4_EE [21] Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [143] std::uniform_real_distribution<double>::uniform_real_distribution(double, double)
+  [96] createScene()         [111] __gnu_cxx::new_allocator<Vec3>::_M_max_size() const [5] double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+   [4] randomDouble()        [115] __gnu_cxx::new_allocator<Vec3>::max_size() const [6] double std::uniform_real_distribution<double>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_real_distribution<double>::param_type const&)
+   [2] calculateColor(Ray const&, std::vector<Object*, std::allocator<Object*> > const&, int) [129] __gnu_cxx::new_allocator<Object*>::_M_max_size() const [195] std::enable_if<std::chrono::__is_duration<std::chrono::duration<double, std::ratio<1l, 1l> > >::value, std::chrono::duration<double, std::ratio<1l, 1l> > >::type std::chrono::duration_cast<std::chrono::duration<double, std::ratio<1l, 1l> >, long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&)
+   [3] findFirstCollision(Ray const&, std::vector<Object*, std::allocator<Object*> > const&) [133] __gnu_cxx::new_allocator<Object*>::max_size() const [196] std::chrono::duration<double, std::ratio<1l, 1l> > std::chrono::__duration_cast_impl<std::chrono::duration<double, std::ratio<1l, 1l> >, std::ratio<1l, 1000000000l>, double, true, false>::__cast<long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&)
+ [176] __static_initialization_and_destruction_0(int, int) [58] __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::base() const [197] std::chrono::duration<double, std::ratio<1l, 1l> >::duration<long, std::ratio<1l, 1000000000l>, void>(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&)
+  [75] __static_initialization_and_destruction_0(int, int) [83] __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::operator*() const [198] std::chrono::duration<double, std::ratio<1l, 1l> >::duration<double, void>(double const&)
+ [177] __static_initialization_and_destruction_0(int, int) [19] __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::base() const [199] std::chrono::duration<long, std::ratio<1l, 1000000000l> >::duration<long, void>(long const&)
+  [90] __static_initialization_and_destruction_0(int, int) [45] __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::operator*() const [200] std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >(std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&, std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > > const&)
+ [178] __static_initialization_and_destruction_0(int, int) [127] __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::base() const [201] std::common_type<std::chrono::duration<long, std::ratio<1l, 1000000000l> >, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::type std::chrono::operator-<long, std::ratio<1l, 1000000000l>, long, std::ratio<1l, 1000000000l> >(std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&, std::chrono::duration<long, std::ratio<1l, 1000000000l> > const&)
+ [179] __static_initialization_and_destruction_0(int, int) [155] __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::operator*() const [88] std::vector<Vec3, std::allocator<Vec3> >::_S_max_size(std::allocator<Vec3> const&)
+ [180] __static_initialization_and_destruction_0(int, int) [156] __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::operator-(long) const [60] std::vector<Vec3, std::allocator<Vec3> >::_S_check_init_len(unsigned long, std::allocator<Vec3> const&)
+ [181] __static_initialization_and_destruction_0(int, int) [134] std::_Vector_base<Object*, std::allocator<Object*> >::_M_get_Tp_allocator() const [30] std::vector<Vec3, std::allocator<Vec3> >::_M_fill_initialize(unsigned long, Vec3 const&)
+  [79] render(double, double, std::vector<Object*, std::allocator<Object*> > const&, char*, Vec3 const&, Vec3 const&, Vec3 const&, double, int, int) [46] std::uniform_real_distribution<double>::param_type::a() const [92] std::vector<Vec3, std::allocator<Vec3> >::end()
+ [182] img2rgb(unsigned int, unsigned int, double*) [56] std::uniform_real_distribution<double>::param_type::b() const [63] std::vector<Vec3, std::allocator<Vec3> >::begin()
+ [183] writePPM(char*, unsigned int, unsigned int, unsigned char*) [174] std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::time_since_epoch() const [24] std::vector<Vec3, std::allocator<Vec3> >::vector(unsigned long, Vec3 const&, std::allocator<Vec3> const&)
+ [162] Lambertian::Lambertian(Vec3 const&) [175] std::chrono::duration<double, std::ratio<1l, 1l> >::count() const [61] std::vector<Vec3, std::allocator<Vec3> >::~vector()
+  [27] Ray::Ray(Vec3 const&, Vec3 const&) [173] std::chrono::duration<long, std::ratio<1l, 1000000000l> >::count() const [82] std::vector<Vec3, std::allocator<Vec3> >::operator[](unsigned long)
+  [41] Ray::Ray()            [167] std::vector<Object*, std::allocator<Object*> >::_M_check_len(unsigned long, char const*) const [144] std::vector<Object*, std::allocator<Object*> >::_S_max_size(std::allocator<Object*> const&)
+ [159] AABB::AABB(Material*, Vec3 const&, Vec3 const&) [42] std::vector<Object*, std::allocator<Object*> >::end() const [145] std::vector<Object*, std::allocator<Object*> >::_S_relocate(Object**, Object**, Object**, std::allocator<Object*>&)
+  [53] AABB::~AABB()         [128] std::vector<Object*, std::allocator<Object*> >::size() const [99] Object*& std::vector<Object*, std::allocator<Object*> >::emplace_back<Object*>(Object*&&)
+  [20] Vec3::Vec3(double, double, double) [47] std::vector<Object*, std::allocator<Object*> >::begin() const [146] std::vector<Object*, std::allocator<Object*> >::_S_do_relocate(Object**, Object**, Object**, std::allocator<Object*>&, std::integral_constant<bool, true>)
+  [15] Vec3::Vec3()          [135] std::vector<Object*, std::allocator<Object*> >::max_size() const [101] void std::vector<Object*, std::allocator<Object*> >::_M_realloc_insert<Object*>(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >, Object*&&)
+  [65] Vec3::operator-()      [85] std::allocator<Vec3>::allocator(std::allocator<Vec3> const&) [130] std::vector<Object*, std::allocator<Object*> >::end()
+  [80] Camera::Camera(Vec3 const&, Vec3 const&, Vec3 const&, double, double) [57] std::allocator<Vec3>::allocator() [157] std::vector<Object*, std::allocator<Object*> >::back()
+ [154] Object::Object(Material*) [84] std::allocator<Vec3>::~allocator() [171] std::vector<Object*, std::allocator<Object*> >::begin()
+ [184] Sphere::Sphere(Material*, double, Vec3 const&) [187] std::allocator<Object*>::allocator() [100] std::vector<Object*, std::allocator<Object*> >::push_back(Object*&&)
+  [40] HitInfo::HitInfo()    [188] std::allocator<Object*>::~allocator() [202] std::vector<Object*, std::allocator<Object*> >::vector()
+ [163] Material::Material()  [136] std::char_traits<char>::length(char const*) [203] std::vector<Object*, std::allocator<Object*> >::~vector()
+  [87] __gnu_cxx::new_allocator<Vec3>::deallocate(Vec3*, unsigned long) [117] void std::_Destroy_aux<true>::__destroy<Vec3*>(Vec3*, Vec3*) [147] void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+  [72] __gnu_cxx::new_allocator<Vec3>::allocate(unsigned long, void const*) [189] void std::_Destroy_aux<true>::__destroy<Object**>(Object**, Object**) [148] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&)
+  [74] __gnu_cxx::new_allocator<Vec3>::new_allocator() [64] std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_allocate(unsigned long) [120] std::__detail::_Mod<unsigned long, 4294967296ul, 1ul, 0ul, true, true>::__calc(unsigned long)
+ [112] __gnu_cxx::new_allocator<Vec3>::new_allocator(__gnu_cxx::new_allocator<Vec3> const&) [93] std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl::_Vector_impl(std::allocator<Vec3> const&) [121] std::__detail::_Mod<unsigned long, 624ul, 1ul, 0ul, true, true>::__calc(unsigned long)
+ [110] __gnu_cxx::new_allocator<Vec3>::~new_allocator() [94] std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl::~_Vector_impl() [123] unsigned long std::__detail::__mod<unsigned long, 4294967296ul, 1ul, 0ul>(unsigned long)
+ [164] __gnu_cxx::new_allocator<Object*>::deallocate(Object**, unsigned long) [67] std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_deallocate(Vec3*, unsigned long) [122] unsigned long std::__detail::__mod<unsigned long, 624ul, 1ul, 0ul>(unsigned long)
+ [165] __gnu_cxx::new_allocator<Object*>::allocate(unsigned long, void const*) [51] std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_create_storage(unsigned long) [48] std::__detail::_Adaptor<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, double>::_Adaptor(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+  [97] void __gnu_cxx::new_allocator<Object*>::construct<Object*, Object*>(Object**, Object*&&) [113] std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_impl_data::_Vector_impl_data() [8] std::__detail::_Adaptor<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, double>::operator()()
+ [185] __gnu_cxx::new_allocator<Object*>::new_allocator() [71] std::_Vector_base<Vec3, std::allocator<Vec3> >::_M_get_Tp_allocator() [39] void std::_Construct<Vec3, Vec3 const&>(Vec3*, Vec3 const&)
+ [186] __gnu_cxx::new_allocator<Object*>::~new_allocator() [49] std::_Vector_base<Vec3, std::allocator<Vec3> >::_Vector_base(unsigned long, std::allocator<Vec3> const&) [149] std::iterator_traits<char const*>::difference_type std::__distance<char const*>(char const*, char const*, std::random_access_iterator_tag)
+ [132] bool __gnu_cxx::__is_null_pointer<char const>(char const*) [66] std::_Vector_base<Vec3, std::allocator<Vec3> >::~_Vector_base() [70] Vec3* std::__addressof<Vec3>(Vec3&)
+  [86] __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::__normal_iterator(Vec3* const&) [168] std::_Vector_base<Object*, std::allocator<Object*> >::_M_allocate(unsigned long) [124] Object** std::__niter_base<Object**>(Object**)
+  [68] __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >::operator++() [190] std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl::_Vector_impl() [150] Object** std::__relocate_a<Object**, Object**, std::allocator<Object*> >(Object**, Object**, Object**, std::allocator<Object*>&)
+  [44] __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::__normal_iterator(Object* const* const&) [191] std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl::~_Vector_impl() [151] std::enable_if<std::__is_bitwise_relocatable<Object*, void>::value, Object**>::type std::__relocate_a_1<Object*, Object*>(Object**, Object**, Object**, std::allocator<Object*>&)
+  [43] __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > >::operator++() [160] std::_Vector_base<Object*, std::allocator<Object*> >::_M_deallocate(Object**, unsigned long) [9] double std::generate_canonical<double, 53ul, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+ [126] __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::__normal_iterator(Object** const&) [192] std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_impl_data::_Vector_impl_data() [152] std::iterator_traits<char const*>::iterator_category std::__iterator_category<char const*>(char const* const&)
+ [166] __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > >::difference_type __gnu_cxx::operator-<Object**, std::vector<Object*, std::allocator<Object*> > >(__gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > > const&, __gnu_cxx::__normal_iterator<Object**, std::vector<Object*, std::allocator<Object*> > > const&) [131] std::_Vector_base<Object*, std::allocator<Object*> >::_M_get_Tp_allocator() [33] Vec3* std::uninitialized_fill_n<Vec3*, unsigned long, Vec3>(Vec3*, unsigned long, Vec3 const&)
+  [36] bool __gnu_cxx::operator!=<Vec3*, std::vector<Vec3, std::allocator<Vec3> > >(__gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > > const&, __gnu_cxx::__normal_iterator<Vec3*, std::vector<Vec3, std::allocator<Vec3> > > const&) [193] std::_Vector_base<Object*, std::allocator<Object*> >::_Vector_base() [31] Vec3* std::__uninitialized_fill_n_a<Vec3*, unsigned long, Vec3, Vec3>(Vec3*, unsigned long, Vec3 const&, std::allocator<Vec3>&)
+  [14] bool __gnu_cxx::operator!=<Object* const*, std::vector<Object*, std::allocator<Object*> > >(__gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > > const&, __gnu_cxx::__normal_iterator<Object* const*, std::vector<Object*, std::allocator<Object*> > > const&) [194] std::_Vector_base<Object*, std::allocator<Object*> >::~_Vector_base() [172] unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&)
+  [12] Lambertian::randomUnitVector() const [137] std::random_device::random_device() [18] double const& std::min<double>(double const&, double const&)
+  [11] Lambertian::randomInHemisphere(Vec3 const&) const [161] std::random_device::~random_device() [114] unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)
+  [10] Lambertian::scatter(Ray const&, HitInfo const&, Vec3&, Ray&) const [138] std::random_device::operator()() [158] std::remove_reference<Object*&>::type&& std::move<Object*&>(Object*&)
+  [28] Ray::at(double) const  [89] std::allocator_traits<std::allocator<Vec3> >::deallocate(std::allocator<Vec3>&, Vec3*, unsigned long) [25] std::remove_reference<double&>::type&& std::move<double&>(double&)
+   [7] AABB::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const [73] std::allocator_traits<std::allocator<Vec3> >::allocate(std::allocator<Vec3>&, unsigned long) [16] std::enable_if<std::__and_<std::__not_<std::__is_tuple_like<double> >, std::is_move_constructible<double>, std::is_move_assignable<double> >::value, void>::type std::swap<double>(double&, double&)
+  [32] Vec3::dot(Vec3 const&) const [116] std::allocator_traits<std::allocator<Vec3> >::max_size(std::allocator<Vec3> const&) [125] Object*&& std::forward<Object*>(std::remove_reference<Object*>::type&)
+  [81] Vec3::cross(Vec3 const&) const [169] std::allocator_traits<std::allocator<Object*> >::deallocate(std::allocator<Object*>&, Object**, unsigned long) [59] Vec3 const& std::forward<Vec3 const&>(std::remove_reference<Vec3 const&>::type&)
+  [35] Vec3::length() const  [170] std::allocator_traits<std::allocator<Object*> >::allocate(std::allocator<Object*>&, unsigned long) [119] void std::_Destroy<Vec3*>(Vec3*, Vec3*)
+  [69] Vec3::nearZero() const [139] std::allocator_traits<std::allocator<Object*> >::max_size(std::allocator<Object*> const&) [118] void std::_Destroy<Vec3*, Vec3>(Vec3*, Vec3*, std::allocator<Vec3>&)
+  [29] Vec3::normalize() const [98] void std::allocator_traits<std::allocator<Object*> >::construct<Object*, Object*>(std::allocator<Object*>&, Object**, Object*&&) [204] void std::_Destroy<Object**>(Object**, Object**)
+  [95] Vec3::operator/(double) const [34] Vec3* std::__uninitialized_fill_n<false>::__uninit_fill_n<Vec3*, unsigned long, Vec3>(Vec3*, unsigned long, Vec3 const&) [205] void std::_Destroy<Object**, Object*>(Object**, Object**, std::allocator<Object*>&)
+  [13] Vec3::operator[](int) const [22] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [153] std::iterator_traits<char const*>::difference_type std::distance<char const*>(char const*, char const*)
+  [37] Vec3::operator-(Vec3 const&) const [54] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::min() [77] Sphere::intersect(Ray const&, double, double, Vec3&, double&, Vec3&) const::{lambda(double)#1}::operator()(double) const
+  [52] Vec3::operator*(Vec3 const&) const [140] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::seed(unsigned long) [62] operator*(double, Vec3 const&)
+  [38] Vec3::operator*(double) const [141] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::mersenne_twister_engine(unsigned long) [55] operator new(unsigned long, void*)
+  [23] Vec3::operator+(Vec3 const&) const [17] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [50] _init
+  [26] Camera::getRay(double, double) const [142] std::uniform_real_distribution<double>::param_type::param_type(double, double)
